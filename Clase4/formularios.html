@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formularios en HTML</h1>
+    <form>
+        <label for="nombre">Ingrese su Nombre: </label>
+        <input type="text" minlength="5" maxlength="10" placeholder="Agustin Amposta" id="nombre" name="nombre"/>
+
+        <label for="password">Ingrese su Contraseña: </label>
+        <input type="password" id="password" name="password"/>
+
+        <input type="number" min="1" max="10"/>
+        <input type="email" required/>
+        <input type="date">
+        <input type="file">
+        <input type="datetime-local">
+
+        <label for="mensaje">Ingrese un Mensaje:</label>
+        <textarea name="" id="mensaje" minlength="10" maxlength="100" required placeholder="Escriba el Mensaje aqui..." name="mensaje"></textarea>
+
+
+        <br>
+        <span>Seleciona tu Lenjuage Favorito: </span>
+        <br>
+        <label for="html">HTML</label>
+        <input type="radio" id="html" name="seleccionar-lenjuage">
+        <br>
+        <label for="css">CSS</label>
+        <input type="radio" id="css" name="seleccionar-lenjuage">
+        <br>
+        <label for="javascript">JavaScript</label>
+        <input type="radio" id="javascript" name="seleccionar-lenjuage">
+        <br>
+
+
+        <span>Seleciona tu Lenjuage Favorito: </span>
+        <br>
+        <label for="html-con">HTML</label>
+        <input type="checkbox" id="html-con" name="lenjuage-conocido" value="html-con">
+        <br>
+        <label for="css-con">CSS</label>
+        <input type="checkbox" id="css-con" name="lenjuage-conocido" value="css-con">
+        <br>
+        <label for="javascript-con">JavaScript</label>
+        <input type="checkbox" id="javascript-con" name="lenjuage-conocido" value="javascript-con">
+        <br>
+
+        <label for="pais">Seleccionar un Pais</label>
+        <select name="pais" id="pais">
+            <option value="Ar">Argentina</option>
+            <option value="Fr">Francia</option>
+            <option value="Br">Brasil</option>
+            <option value="NULO" selected disabled>No Seleccionado</option>
+        </select>
+
+
+        <input type="submit" value="Iniciar Secion">
+        <button type="submit">Registrar</button>
+        
+        <button type="button">Generar Contraseña</button>
+    </form>
+</body>
+</html>

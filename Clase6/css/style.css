@@ -1,0 +1,101 @@
+/* le indico al navegador el texto dentro de esta etiqueta debe ser interpretado como hoja de Estilos o (CSS) */
+
+/* Selectores por jerarquias viene 1°id(mala practica) 2°class 3°elementos(h1,h2,span,..) 
+4° *(selecciona todo) */
+
+/* *{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    background-color: rebeccapurple;
+} */
+/* SELECTOR DE CLASE */
+/* .titulo-especial{
+    color: red;
+    font-size: 80px;
+} */
+
+/* SELECTOR DE ELEMENTOS */
+/* Tanto el h1 como el h2 tendran estos Estilos */
+/* h1, h2{
+    color: blueviolet;
+    background-color: black;
+    font-size: 100px;
+} */
+
+/* SELECTOR DE ID */
+/* #titulo-super-especial{
+        color: yellow;
+} */
+
+/* .subrayado{
+    text-decoration: 1px solid underline rgb(64, 255, 0);
+} */
+
+
+/* PROPIEDADES */
+
+h2{
+    color: grey;
+    font-size: 24px;
+    letter-spacing: 1px;/* Espacion entre las letras */
+    word-spacing: 10px;/* Espacio entre palabras */
+    /* text-decoration: rgb(42, 42, 175) 1px dotted overline line-through underline; */
+    /* Recibe 4 o mas valores: 
+    1°color 
+    2°tamaño: unidad de medida
+    3°tipo: solid, dashed, dotted, double, wavy 
+    4°ubicacion: overline, line-through, underline
+    Si pones none matas el estilo (osea ya no funciona)
+    */
+    text-align: center; /* Posicion del Elemento */
+    text-shadow: 
+    -2px 2px 1px rgb(146, 128, 128),
+    2px 2px 1px rgb(124, 214, 106)
+    ;
+    /*
+    text-shadow:
+    x: der+ ,neg-
+    y: arriba- ,abajo+
+    difuminado/blur
+    color
+    */
+}
+
+p{
+    line-height: 20px;/* Espaciado entre Lineas */
+    text-align: justify;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    box-shadow: 1px 1px 2px 1px rgb(169, 160, 175),
+    inset 0 0 3px white
+    ;
+}
+
+.tachado{
+    text-decoration: red solid line-through;
+}
+
+/* 
+propiedades de texto
+propiedades de backgraound
+propiedades de border
+propiedades de box
+
+Nos Permiten posicionar elementos
+-float (ya no se utiliza)
+-flexbox (Super Importante)
+-grid
+-position
+
+Diseño Responsivo:
+Mediaquerys
+
+Animaciones y Transiciones
+@keyframes
+ */
