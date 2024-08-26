@@ -7,10 +7,11 @@ h1{
     text-align: center;
     font-size: 60px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-shadow: 2px 2px grey;
+    text-shadow: 2px 2px 0px grey;
 }
 p{
     color: whitesmoke;
+    text-align: justify;
 }
 
 span{
@@ -18,9 +19,10 @@ span{
     text-decoration: red 1px solid line-through;
 }
 
-h3{
+a{
     color: yellow;
     text-shadow: 0px 0px 4px rgb(253, 253, 26);
+    font-size: 18px;
 }
 
 h2{

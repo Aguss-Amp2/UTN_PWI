@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Assistant", sans-serif;
+}
+
+body{
+    padding: 60px 16px;
+}
+
+.padre{
+    display: flex;
+    width: 303px;
+    height: 566px;
+    background-color: white;
+    border-radius: 10px;
+    border: 0px solid white;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, .17), 0px 0px 3px 0px rgba(0, 0, 0, .08), 0px 7px 14px 0px rgba(0, 0, 0, .05);
+    flex-direction: column;
+    padding: 8px 16px;
+}
+
+
+.hijo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Distribuye espacio entre sub-hijo y command */
+    width: 100%; /* Asegura que .hijo ocupe todo el ancho disponible */
+}
+
+.p{
+    display: flex;
+    flex-direction: row;
+    margin-top: 14px;
+}
+
+.sub-hijo {
+    display: flex;
+    font-size: 14px;
+    padding-left: 9px;
+}
+
+.style{
+    color:rgb(86, 82, 207);
+    font-weight: 700;
+}
+
+.command-pallette {
+    display: flex;
+    font-size: 14px;
+    color:rgba(86, 82, 207, 0.575);
+    font-weight: 700;
+}
+
+.command {
+    display: flex;
+    font-size: 14px;
+    color: rgba(128, 128, 128, 0.459);
+}
+
+.guardar{
+    width: 100%;
+}
+
+.marco{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    margin-left: -1px;
+}
+
+.marco-0{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2px;
+}
+
+.division{
+    width: 300px;
+    width: 100%;
+    height: 1px;
+    margin-top: 14px;
+    background-color: rgba(0, 0, 0, 0.158);
+}
+
+.hijo-theme{
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 0px;
+    margin-top: 4px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.pp{
+    display: flex;
+    flex-direction: row;
+    width: 104px;
+    height: 32px;
+    background-color: white;
+    border-radius: 10px;
+    border: 0px solid white;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, .17), 0px 0px 3px 0px rgba(0, 0, 0, .08), 0px 7px 14px 0px rgba(0, 0, 0, .05);
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 3px;
+}
+
+.fondo{
+    display: flex;
+    color:rgb(105,101,219);
+    font-weight: 700;
+}
+
+.opcion{
+    background-color: white;
+    border-radius: 3px;
+    border: 0px solid white;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, .17), 0px 0px 3px 0px rgba(0, 0, 0, .08), 0px 7px 14px 0px rgba(0, 0, 0, .05);
+    width: 100%;
+    height: 55px;
+    margin-top: 8px;
+}
+
+.ppp{
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 6px;
+    margin-left: -5px;
+}
+
+.fondo-pantalla{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 267px;
+    height: 57px;
+    margin-top: 8px;
+    margin-right: 0px;
+}
+
+.fondo-select{
+    display: flex;
+    width: 23px;
+    height: 23px;
+    border-radius: 3px;
+    border: 0px solid rgb(199, 197, 197);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, .17), 0px 0px 3px 0px rgba(0, 0, 0, .08), 0px 7px 14px 0px rgba(0, 0, 0, .05);
+}
+
+.color-1{
+    background-color: rgb(232, 244, 255);
+}
+
+.color-2{
+    background-color: rgb(253, 254, 255);
+}
+
+.color-3{
+    background-color: rgb(250, 246, 220);
+}
+
+.color-4{
+    background-color: rgb(253,248,246);
+}
+
+.division-lateral{
+    display: flex;
+    width: 1px;
+    height: 20px;
+    margin-top: 2px;
+    background-color: rgba(0, 0, 0, 0.096);
+}
+
+.fondo-select-top{
+    display: flex;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    border: 0px solid rgb(199, 197, 197);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, .17), 0px 0px 3px 0px rgba(0, 0, 0, .08), 0px 7px 14px 0px rgba(0, 0, 0, .05);
+}

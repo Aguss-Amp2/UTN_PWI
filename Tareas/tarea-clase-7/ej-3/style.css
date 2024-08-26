@@ -1,0 +1,12 @@
+*{
+    box-sizing: border-box;
+}
+
+.btn{
+    width: 75px;
+    height: 40px;
+    background-color: white;
+    border-color: black;
+    border-radius: 6px;
+    font-size: 14px;
+}

@@ -1,0 +1,61 @@
+/* Para Normalizar el Estilo */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: green;
+}
+
+.padre{
+    display: flex;
+    /* Los Pone en Fila */
+    flex-direction: row;
+    /* Espaciado entre Hijos */
+    gap: 20px;
+    /* Centrado Horizontal eje x cuando el flex-direction es row */
+    /* justify-content: center; */
+    /* Limita el espacio de hijos espacio sobrante / (cantidad de hijos - 1)*/
+    justify-content: space-between;
+    /* Limita el espacio de hijos espacio sobrante / (cantidad de hijos + 1)*/
+    /* justify-content: space-evenly; */
+    padding: 20px 40px;
+
+    /* Centrar respecto al eje y */
+    align-items: flex-start;
+    /* Viewport height es altura respecto al viewport(tamaño de pantalla) */
+    height: 100vh;
+}
+
+.hijo{
+    width: 200px;
+    height: 200px;
+    background-color: blueviolet;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+header{
+    height: 70px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+header .logo-container{
+    display: flex;
+    gap: 20px;
+}
+
+header nav{
+    display: flex;
+    gap: 20px;
+}
+
+header nav a{
+    text-decoration: none;
+}

@@ -1,0 +1,78 @@
+/* Normalice in CSS */
+*{
+    /* Propiedades de la Caja padding hace que siga 200*200 */
+    box-sizing: border-box;
+}
+
+
+.caja{
+    /* Dimensiones del contenido */
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    /* 
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    */
+    /* padding: 10px; es lo mismo de padding para todos los lados*/
+    /* padding: 10px 20px; padding vertical de 10px padding horizontal de 20px */
+
+    /* padding: 10px 20px 30px; padding top 10px padding horizontal de 20px padding bottom de 30px */
+    
+    /* padding: 10px 20px 30px 40px; padding top 10px padding left de 20px padding bottom de 30px padding right 40px */
+
+    padding: 20px 40px;
+
+    /* No tiene Posicion */
+    border: 3px solid black;
+    border-right: none;
+    border-left: 3px dotted yellow;
+
+    /* Espacio con lo de afuera */
+    margin: 10px 20px;
+    display: inline-block;
+}
+
+.caja-1{
+    margin-bottom: 20px;
+}
+
+.btn{
+    padding: 20px;
+    margin-top: 50px;
+    display: block;
+}
+
+
+/*
+Block: div, article, body, header, footer, h1..h6, p, aside, section, hr, nav, br, main, ul, ol, li
+
+Inline: a, label, span, b, strong, i, en
+
+Inline-Block: button, img, input, video, iframe, audio
+
+Los elementos en:
+Block: no se alinean entre si ocupan todo el bloque, se les puede dar alto, ancho, margen y padding.
+
+Inline: Ocupan solo el contenido, se Alinean entre si, y no se le puede modificar sus dimensiones (ancho y alto) y tampococo margin-vertical y padding-vertical.
+
+Inline-Block: Ocupan solo el contenido, pero se les puede dar dimensiones tambien puede darles padding, margen y Se alinean entre si.
+*/
+
+
+.link{
+    /* a los ancla funcionan mal los padding, width y margin */
+    margin-top: 90px;
+    padding: 10px;
+    background-color: red;
+    width: 700px;
+    display: inline-block;
+}
+
+input{
+    width: 600px;
+    height: 200px;
+    margin-top: 200px;
+}
