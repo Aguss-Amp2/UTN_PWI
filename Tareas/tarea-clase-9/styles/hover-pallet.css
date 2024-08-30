@@ -1,0 +1,21 @@
+.sidebar-hover-color{
+    position: absolute;
+    bottom: 0;
+    padding: 3px 6px;
+    font-size: 14px;
+    font-weight: 700;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 10px;
+    color: transparent;
+    background-color: transparent;
+}
+
+.sidebar-color-1:hover .sidebar-hover-color,.sidebar-color:hover .sidebar-hover-color{
+    color: white;
+    background-color: rgba(0, 0, 0, .1);
+    letter-spacing: 1px;
+}
+
+.sidebar-like:hover{
+    background-color: rgba(151, 151, 151, 0.144);
+}
