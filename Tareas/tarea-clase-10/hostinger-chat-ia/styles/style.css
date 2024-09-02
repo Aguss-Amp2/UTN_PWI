@@ -1,0 +1,203 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url(normalize.css);
+@import url(hover.css);
+
+.sidebar-section{
+    display: flex;
+    position: relative;
+}
+
+.sidebar-button-chat-ia{
+    display: flex;
+    position: fixed;
+    right: 12px;
+    bottom: 1.6dvh;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(103,61,230);
+    width: 174px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 16px;
+    cursor: pointer;
+}
+
+
+.sidebar-button-chat-ia .bi{
+    display: flex;
+    color: white;
+    font-size: 22px;
+    transform: rotate(90deg);
+    font-weight: 700;
+}
+
+.sidebar-span-btn{
+    display: flex;
+    color: white;
+    font-size: 14px;
+    font-weight: 1000;
+}
+
+.sidebar-chat-ia{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    right: 12px;
+    bottom: 8dvh;
+    width: 358px;
+    height: 354px;
+    border-radius: 8px;
+    border: 1px solid #dad9da;
+}
+
+.sidebar-box-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    padding: 8px 8px 8px 16px;
+}
+
+.sidebar-header-chat{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-header-chat p{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.sidebar-header-chat span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 26px;
+    font-size: 12px;
+    color: gray;
+    font-weight: 600;
+    background-color: rgba(224, 225, 230, 0.616);
+    border-radius: 4px;
+}
+
+.sidebar-img{
+    display: flex;
+    gap: 4px;
+}
+
+.sidebar-img .bi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.bi-emoji-smile:hover, .bi-trash:hover, .bi-x-lg:hover{
+    background-color: rgba(224, 225, 230, 0.616);
+    border-radius: 4px;
+}
+
+.sidebar-chat{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 340px;
+    height: 174px;
+    background-color: rgba(224, 225, 230, 0.616);
+    border-radius: 4px;
+    margin-left: 8px;
+    padding: 8px 8px 8px 8px;
+}
+
+.sidebar-chat .bi{
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 25px;
+    height: 25px;
+    background-color: rgb(103,61,230);
+    border-radius: 4px;
+    font-size: 20px;
+    transform: rotate(90deg);
+}
+
+.sidebar-chat p{
+    display: block;
+    font-size: 14px;
+    padding-left: 16px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.sidebar-chat-footer{
+    display: flex;
+    width: 358px;
+    height: 93px;
+    margin-top: 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-text{
+    display: flex;
+    position: relative;
+    width: 342px;
+    height: 50px;
+    border: none;
+    background-color: white;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.7;
+    max-height: 90px;
+    outline: none;
+    overflow: auto;
+    overflow-y: auto;
+    padding: 12px 8px;
+    resize: none;
+    cursor: text;
+    border: 1px solid;
+    border-color: rgba(128, 128, 128, 0.438);
+    border-radius: 10px;
+}
+
+.sidebar-text:hover{
+    border-color: rgb(103,61,230);
+}
+
+.sidebar-btn-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.sidebar-btn-text .bi{
+    font-size: 24px;
+    color: gray;
+}
+
+.sidebar-bottom-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.sidebar-bottom-footer p{
+    font-size: 12px;
+    color: gray;
+}
