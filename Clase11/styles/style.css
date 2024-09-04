@@ -1,0 +1,30 @@
+@import url(normalize.css);
+
+.padre{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(93, 165, 93);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.hijo{
+    width: 250px;
+    height: 350px;
+    background-color: white;
+    border-radius: 10px;
+}
+/* Cuando la pantalla tenga almenos 1200 pixeles de ancho ejecutare este codigo */
+@media screen and (max-width: 1200px) {
+    .padre{
+        background-color: brown;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .padre{
+        background-color: rgb(49, 9, 9);
+    }
+}

@@ -1,0 +1,65 @@
+@import url(normalize.css);
+
+main{
+    display: flex;
+    position: relative;
+}
+
+.container-general{
+    display: flex;
+    width: 600px;
+    height: 1700px;
+    flex-direction: row;
+    position: relative;
+    background-color: white;
+    margin: 40px;
+    padding-left: 16px;
+}
+
+.mov{
+    display: flex;
+    position: relative;
+    min-height: 500px;
+}
+
+.galeria-fotos{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    gap: 20px;
+    padding-top: 40px;
+    padding-left: 16px;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.foto-style{
+    display: flex;
+    position: sticky;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(128, 128, 128, 0.466);
+    border-radius: 5px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.foto-seleccion{
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    padding-left: 100px;
+    margin-bottom: 300px;
+}
+
+.foto-style-principal{
+    display: flex;
+    position: sticky;
+    width: 378px;
+    height: 488px;
+    cursor: pointer;
+}
