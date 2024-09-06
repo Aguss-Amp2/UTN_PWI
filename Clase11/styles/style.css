@@ -1,4 +1,23 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 @import url(normalize.css);
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0px 50px;
+}
+
+header nav{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+header .btn-nav{
+    display: none;
+}
 
 .padre{
     display: flex;
@@ -16,6 +35,34 @@
     background-color: white;
     border-radius: 10px;
 }
+
+.hijo:nth-child(2){
+    background-color: blueviolet;
+}
+
+.link-wsp{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: white;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.link-wsp:hover{
+    /* Una Transicion es pasar de un valor x a otro en x cantidad de tiempo */
+    transform: scale(1.2);
+    transition: 20ms ease-in;
+}
+
 /* Cuando la pantalla tenga almenos 1200 pixeles de ancho ejecutare este codigo */
 @media screen and (max-width: 1200px) {
     .padre{
@@ -25,6 +72,35 @@
 
 @media screen and (max-width: 600px) {
     .padre{
+        flex-direction: column;
         background-color: rgb(49, 9, 9);
     }
+
+    .hijo:nth-child(2){
+        display: none;
+    }
+
+    /* Tienen que tener la misma especifidad */
+    header nav{
+        display: none;
+    }
+
+    header .btn-nav{
+        display: flex;
+    }
+
+    .link-wsp{
+        width: 45px;
+        height: 45px;
+    }
 }
+
+
+/* Si el usuario tiene de color de preferencia dark */
+
+/* @media (prefers-color-scheme: dark) {
+    
+}
+@media (prefers-color-scheme: light) {
+    
+} */
