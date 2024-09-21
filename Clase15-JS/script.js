@@ -1,109 +1,53 @@
 // FUNCIONES
 
+// alert()
 
-// while(!estoycansado){
-//     console,log('bailar')
+// Decalaramos la funcion saludar
+// function saludar(){
+//     alert('Este es el mejor saludo 🎉')
 // }
 
-// FOR
-// Bucle es una estructura que nos permite repetir bloques/acciones del codigo
+// Invocamos a la funcion
+// saludar()
 
-// CASO DE BUCLE FOR
-// Quiero que por cada usuario de la aplicacion envies un mail de terminos y condiciones actualizado
-// Cuando queremeos repetir una accion una X cantidad de veces
+// Crear la funcion preguntarNombre que solicitara el nombre al usuario y dira por alerta, 'tu noombre es {nombre_ingresado}'
 
-// Decir por cada usuario de mi app voy a d3ecir en consola usuario subscrito
+// function preguntarNombre(){
+//     let nombre_ingresado = prompt('Ingrese su Nombre:')
+// }
+// preguntarNombre()
 
-let cantidad_usuarios = 3
+// function mostrarNombre(nombre_ingresado){
+//     alert('Tu nombre es ' + nombre_ingresado)
+// }
+// mostrarNombre()
 
-// CONDICION
-// Iterador: Cantidad de veces que se esta ejecutando una accion
-// Condicion / limite: Mientras la condicion sea verdadera el bucle se repetira
-// Actualizacion: A que ritma se va actualizar nuestro contador/iterador
-// for(
-//     let iterador = 1; 
-//     iterador <= cantidad_usuarios; 
-//     iterador = iterador + 1
-// ){
-//     // ACCION
-//     console.log(iterador,'Usuario Subscrito')
+// function calcularIVA(precio){
+//     alert('EL IVA de tu producto es de ' + (precio * 1.21))
 // }
 
-// Quiero q me digas por alerta hola 3 veces
-
-// for(let iterador = 1;iterador <= 3; iterador++){
-//     alert('Hola')
+// function calcularPrecioSinIVA(precio){
+//     alert('El iva de tu producto es ' + (precio - precio * 0.21))
 // }
 
-// Solicitar al usuario 3 numeros y calcularemos la sumatoria de los 3 num
-// let sumatoria = 0
+// calcularIVA(100)
+// calcularIVA(50)
 
-// for(let iterador = 1; iterador <= 3; iterador++){
-//     let numero = prompt('Ingrese un Numero:')
 
-//     while(!numero || isNaN(numero)){
-//         numero = prompt('Error dato no valido, ingrese un numero')
-//     }
-//     numero = Number(numero)
-//     sumatoria = sumatoria + numero
-// }
+function suma(a,b){
+    return Number(a) + Number(b)
+}
 
-// alert('La sumatoria de tus numeros es ' + sumatoria)
+// suma(2, 5)
+let result = sumar(24, 66)
+// alert(result)
+// console.log(result)
+// document.write(result)
 
-/*
-1)Imprime los numeros del 1 al 10
-2)Imprime los numeros pares del 2 al 20
-3)Imprime los numeros impares del 1 al 19
-4)Imprime los numeros del 10 al 1, en orden inverso
-5)Imprime los numeros del 1 al 10, pero se detiene en el numero 5 BREAK
-6)Imprime los numeros del 1 al 10, pero se salta el 5 CONTINUE
-*/
+// Mala practica
+document.write('<h1 class="title">Hola</h1>')
 
-// Break corta el bucle
-// Continue pasa a la siguiente operacion
 
-// 1)Imprime los numeros del 1 al 10
-
-// for(let i = 1; i <= 10; i++){
-//     console.log(i)
-// }
-
-// 2)Imprime los numeros pares del 2 al 20
-
-// for(let i = 1; i <= 20; i++){
-//     if(i % 2 === 0){
-//         console.log(i)
-//     }
-// }
-
-// 3)Imprime los numeros impares del 1 al 19
-
-// for(let i = 1; i <= 19; i++){
-//     if(i % 2 !== 0){
-//         console.log(i)
-//     }
-// }
-
-// 4)Imprime los numeros del 10 al 1, en orden inverso
-
-// for(let i = 10; i >= 1; i--){
-//     console.log(i)
-// }
-
-// 5)Imprime los numeros del 1 al 10, pero se detiene en el numero 5 BREAK
-
-// for(let i = 1; i <= 10; i++){
-//     console.log(i)
-//     if(i === 5){
-//         break
-//     }
-// }
-
-// 6)Imprime los numeros del 1 al 10, pero se salta el 5 CONTINUE
-
-// for(let i = 1; i <= 10; i++){
-//     if(i === 5){
-//         continue
-//     }
-//     console.log(i)
-// }
+// Buena Practica
+// let div = document.getDocumentById('id')
+// div.innerHTML = '<h1>Hola</h1>'
