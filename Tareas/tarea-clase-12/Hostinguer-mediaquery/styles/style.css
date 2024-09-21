@@ -1,0 +1,60 @@
+@import url(normalize.css);
+@import url(hover.css);
+
+:root{
+    --primary-color: rgb(103,61,230);
+    --second-color: rgb(80,37,209);
+    --text-color: rgb(254,255,255);
+    --second-text-color: rgba(254, 255, 255, 0.932);
+
+}
+
+.container-section{
+    display: flex;
+    flex-direction: column;
+}
+
+.text-color{
+    color: var(--second-text-color);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.container-ul{
+    margin: 25px;
+}
+
+.container-ul li{
+    padding-bottom: 12px;
+}
+
+li::marker{
+    content: "✔  ";
+    color: var(--text-color);
+}
+
+.img-host{
+    margin-left: -30px;
+    width: 340px;
+    height: 200px;
+}
+
+.container-texto{
+    width: 100%;
+    padding: 40px;
+    margin-top: 40px;
+    background-color: var(--second-color);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.container-texto h2{
+    font-size: 18px;
+    padding-bottom: 15px;
+}
+
+.container-texto p{
+    font-size: 16px;
+    color: var(--second-text-color);
+}
