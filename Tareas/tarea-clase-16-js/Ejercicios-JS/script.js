@@ -83,5 +83,39 @@
 //     }
 // }
 
-// 14) Hacer  un programa que imprima 25 términos de la serie 11 - 22 - 33 - 44–55-66…..no shacer  un programa que permita cargar 5 números enteros y luego nos informe cuántos valores fueron pares y cuántos impares.e ingresan valores por teclado.
+// 14) Hacer  un programa que imprima 25 términos de la serie 11 - 22 - 33 - 44–55-66…..
 
+// for(let i = 1; i <= 25; i++){
+//     console.log(i*11)
+// }
+
+
+// 15) Hacer  un programa que permita cargar 5 números enteros y luego nos informe cuántos valores fueron pares y cuántos impares.e ingresan valores por teclado.
+
+// let par = 0, impar = 0
+
+// for(let i = 1; i <= 5; i++){
+//     num = prompt('Ingrese otro Numero: ')
+
+//     if(num % 2 == 0){
+//         par++
+//     }
+//     else{
+//         impar++
+//     }
+// }
+
+// alert('Los pares son '+ par +' Y los impares son '+ impar)
+
+
+// 16) Hacer un programa donde se ingresan un conjunto de 5 alturas de personas por teclado. Mostrar la altura promedio de las personas. 
+
+// let total = 0, result = 0
+// for(let i = 1; i <= 5; i++){
+//     let alt = prompt('Ingrese su Altura en cm ejemplo(180 cm): ')
+//     total += Number(alt)
+//     if(i === 5){
+//         result = total / 5
+//         alert('El Promedio es de '+ Number(result))
+//     }
+// }
