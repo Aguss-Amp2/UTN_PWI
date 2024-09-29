@@ -119,3 +119,227 @@
 //         alert('El Promedio es de '+ Number(result))
 //     }
 // }
+
+/* 17)Se cuenta con la siguiente información:
+	Las edades de 5 estudiantes del turno mañana.
+	Las edades de 6 estudiantes del turno tarde.
+	Las edades de 11 estudiantes del turno noche.
+Las edades de cada estudiante deben ingresarse por teclado.
+a)	Obtener el promedio de las edades de cada turno (tres promedios).
+b)	Imprimir dichos promedios (promedio de cada turno).
+c)	Mostrar por pantalla un mensaje que indique cual de los tres turnos tiene un promedio de edades mayor.
+*/
+
+// let tm = 5, tt = 6, tn = 11
+// let total_tm = 0, total_tt = 0, total_tn = 0
+
+// let resp = prompt('Quiere empezar el Programa? (si o no)')
+
+// while(resp != 'no' || resp != 'No' || resp != 'NO'){
+//     for(let i = 1; i <= tm; i++){
+//         let edad = prompt('Ingrese su edad Turno Mañana:')
+//         if(!isNaN(edad)){
+//             total_tm += Number(edad)
+//         }
+//         else{
+//             alert('ERROR: Ingrese su edad en numeros')
+//             i--
+//         }
+//     }
+//     for(let i = 1; i <= tt; i++){
+//         let edad = prompt('Ingrese su edad Turno Tarde:')
+//         if(!isNaN(edad)){
+//             total_tt += Number(edad)
+//         }
+//         else{
+//             alert('ERROR: Ingrese su edad en numeros')
+//             i--
+//         }
+//     }
+//     for(let i = 1; i <= tn; i++){
+//         let edad = prompt('Ingrese su edad Turno Noche:')
+//         if(!isNaN(edad)){
+//             total_tn += Number(edad)
+//         }
+//         else{
+//             alert('ERROR: Ingrese su edad en numeros')
+//             i--
+//         }
+//     }
+
+//     let prom_tm = total_tm / 5
+//     let prom_tt = total_tt / 6
+//     let prom_tn = total_tn / 11
+
+//     alert(`El promedio de edad en el turno mañana es: ${prom_tm}`)
+//     alert(`El promedio de edad en el turno tarde es: ${prom_tt}`)
+//     alert(`El promedio de edad en el turno noche es: ${prom_tn}`)
+
+//     if(prom_tm > prom_tn && prom_tm > prom_tt){
+//     alert('El Turno con Mayor promedio es el TURNO MAÑANA')
+//     }
+//     else if(prom_tn > prom_tm && prom_tn > prom_tt){
+//         alert('El Turno con Mayor promedio es el TURNO NOCHE')
+//     }
+//     else{
+//         alert('El Turno con Mayor promedio es el TURNO TARDE')
+//     }
+//     break
+// }
+
+/* 18)Se realiza la carga de 10 valores enteros por teclado. Se desea conocer:
+a)	La cantidad de valores negativos ingresados.
+b)	La cantidad de valores positivos ingresados.
+c)	La cantidad de múltiplos de 15.
+d)	El valor acumulado de los números ingresados que son pares.
+*/
+
+// let cont_neg = 0, cont_pos = 0, cont_mult = 0, acum_par = 0
+
+// for(let i = 1; i <= 10; i++){
+//     let num = prompt('Ingrese su numero:')
+//     if(!isNaN(num)){
+//         if(num < 0){
+//             cont_neg++
+//         }
+//         else if(num >= 0){
+//             cont_pos++
+//         }
+
+//         if(num % 15 === 0){
+//             cont_mult++
+//         }
+
+//         if(num % 2 === 0){
+//             acum_par += Number(num)
+//         }
+//     }
+// }
+
+// console.log(`Cantidad de valores negativos: ${cont_neg}`);
+// console.log(`Cantidad de valores positivos: ${cont_pos}`);
+// console.log(`Cantidad de múltiplos de 15: ${cont_mult}`);
+// console.log(`Valor acumulado de los números pares: ${acum_par}`);
+
+
+/* 19)hacer un programa que lea los lados de 4 triángulos, e informar:
+a)	De cada uno de ellos, qué tipo de triángulo es: equilátero , isósceles o escaleno 
+b)	Cantidad de triángulos de cada tipo.
+c)	Tipo de triángulo del que hay menor cantidad.
+*/
+
+// let equilatero = 0, escaleno = 0, isoseles = 0
+
+// for(let i = 1; i <= 4; i++){
+//     let lado1 = prompt(`Ingrese el lado de Triangulo N°${i}:`)
+//     if(!isNaN(lado1)){
+//         let lado2 = prompt(`Ingrese el lado de Triangulo N°${i}:`)
+//         if(!isNaN(lado2)){
+//             let lado3 = prompt(`Ingrese el lado de Triangulo N°${i}:`)
+//             if(!isNaN(lado3)){
+//                 if(lado1 === lado2 && lado1 === lado3){
+//                     equilatero++
+//                 }
+//                 else if(lado1 != lado2 && lado2 != lado3){
+//                     escaleno++
+//                 }
+//                 else{
+//                     isoseles++
+//                 }
+//             }
+//             else{
+//                 alert('ERROR ingrese un NUMERO')
+//                 i--
+//             }
+//         }
+//         else{
+//             alert('ERROR ingrese un NUMERO')
+//             i--
+//         }
+//     }
+//     else{
+//         alert('ERROR ingrese un NUMERO')
+//         i--
+//     }
+// }
+// console.log(`Triangulos Isoseles hay: ${isoseles}`)
+// console.log(`Triangulos Escaleno hay: ${escaleno}`)
+// console.log(`Triangulos Equilatero hay: ${equilatero}`)
+
+
+/* 20)hacer  una función que solicite la carga de dos enteros (primero el menor y luego el mayor) y nos muestre desde el menor hasta el mayor de uno en uno.
+Por ejemplo si ingresamos los valores 4 y 10 luego se debe mostrar por pantalla:
+4 5 6 7 8 9 10
+*/
+
+// let menor = prompt('Ingrese el Numero mas chico:')
+// let mayor = prompt('Ingrese el Numero mas Alto:')
+
+// while(menor < mayor && !isNaN(menor) && !isNaN(mayor)){
+//     for(let i = menor; i <= mayor; i++){
+//         console.log(i)
+//     }
+//     break
+// }
+// if(isNaN(menor) || isNaN(mayor)){
+//     alert('ERROR INGRESE UN NUMERO')
+// }
+// else if(menor > mayor){
+//     alert('ERROR INGRESO MAL EL ORDEN PRIMERO VA EL MENOR')
+// }
+
+// 21)Hacer  una función que reciba tres enteros y retorne el promedio.
+
+// function promedio(a, b, c){
+//     let total = a + b + c
+//     let promedio = total / 3
+
+//     return promedio
+// }
+
+// console.log(promedio(8,5,10))
+
+
+// 22)Confeccionar una función que solicite la carga de 5 valores por teclado y retorne su suma.
+
+// let total = 0, tot_suma = 0
+// function sumarValores(a){
+//     total += a
+//     return total
+// }
+
+// for(let i = 1; i <= 5; i++){
+//     let num = prompt('Ingrese su numero:')
+//     if(!isNaN(num)){
+//         tot_suma = sumarValores(Number(num))
+//     }
+//     else{
+//         alert('ERROR INGRESE UN NUMERO')
+//         i--
+//     }
+// }
+
+// console.log(tot_suma)
+
+/* 23)
+hacer una funcion que envie una palabra cualquiera y me la devuelva con signo de exclamación al inicio y al final !¡
+*/
+
+// function palabra(pal){
+//     alert(`!¡ ${pal} ¡!`)
+// }
+
+// let frase = prompt('Ingrese una palabra:')
+
+// palabra(frase)
+
+// 24)Definí una función obtenerNombreCompleto que reciba como argumento un nombre y un apellido y devuelva un string con la unión de ambos valores
+
+// function obtenerNombreCompleto(nombre, apellido){
+//     alert(`Su Nombre completo es ${nombre} ${apellido}`)
+// }
+
+// let nombre = prompt('Ingrese su Nomnbre:')
+// let apellido = prompt('Ingrese su Apellido:')
+
+// obtenerNombreCompleto(nombre, apellido)
