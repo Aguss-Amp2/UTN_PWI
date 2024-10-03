@@ -167,9 +167,9 @@ c)	Mostrar por pantalla un mensaje que indique cual de los tres turnos tiene un 
 //         }
 //     }
 
-//     let prom_tm = total_tm / 5
-//     let prom_tt = total_tt / 6
-//     let prom_tn = total_tn / 11
+//     let prom_tm = total_tm / tm.length
+//     let prom_tt = total_tt / tt.length
+//     let prom_tn = total_tn / tn.length
 
 //     alert(`El promedio de edad en el turno mañana es: ${prom_tm}`)
 //     alert(`El promedio de edad en el turno tarde es: ${prom_tt}`)
