@@ -93,6 +93,72 @@
 //  Dada una cadena de texto, imprimir "La cadena contiene la letra 'a'" si la cadena contiene la letra 'a', de lo contrario imprimir "La cadena no contiene la letra 'a'".
 
 //  Dada una cadena de texto, reemplazar todas las apariciones de la letra 'a' con la letra 'x' y imprimir la nueva cadena.
+
 //  Dada una cadena de texto, imprimir "La cadena es un número" si la cadena es un número válido, de lo contrario imprimir "La cadena no es un número".
 
 //  Dada una cadena de texto, imprimir "La cadena es una dirección de correo electrónico válida" si la cadena es una dirección de correo electrónico válida, de lo contrario imprimir "La cadena no es una dirección de correo electrónico válida".
+
+function MayusculaOrMinuscula(palabra){
+    let palabra2 = palabra.toLowerCase()
+
+    if(palabra === palabra2){
+        console.log('Tiene Minuscula.')
+    }
+    else{
+        console.log('Tiene Mayuscula.')
+    }
+}
+
+function tamanioCadena(texto){
+    let textoSinEspacios = texto.replaceAll(' ','')
+
+    if(textoSinEspacios.length > 10){
+        console.log("La cadena es mayor a 10 caracteres")
+    }
+    else if(textoSinEspacios.length <= 10){
+        console.log("La cadena es menor o igual a 10 caracteres")
+    }
+}
+
+function contieneA(palabra){
+    let palabraMinu = palabra.toLowerCase()
+    if(palabraMinu.includes('a')){
+        console.log('La frase contiene la letra a')
+    }
+    else{
+        console.log('La frase NO contiene la letra a')
+    }
+}
+
+function reemplazoA(palabra){
+    let palabraMinu = palabra.toLowerCase()
+    let palabraX = palabraMinu.replaceAll('a','x')
+    console.log(palabraX)
+}
+
+function comprobarNum(palabra){
+    let numero = Number(palabra)
+    if(!isNaN(numero)){
+        console.log('La cadena es un Numero')
+    }
+    else{
+        console.log('La cadena NO es un Numero')
+    }
+}
+
+function comprobarCorreo(palabra){
+    if(palabra.includes('@hotmail.com')){
+        console.log("La cadena es una dirección de correo electrónico válida")
+    }
+    else{
+        console.log("La cadena es una dirección de correo electrónico NO válida")
+    }
+}
+
+let texto = prompt('Ingrese su Frase:')
+MayusculaOrMinuscula(texto)
+tamanioCadena(texto)
+contieneA(texto)
+reemplazoA(texto)
+comprobarNum(texto)
+comprobarCorreo(texto)
