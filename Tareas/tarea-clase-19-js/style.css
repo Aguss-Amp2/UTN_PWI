@@ -1,0 +1,63 @@
+@import url(./normalize.css);
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+:root{
+    --color-text: #e3ceebcc;
+    --color-primary: #211125;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+.usuariosSlack{
+    width: 200px;
+    height: 450px;
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.contenedor-usuario{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.img-usuario{
+    display: flex;
+    position: absolute;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.nombre-usuario{
+    display: flex;
+    color: var(--color-text);
+    font-size: 12px;
+    margin: 10px 20px 0px 20px;
+}
+
+
+.border-conect{
+    border: 2px solid; /* Aplicamos un borde sólido */
+    border-radius: 100%;
+}
+
+.bi{
+    display: flex;
+    position: relative;
+    left: 16px;
+    top: 10px;
+    color: var(--color-primary);
+    font-size: 8px;
+    border-color: var(--color-primary); /* Color específico para .bi */
+}
+
+.conect{
+    color: rgb(19, 204, 19);
+}
