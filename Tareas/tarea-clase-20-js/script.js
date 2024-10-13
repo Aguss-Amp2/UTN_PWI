@@ -43,8 +43,8 @@ const registros = [
 ]
 
 const nombresColumnasHTML = document.getElementById('nombre-columnas')
-let columnas = '<input type="checkbox" class="container-checkbox">'
-for(let i = 0; i < nombres_columnas.length; i++){
+let columnas = '<input type="checkbox" class="container-checkbox check-colum">'
+for(let i = 1; i < nombres_columnas.length; i++){
     columnas += `
         <button class="btn-container">${nombres_columnas[i]}<i class="bi bi-arrow-down"></i></button>
     `
@@ -55,12 +55,15 @@ nombresColumnasHTML.innerHTML = columnas
 const registrosHTML = document.getElementById('registros')
 let registro = ''
 
+
 for(let i = 0; i< registros.length; i++){
+    let checkSelected = registros.selected === true
+    let registroCheck = registros[i].Status === 'active'
     registro += `
     <div class='registro-fila'>
-        <div>
-            <input type="checkbox" class="container-checkbox">
-        </div>
+        ${
+            checkSelected ? '<div><input type="checkbox" class="container-checkbox check-fila-true margin"></div>' : '<div><input type="checkbox" class="container-checkbox check-fila margin"></div>'
+        }
         <div>
             ${registros[i].Title}
         </div>
@@ -77,7 +80,7 @@ for(let i = 0; i< registros.length; i++){
             ${registros[i].Origin}
         </div>
         <div>
-            ${registros[i].Status}
+            ${registroCheck ? '<span class="color-active"><i class="bi bi-circle-fill"></i>active</span>' : '<span class="color-inactive"><i class="bi-inac bi-circle-fill"></i>inactive</span>'}
         </div>
         <div>
             ${registros[i]['Process ID']}
