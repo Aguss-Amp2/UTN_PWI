@@ -43,7 +43,7 @@ const registros = [
 ]
 
 const nombresColumnasHTML = document.getElementById('nombre-columnas')
-let columnas = '<input type="checkbox" class="container-checkbox check-colum">'
+let columnas = '<input type="checkbox" class="container-checkbox-column check-colum">'
 for(let i = 1; i < nombres_columnas.length; i++){
     columnas += `
         <button class="btn-container">${nombres_columnas[i]}<i class="bi bi-arrow-down"></i></button>
@@ -57,14 +57,16 @@ let registro = ''
 
 
 for(let i = 0; i< registros.length; i++){
-    let checkSelected = registros.selected === true
+    let isChecked = registros[i].selected === true; // Verifica si selected es true
     let registroCheck = registros[i].Status === 'active'
     registro += `
     <div class='registro-fila'>
-        ${
-            checkSelected ? '<div><input type="checkbox" class="container-checkbox check-fila-true margin"></div>' : '<div><input type="checkbox" class="container-checkbox check-fila margin"></div>'
-        }
         <div>
+            ${
+                isChecked ? '<input type="checkbox" class="container-checkbox check-fila margin" checked>' : '<input type="checkbox" class="container-checkbox check-fila margin">'
+            }
+        </div>
+        <div class="style-title">
             ${registros[i].Title}
         </div>
         <div>
@@ -80,7 +82,7 @@ for(let i = 0; i< registros.length; i++){
             ${registros[i].Origin}
         </div>
         <div>
-            ${registroCheck ? '<span class="color-active"><i class="bi bi-circle-fill"></i>active</span>' : '<span class="color-inactive"><i class="bi-inac bi-circle-fill"></i>inactive</span>'}
+            ${registroCheck ? '<span class="color-active"><i class="bi-acti bi-circle-fill"></i>Active</span>' : '<span class="color-inactive"><i class="bi-inac bi-circle-fill"></i>Inactive</span>'}
         </div>
         <div>
             ${registros[i]['Process ID']}

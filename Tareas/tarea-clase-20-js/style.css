@@ -1,17 +1,91 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 @import url(./normalize.css);
 
+:root{
+    --color-primary: #0070ff;
+}
+
+.container-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.container-text{
+    width: 320px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.space-h1{
+    padding-right: 20px;
+}
+
+p{
+    padding-top: 10px;
+    color: rgba(29, 28, 28, 0.452);
+}
+
+.style-span-header{
+    display: flex;
+    align-items: center;
+    width: 160px;
+    height: 30px;
+    background-color: #006eff0e;
+    border-radius: 10px;
+    color: var(--color-primary);
+    margin-top: -4px;
+    padding: 14px;
+}
+
+.container-btns{
+    width: 480px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon{
+    padding-right: 8px;
+}
+
+.container-export{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 35px;
+    align-items: center;
+    border: 1px solid rgba(70, 68, 68, 0.253);
+    border-radius: 8px;
+}
+
+.container-add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 42px;
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: 8px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
 .container-columnas{
     width: 100vw;
     height: 50px;
     background-color: #fcfcfd;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 50px;
     border-bottom: 1px solid rgba(138, 137, 137, 0.418);
     border-top: 1px solid rgba(138, 137, 137, 0.418);
-    padding: 0 58px 0 58px;
+    padding: 0 0 0 58px;
 }
 
 .btn-container{
@@ -19,24 +93,35 @@
     justify-content: space-between;
     flex-direction: row;
     cursor: pointer;
-    color: rgba(44, 43, 43, 0.61);
+    color: rgba(44, 43, 43, 0.473);
     font-weight: 700;
+    padding-left: 110px;
+}
+
+.container-checkbox-column{
+    width: 20px;
+    height: 20px;
+    appearance: none; /* Elimina la Apariencia predeterminada */
+    border: 2px solid var(--color-primary); /* Borde del checkbox */
+    border-radius: 5px; /* Bordes redondeados */
+    background: url(./img/dash-lg.svg);
+}
+
+.container-checkbox-column:checked::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: url(./img/plus-lg.svg);
+    background-color: var(--color-primary);
+    display: block;
 }
 
 .container-checkbox{
     width: 20px;
     height: 20px;
     appearance: none;   
-    border: 2px solid #0070ff; /* Borde del checkbox */
+    border: 2px solid var(--color-primary); /* Borde del checkbox */
     border-radius: 5px; /* Bordes redondeados */
-}
-
-.check-colum:checked::before{
-    content: '';
-    width: 100%;
-    height: 100%;
-    background: url(./img/dash-lg.svg);
-    display: block;
 }
 
 .check-fila:checked::before{
@@ -44,25 +129,8 @@
     width: 100%;
     height: 100%;
     background: url(./img/check.svg);
-    background-color: #0070ff;
+    background-color: var(--color-primary);
     display: block;
-}
-
-.check-fila-true{
-    content: '';
-    width: 100%;
-    height: 100%;
-    background: url(./img/check.svg);
-    background-color: #0070ff;
-    display: block;
-}
-
-.check-fila-true:checked::before{
-    width: 20px;
-    height: 20px;
-    appearance: none;   
-    border: 2px solid #0070ff; /* Borde del checkbox */
-    border-radius: 5px; /* Bordes redondeados */
 }
 
 .container-registros{
@@ -75,8 +143,9 @@
 .registro-fila{
     display: flex;
     justify-content: space-between;
-    color: rgba(128, 128, 128, 0.644);
+    color: rgba(128, 128, 128, 0.479);
     flex-direction: row;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -88,11 +157,12 @@
     background-color: #03784710;
     border-radius: 10px;
     color: #037847;
+    margin-top: -4px;
     padding: 14px;
     gap: 4px;
 }
 
-.bi{
+.bi-acti{
     font-size: 8px;
     margin-top: 2px;
 }
@@ -105,6 +175,7 @@
     background-color: #4749480e;
     border-radius: 10px;
     color: #474948;
+    margin-top: -4px;
     padding: 8px;
     gap: 4px;
 }
@@ -126,4 +197,9 @@
 
 div .margin{
     margin-left: 58px;
+}
+
+.style-title{
+    color: black;
+    font-weight: bold;
 }
