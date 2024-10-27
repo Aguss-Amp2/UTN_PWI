@@ -1,0 +1,143 @@
+@import url(./normalize.css);
+@import url(./hover.css);
+
+:root{
+    --primary-color: #111b21;
+    --secod-primary-color: #222e35;
+    --text-color: #e9edef;
+    --letter-color: #8696a0;
+    --letter-hover-color: #8696a034;
+    --noti-color: #00a884;
+    --color-fond: #202c33;
+}
+
+.padre{
+    display: flex;
+    flex-direction: row;
+}
+
+.aside-container{
+    background-color: var(--secod-primary-color);
+    width: 62px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.top-aside{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bottom-aside{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon{
+    color: var(--letter-color);
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.icon-option{
+    color: var(--letter-color);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.caja-icon{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.img-perfil{
+    border-radius: 50%;
+    width: 30px;
+}
+
+.header-container{
+    background-color: var(--primary-color);
+    width: 420px;
+    height: 100vh;
+    padding: 10px 22px;
+}
+
+.container-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container-top-button{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.title-text{
+    color: var(--text-color);
+}
+
+.container-search{
+    width: 98%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 8px;
+    background-color: var(--color-fond);
+    color: var(--letter-color);
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+.container-nav{
+    margin-top: 10px;
+    margin-right: 40px;
+}
+
+.cont-ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.caja-li{
+    width: 100%;
+    height: 30px;
+    background-color: var(--color-fond);
+    color: var(--letter-color);
+    border-radius: 14px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.li-select{
+    background-color: #0a332c;
+    color: #088e84;
+}

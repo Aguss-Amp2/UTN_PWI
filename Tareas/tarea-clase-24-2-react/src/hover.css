@@ -1,0 +1,11 @@
+.caja-icon:hover {
+    background-color: var(--letter-hover-color);
+}
+
+.caja-li:hover{
+    background-color: #26353d;
+}
+
+.li-select:hover{
+    background-color: #0b3b33;
+}
