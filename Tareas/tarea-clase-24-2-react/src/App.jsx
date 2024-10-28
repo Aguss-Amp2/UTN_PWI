@@ -5,6 +5,7 @@ import { SiCircle } from "react-icons/si";
 import { RiChatVoiceLine, RiChatFollowUpLine } from "react-icons/ri";
 import { IoSettingsOutline, IoSearchOutline } from "react-icons/io5";
 import { SlOptionsVertical } from "react-icons/sl";
+import { IoIosArrowDown } from "react-icons/io";
 
 function App() {
   return (
@@ -35,19 +36,77 @@ function App() {
         </div>
         <nav className="container-nav">
           <ul className="cont-ul">
-            <li className="caja-li li-select">Todos</li>
+            <li className="caja-li-b li-select">Todos</li>
             <li className="caja-li">No Leidos</li>
             <li className="caja-li">Favoritos</li>
-            <li className="caja-li">Grupos</li>
+            <li className="caja-li-b">Grupos</li>
           </ul>
         </nav>
+        <Chats
+          avatar={'https://ca.slack-edge.com/T07EJ2FLZ2R-U07EQ1QMU4D-ee680d421008-48'}
+          nombre={'Agustin Amposta'}
+          ultMensj={'Q ondaa'}
+          mensajes={'8'}
+          hora={'19:57'}
+          statusMsj={'true'}
+        />
+        <Chats
+          avatar={'https://ca.slack-edge.com/T07EJ2FLZ2R-U07ELATQ5DL-g4b35bd68d0e-48'}
+          nombre={'Caro'}
+          ultMensj={'Buendia!!'}
+          mensajes={'16'}
+          hora={'22:17'}
+          statusMsj={'true'}
+        />
+        <Chats
+          avatar={'https://ca.slack-edge.com/T07EJ2FLZ2R-U07G99UV5SQ-5a07fbca69e1-48'}
+          nombre={'Nicoo'}
+          ultMensj={'Como estas?'}
+          mensajes={'2'}
+          hora={'8:22'}
+          statusMsj={'true'}
+        />
+        <Chats
+          avatar={'https://ca.slack-edge.com/T07EJ2FLZ2R-U07EQ1URUJ1-384421a19e45-192'}
+          nombre={'Laburo'}
+          ultMensj={''}
+          mensajes={''}
+          hora={'00:00'}
+          statusMsj={'false'}
+        />
+        <Chats
+          avatar={'https://ca.slack-edge.com/T07EJ2FLZ2R-U07ELATQ5DL-g4b35bd68d0e-48'}
+          nombre={'Martin'}
+          ultMensj={''}
+          mensajes={''}
+          hora={'15:42'}
+          statusMsj={'false'}
+        />
       </header>
     </div>
   )
 }
 
-const Chats = () =>{
-
+const Chats = ({avatar, nombre, ultMensj, mensajes, hora, statusMsj}) =>{
+  let mensj = statusMsj === 'false'
+  return(
+    <div className="container-msj">
+      <div className="cont-photo">
+        <img src={avatar} alt={nombre}/>
+      </div>
+      <div className="cont-name">
+        <span className="name">{nombre}</span>
+        <span className="ult-msj">{ultMensj}</span>
+      </div>
+      <div className="cont-hora-msj">
+        <span className={`${mensj ? 'hora-false' : 'hora'}`}>{hora}</span>
+        <span className={`${mensj ? 'no-msj' : 'msj' }`}>{mensajes}</span>
+      </div>
+      <div className="cont-flecha">
+        <IoIosArrowDown className="flecha-msj"/>
+      </div>
+    </div>
+  )
 }
 
 export default App
