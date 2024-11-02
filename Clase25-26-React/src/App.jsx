@@ -3,6 +3,7 @@ import './global.css'
 import { Route, Routes } from "react-router-dom"
 import HomeScreen from "./Screens/HomeScreen"
 import WorkspaceScreen from "./Screens/WorkspaceScreen"
+import EstadosScreen from "./Screens/EstadosScreen"
 
 /*
 Lista de Rutas de mi aplicacion
@@ -20,6 +21,7 @@ function App() {
         <Route path="/home" element={<HomeScreen/>}/>
         <Route path="/workspace/:workspace_id" element={<WorkspaceScreen/>}/>
         <Route path="/prueba" element={<h1>Hola soy la prueba</h1>}/>
+        <Route path="/estados" element={<EstadosScreen/>}/>
       </Routes>
     </div>
   )
