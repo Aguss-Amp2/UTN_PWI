@@ -6,6 +6,10 @@ import { RiChatVoiceLine, RiChatFollowUpLine } from "react-icons/ri";
 import { IoSettingsOutline, IoSearchOutline } from "react-icons/io5";
 import { SlOptionsVertical } from "react-icons/sl";
 import { IoIosArrowDown } from "react-icons/io";
+import { BsCheckAll, BsFillCameraVideoFill } from "react-icons/bs";
+import { PiClockCountdownBold, PiSmileyBold } from "react-icons/pi";
+import { GoPlus } from "react-icons/go";
+import { FaMicrophone } from "react-icons/fa";
 
 function App() {
   return (
@@ -39,7 +43,7 @@ function App() {
             <li className="caja-li-b li-select">Todos</li>
             <li className="caja-li">No Leidos</li>
             <li className="caja-li">Favoritos</li>
-            <li className="caja-li-b">Grupos</li>
+            <li className="caja-li-b caja-g">Grupos</li>
           </ul>
         </nav>
         <Chats
@@ -83,6 +87,65 @@ function App() {
           statusMsj={'false'}
         />
       </header>
+      <div className="fondo-chat">
+        <div className="header-chat">
+          <div>
+            <ImgPerfil 
+              avatar={'https://ca.slack-edge.com/T07EJ2FLZ2R-U07EQ1QMU4D-ee680d421008-48'}
+              nombre={'Agustin Amposta'}
+              emisor={'Tu'}
+            />
+          </div>
+          <div className="contenedor-header-chat">
+            <div className="top-left-chat">
+              <BsFillCameraVideoFill className="icon-chat-top-left"/>
+              <IoIosArrowDown className="icon-chat-top-flecha"/>
+            </div>
+            <IoSearchOutline className="icon-chat-top lupa"/>
+            <SlOptionsVertical className="icon-chat-top"/>
+          </div>
+        </div>
+        <MessajeList
+          hora={'22:10'}
+          texto={'Hola, como estas?'}
+          id={'1'}
+          status={'visto'}
+          emisor={'yo'}
+        />
+        <MessajeList
+          hora={'22:12'}
+          texto={'Bien y vos?'}
+          id={'2'}
+          status={'no_visto'}
+          emisor={'tu'}
+        />
+        <MessajeList
+          hora={'22:12'}
+          texto={'Te llego?'}
+          id={'3'}
+          status={'no_enviado'}
+          emisor={'tu'}
+        />
+        <MessajeList
+          hora={'22:10'}
+          texto={'como estuvo la semana, nose porque no me llegan tus msj si es q me hablaste. Bueno como te decia espero poder verte en la semana si no hay problema'}
+          id={'4'}
+          status={'no_enviado'}
+          emisor={'yo'}
+        />
+        <div className="chat-teclado">
+          <div className="teclado-cont-icon">
+            <PiSmileyBold className="icon-teclado-smile"/>
+            <GoPlus className="icon-teclado-plus"/>
+          </div>
+          <div className="teclado">
+            <span>Ecribe un mensaje</span>
+          </div>
+          <div className="microfono-teclado">
+            <FaMicrophone className="icon-teclado-micro"/>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
@@ -104,6 +167,56 @@ const Chats = ({avatar, nombre, ultMensj, mensajes, hora, statusMsj}) =>{
       </div>
       <div className="cont-flecha">
         <IoIosArrowDown className="flecha-msj"/>
+      </div>
+    </div>
+  )
+}
+
+const MessajeList = ({hora, texto, status, emisor}) => {
+  const visto = status === 'visto'
+  const no_enviado = status === 'no_enviado'
+  const msj = emisor === 'tu'
+
+  return(
+    <div className = "MensajeList">
+      {msj ? 
+        <div div className = "cont-Mensaje tu" >
+          <div className="cont-txt-msj">
+            <span className="texto">{emisor}:</span>
+            <span className="Mensaje">{texto}</span>
+          </div>
+          <div className="cont-h-sts">
+            <span className="texto">{hora}</span>
+            {visto ? <span className="texto check check_visto"><BsCheckAll /></span>
+              : no_enviado ? <span className="texto check-env"><PiClockCountdownBold /></span> : <span className="texto check"><BsCheckAll /></span>
+            }
+          </div>
+        </div >
+        :
+        <div className="cont-Mensaje yo">
+          <div className="cont-txt-msj">
+            <span className="texto">{emisor}:</span>
+            <span className="Mensaje">{texto}</span>
+          </div>
+          <div className="cont-h-sts">
+            <span className="texto">{hora}</span>
+            {visto ? <span className="texto check check_visto"><BsCheckAll /></span>
+              : no_enviado ? <span className="texto check-env"><PiClockCountdownBold /></span> : <span className="texto check"><BsCheckAll /></span>
+            }
+          </div>
+        </div>
+      }
+    </div > 
+  )
+}
+
+const ImgPerfil = ({avatar, nombre, emisor}) =>{
+  return(
+    <div className="Nombre-perfil-Chat">
+      <img src={avatar} className="chat-perfil-foto"/>
+      <div className="chat-perfil-text">
+        <span className="chat-text-name">{nombre}</span>
+        <span className="chat-text-emi">{emisor}</span>
       </div>
     </div>
   )
