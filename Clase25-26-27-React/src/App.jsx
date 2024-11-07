@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom"
 import HomeScreen from "./Screens/HomeScreen"
 import WorkspaceScreen from "./Screens/WorkspaceScreen"
 import EstadosScreen from "./Screens/EstadosScreen"
+import FormulariosScreen from "./Screens/FormulariosScreen"
 
 /*
 Lista de Rutas de mi aplicacion
@@ -22,6 +23,7 @@ function App() {
         <Route path="/workspace/:workspace_id" element={<WorkspaceScreen/>}/>
         <Route path="/prueba" element={<h1>Hola soy la prueba</h1>}/>
         <Route path="/estados" element={<EstadosScreen/>}/>
+        <Route path="/formularios" element={<FormulariosScreen/>}></Route>
       </Routes>
     </div>
   )
