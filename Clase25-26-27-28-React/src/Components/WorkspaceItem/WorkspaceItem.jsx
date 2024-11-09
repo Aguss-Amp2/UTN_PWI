@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './WorkspaceItem.css'
 import React from 'react'
 
@@ -7,9 +8,9 @@ const WorkspaceItem = ({img, title, miembros, id}) => {
             <img src={img}/>
             <h2>{title}</h2>
             <span>Hay {miembros.length} miembros</span>
-            <a href={`/workspace/`+ id}>Ir al espacio</a>
+            <Link to={'/workspace/' + id}>Ir al espacio de trabajo</Link>
         </div>
     )
 }
-
+//SPA single page application
 export default WorkspaceItem

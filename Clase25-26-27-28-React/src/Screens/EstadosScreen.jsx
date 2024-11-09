@@ -22,13 +22,21 @@ const EstadosScreen = () => {
     //Esto es un array
     const [contador, setContador] = useState(1)
     const [error_min_cont, setError_min_cont] = useState(false)
+
+    //La funcion de setter puede recibir una callback
+    //El valor del retorno de la callback es el valor que tendra mi estado
+    //La callback recibira un parametro con el valor del estado previo
+
     const incrementar = () => {
         //Llamo a la funcion de setting
-        setContador(contador + 1)
+        setContador((prevState) => {
+            return prevState + 1
+        })
         setError_min_cont(false) //reseteo el span para q no aparezca si es mayor q uno
     }
     const decrementar = () => {
         if(contador > 1){
+            //Esto es una mala practica
             setContador(contador - 1)
         }
         else if(contador <= 1){
@@ -44,7 +52,9 @@ const EstadosScreen = () => {
     */
 
     const handleShowHiddenText = () => {
-        setIsHiddenText(!isHiddenText)
+        setIsHiddenText((prevHiddenTextState) =>{
+            return !prevHiddenTextState
+        })
     }
     //state isHiddenText: boolean (default true)
     const [isHiddenText, setIsHiddenText] = useState(true)

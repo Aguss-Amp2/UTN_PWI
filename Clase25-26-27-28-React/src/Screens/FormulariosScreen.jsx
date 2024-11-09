@@ -5,6 +5,8 @@ import getFormattedDateMMHHDDMM from "../helpers/getFormattedTime";
 const FormulariosScreen = () => {
     // Creamos un estado de usuario, Empieza como array vacio
     const [usuarios, setUsuarios] = useState([])
+
+    //Estados de errores, que hace?
     const [errors, setErrors] = useState({nombre: null, contrasenia: null})
 
     // Pregunta tecnica: Si yo hago un push (osea agrego un elemento al array) que pasaria? Se imprime en pantalla
@@ -21,17 +23,20 @@ const FormulariosScreen = () => {
 
         const nuevo_usuario = extractFormData(form_jsx) // {nombre, contraseña}
 
+        const errores_formulario = {nombre: null, contrasenia: null}
+        //Me sirve para marcar si hay algun error de validacion en mi formulario
         let hayErrores = false
         if(!nuevo_usuario.nombre){
-            setErrors((prevStateErrors) => {
-                return{...prevStateErrors, nombre: 'Falta un Nombre'}})
+            //NO hubo nombre quiero cambiar mi estado de errores para que haya un error en nombre
+            errores_formulario.nombre = 'Falta un nombre'
             hayErrores = true
         }
         if(!nuevo_usuario.contrasenia){
-            setErrors((prevStateErrors) => {
-                return {...prevStateErrors, contrasenia: 'Falta una Contraseña'}})
+            errores_formulario.contrasenia = 'Falta una contraseña'
             hayErrores = true
         }
+        //Setteamos que los errores se guarden en el estado de errores
+        setErrors(errores_formulario)
 
         if(!hayErrores){
             setErrors({nombre: null, contrasenia: null})
@@ -40,7 +45,9 @@ const FormulariosScreen = () => {
             // Agregar a mi estado el nuevo usuario
             // Esto esta MAL: usuarios.push(nuevo_usuario)
             // Esto seria mejor
-            setUsuarios([...usuarios, nuevo_usuario])
+            setUsuarios((prevUsuariosState) => {
+                return [...prevUsuariosState, nuevo_usuario]
+            })
         }
 
     }

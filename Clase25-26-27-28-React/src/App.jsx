@@ -20,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen/>}/>
         <Route path="/home" element={<HomeScreen/>}/>
+        {/* Estos dos '/:workespace_id' indican que ese valor de la ruta es un parametro de busqueda */}
         <Route path="/workspace/:workspace_id" element={<WorkspaceScreen/>}/>
         <Route path="/prueba" element={<h1>Hola soy la prueba</h1>}/>
         <Route path="/estados" element={<EstadosScreen/>}/>
