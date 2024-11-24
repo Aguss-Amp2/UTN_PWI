@@ -5,6 +5,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-button, li{
+button, li, input, a{
     all: unset;
 }

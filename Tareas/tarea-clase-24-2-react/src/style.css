@@ -331,7 +331,11 @@
 }
 
 .MensajeList{
-    margin-top: 20px;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
 .cont-Mensaje{
@@ -407,7 +411,7 @@
 .chat-teclado{
     display: flex;
     position: fixed;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     bottom: 0;
     width: 66%;
@@ -429,6 +433,20 @@
 }
 
 .icon-teclado-micro{
+    display: flex;
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    color: var(--letter-color);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.icon-teclado-send{
+    display: flex;
+    position: absolute;
+    top: 18px;
+    right: 20px;
     color: var(--letter-color);
     font-size: 22px;
     cursor: pointer;
@@ -436,21 +454,41 @@
 
 .teclado-cont-icon{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 10px;
 }
 
 .teclado{
     background-color: #2a3942;
-    width: 85%;
-    height: 40px;
-    border-radius: 10px;
+    width: 750px;
+    height: 50px;
     display: flex;
-    align-items: center;
     justify-content: flex-start;
-    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+    padding-top: 28px;
+    padding-bottom: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 40px;
 }
 
-.teclado span{
-    color: var(--letter-color);
+.teclado input{
+    display: flex;
+    width: 720px;
+    overflow: hidden;
+    color: var(--text-color);
+    overflow-wrap: break-word; /* Ajuste de línea */
+    word-wrap: break-word; /* Compatibilidad */
+}
+
+.contenedor-msj{
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    max-height: 600px;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
