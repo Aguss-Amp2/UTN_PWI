@@ -40,14 +40,14 @@ const MensajesGuardados = () => {
     useEffect(() => {
         // Verifica si la referencia está definida antes de intentar desplazar
         if (messagesContRef.current) {
-            messagesContRef.current.scrollTop = messagesContRef.current.scrollHeight
+            messagesContRef.current.scrollIntoView({ behavior: 'smooth' })
         }
     }, [contact_found?.mensajes_list])  // Se ejecuta cuando los mensajes cambian
 
     return (
         <div>
             {contact_found && (
-                <div ref={messagesContRef}>
+                <div ref={messagesContRef} className="">
                     {contact_found.mensajes_list?.map(mensaje => (
                         <div key={mensaje.id}>
                             <MessajeList

@@ -50,7 +50,7 @@ function WhatsApp() {
         </nav>
         <ChatsList/>
       </header>
-      <div className="fondo-chat">
+      <section className="mensagges-secction fondo-chat">
         <div className="header-chat">
           <Perfil/>
           <div className="contenedor-header-chat">
@@ -63,10 +63,12 @@ function WhatsApp() {
           </div>
         </div>
         <div className="contenedor-msj">
-          <MensajesGuardados/>
-          <TextArea/>
+          <div className="separacion-teclado">
+            <MensajesGuardados/>
+            <TextArea/>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
@@ -110,5 +112,4 @@ const MessajeList = ({hora, texto, status, emisor}) => {
 }
 
 export default WhatsApp
-
 export {MessajeList}

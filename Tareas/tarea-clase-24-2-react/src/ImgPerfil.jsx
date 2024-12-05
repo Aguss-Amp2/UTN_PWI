@@ -7,11 +7,11 @@ const Perfil = () => {
     const { contact_id } = useParams(); // Captura el parámetro "id"
 
     // Busca el contacto según el id
-    const contact_perfil = contacts.find(contact => contact.id == contact_id);
+    const contact_perfil = contacts.find(contact => contact.id == contact_id)
 
     // Si no se encuentra el contacto
     if(!contact_perfil) {
-        return <div>Contacto no encontrado</div>;
+        return <div></div>
     }
 
     return(

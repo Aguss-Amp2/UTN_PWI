@@ -251,6 +251,20 @@
     height: 100vh;
 }
 
+.fondo-sin-chat{
+    background-image: url('./img/fondo-sin-chat.png');
+    background-size: cover; /* Asegura que la imagen cubra todo el div */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen dentro del div */
+    width: 100%; /* Ancho del div (ajústalo como necesites) */
+    height: 100vh;
+}
+
+.messages-secction{
+    display: flex;
+    flex-direction: column;
+}
+
 .header-chat{
     background-color: var(--secod-primary-color);
     width: 100%;
@@ -260,6 +274,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 30px;
+    gap: 10px;
 }
 
 .Nombre-perfil-Chat{
@@ -484,11 +499,10 @@
 }
 
 .contenedor-msj{
-    width: 100%;
-    overflow-y: auto;
-    display: flex;
+    overflow-y: scroll;
     max-height: 600px;
-    flex-direction: column;
-    margin-top: 20px;
-    margin-bottom: 20px;
+}
+
+.contenedor-msj::-webkit-scrollbar{
+    display: none;
 }
