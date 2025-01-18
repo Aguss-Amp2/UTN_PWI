@@ -43,7 +43,8 @@ export const deleteUserByEmailController = async (req, res) => {
 export const updateUsernameByEmailController = async (req, res) => {
     try{
         const { email } = req.params
-        const usernameUpdate = update(email)
+        const { newUsername } = req.body
+        const usernameUpdate = await update(email, newUsername)
         console.log(usernameUpdate)
         return res.send({
             ok: true,
