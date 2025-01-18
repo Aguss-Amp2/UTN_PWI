@@ -20,25 +20,25 @@ export const getUsersListController = async (req, res) => {
     }
 }
 
-// export const deleteUserByEmailController = async (req, res) => {
-//     try{
-//         const { email } = req.params
-//         const usersList = await deleteUser({email})
-//         console.log(usersList)
-//         return res.send({
-//             ok: true,
-//             message: 'Delete User'
-//         })
-//     }
-//     catch(error){
-//         console.log('Error al Eliminar: ', error)
-//         return res.send({
-//             ok: false,
-//             message: 'Internal server error',
-//             status: 500
-//         })
-//     }
-// }
+export const deleteUserByEmailController = async (req, res) => {
+    try{
+        const { email } = req.params
+        const usersList = await deleteUser({email})
+        console.log(usersList)
+        return res.send({
+            ok: true,
+            message: 'Delete User'
+        })
+    }
+    catch(error){
+        console.log('Error al Eliminar: ', error)
+        return res.send({
+            ok: false,
+            message: 'Internal server error',
+            status: 500
+        })
+    }
+}
 
 export const updateUsernameByEmailController = async (req, res) => {
     try{
