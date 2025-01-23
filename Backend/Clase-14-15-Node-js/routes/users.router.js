@@ -1,9 +1,9 @@
 import express from 'express'
-import {  deleteUserByEmailController, getUsersListController, updateUsernameByEmailController } from '../controlers/get.users.list.js'
+import {  deleteUserByEmailController, getAllUsersController, updateUsernameByEmailController } from '../controlers/get.users.list.js'
 
 const usersRouter = express.Router()
 
-usersRouter.get('/', getUsersListController)
+usersRouter.get('/', getAllUsersController)
 
 usersRouter.delete('/:email', deleteUserByEmailController)
 
