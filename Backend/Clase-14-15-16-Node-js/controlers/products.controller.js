@@ -25,9 +25,16 @@ export const getAllProductsController = async (req, res) =>{
     
 }
 
+const isValidID = (id) =>{
+    return !isNaN(id)
+}
+
 export const productsIDController = async (req, res) =>{
     try{
         const { product_id } = req.params
+        if(!isValidID(product_id)){
+            throw new ServerError('product_id is not valid', 404)
+        }
         const id_product = await searchProductID(product_id)
 
         return res.send({

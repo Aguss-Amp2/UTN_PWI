@@ -1,5 +1,6 @@
 import filesystem from 'fs'
 import { ServerError } from '../utils/errors.util.js'
+import { getAddInincrementCounter } from './counter.repository.js'
 
 export const searchProductID = async(product_id) =>{
     const products = JSON.parse(await filesystem.promises.readFile('./database/products.json', {encoding: 'utf8'}))
@@ -11,10 +12,7 @@ export const searchProductID = async(product_id) =>{
 export const productNew = async (title, description, price, stock) =>{
     const productNew = JSON.parse(await filesystem.promises.readFile('./database/products.json', {encoding: 'utf8'}))
 
-    const ultimo_id = productNew.length > 0 ? productNew[productNew.length - 1].id : 0
-    const newID = ultimo_id + 1
-
-    productNew.push({id: newID, title, description, price, stock})
+    productNew.push({id: await getAddInincrementCounter('products') , title, description, price, stock})
     await filesystem.promises.writeFile('./database/products.json', JSON.stringify(productNew), {encoding:'utf8'})
     return productNew
 }
