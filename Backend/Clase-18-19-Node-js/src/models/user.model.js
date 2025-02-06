@@ -1,36 +1,47 @@
 import mongoose from "mongoose"
 
+export const USER_PROPS = {
+    EMAIL: 'email',
+    PASSWORD: 'password',
+    USERNAME: 'username',
+    VERIFIED: 'verified',
+    VERIFICATION_TOKEN: 'verification_token',
+    CREATE_AT: 'create_at',
+    MODIFIED_AT: 'modified_at',
+    ACTIVE: 'active'
+}
+
 const userSchema = new mongoose.Schema(
     {
-        email: {
+        [USER_PROPS.EMAIL]: {
             type: String,
             require: true,
             unique: true
         },
-        password: {
+        [USER_PROPS.PASSWORD]: {
             type: String,
             require: true
         },
-        username: {
+        [USER_PROPS.USERNAME]: {
             type: String,
             require: true,
             unique: true
         },
-        verified: {
+        [USER_PROPS.VERIFIED]: {
             type: Boolean,
             default: false
         },
-        veritfication_token: {
+        [USER_PROPS.VERIFICATION_TOKEN]: {
             type: String
         },
-        create_at: {
+        [USER_PROPS.CREATE_AT]: {
             type: Date,
             default: Date.now
         },
-        modified_at: {
+        [USER_PROPS.MODIFIED_AT]: {
             type: Date
         },
-        active: {
+        [USER_PROPS.ACTIVE]: {
             type: Boolean,
             default: true
         }

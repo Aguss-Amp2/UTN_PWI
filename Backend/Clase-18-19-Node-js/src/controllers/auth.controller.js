@@ -1,5 +1,8 @@
+import ENVIROMENT from "../config/enviroment.config.js"
 import UserRepository from "../repository/user.repository.js"
 import { ServerError } from "../utils/error.utils.js"
+import bcrypt, { hash } from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const registerUsers = async(req, res) => {
     try{
@@ -14,8 +17,23 @@ const registerUsers = async(req, res) => {
             throw new ServerError('Password is required', 400)
         }
 
-        await UserRepository.create({username, email, password, veritfication_token: 'test'})
+        //Encriptar contraseña
+        const passwordHash = await bcrypt.hash(password, 10)
 
+        // JSON WEB TOKEN que es un JSON pasado a string '{"nombre": "pepe"}' --> 'sddssd.dsds.dsds'
+
+        const verification_token = jwt.sign(
+            {email}, //Lo que queremos guardar en el token
+            ENVIROMENT.SECRET_KEY_JWT, // Clave con la que vamos a firmar
+            {expiresIn: '24h'} // Fecha de expiracion del token
+        )
+
+        await UserRepository.create({username, email, password: passwordHash, verification_token: verification_token})
+        /*
+            Le vamos a mandar un mail al usuario
+            El mail va a tener un link
+            <a href="http://localhost:3000/api/auth/verifyEmail?verification_token">Click para Verificar</a>
+        */
         console.log(req.body)
         return res.send({
             message: 'User register',
