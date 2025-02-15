@@ -26,6 +26,24 @@ class UserRepository {
             throw error
         }
     }
+
+    async verifyUserByEmail (email){
+        const user_found = await User.findOne({[USER_PROPS.EMAIL]: email})
+        if(!user_found){
+            throw new ServerError('User not found', 404)
+        }
+        if(user_found.verified){
+            throw new ServerError('User has already been verified', 400)
+        }
+        user_found.verified = true
+        await user_found.save()
+        return user_found
+    }
+
+    async findUserByEmail (email){
+        const user_found = await User.findOne({[USER_PROPS.EMAIL]: email})
+        return user_found
+    }
 }
 
 export default new UserRepository
