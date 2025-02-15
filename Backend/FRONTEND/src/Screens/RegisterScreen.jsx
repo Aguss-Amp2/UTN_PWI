@@ -23,39 +23,36 @@ const RegisterScreen = () => {
     return (
         <div className="father">
             <div className="content">
-                <h1 className="title">Registrate the App</h1>
+                <h1>Registrate the App</h1>
                 <form onSubmit={handleSumbitForm} className="options">
                     <div>
-                        <label htmlFor="username" className="label">Username:</label>
+                        <label htmlFor="username">Username:</label>
                         <input 
                         placeholder="Joe Doe" 
                         type="text" 
                         id="username" 
-                        name="username" 
-                        className="input" 
+                        name="username"
                         value={formState.username} 
                         onChange={handleChangeInput}
                         />
                     </div>
                     <div>
-                        <label htmlFor="email" className="label">Email:</label>
+                        <label htmlFor="email">Email:</label>
                         <input 
                         placeholder="JoeDoe@gmail.com" 
                         type="email" 
                         id="email" 
-                        name="email" 
-                        className="input" 
+                        name="email"
                         value={formState.email} 
                         onChange={handleChangeInput}/>
                     </div>
                     <div>
-                        <label htmlFor="password" className="label">Password:</label>
+                        <label htmlFor="password">Password:</label>
                         <input 
                         placeholder="Joe1234" 
                         type="text" 
                         id="password" 
-                        name="password" 
-                        className="input" 
+                        name="password"
                         value={formState.password} 
                         onChange={handleChangeInput}/>
                     </div>
@@ -66,7 +63,7 @@ const RegisterScreen = () => {
                     {
                         responseApiState.loading
                         ? <span>Cargando</span>
-                        : <button type="submit" className="button">Register</button>
+                        : <button type="submit">Register</button>
                     }
                 </form>
             </div>

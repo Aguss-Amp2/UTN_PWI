@@ -10,11 +10,15 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-image: url('https://wallpapers.com/images/high/red-and-black-background-01vjejrdpqai95ed.webp');
+    background-image: url('https://st.depositphotos.com/1074550/1734/i/450/depositphotos_17341511-stock-photo-abstract-luminous-red-and-black.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+a {
+    text-decoration: none;
 }
 
 .father {
@@ -96,4 +100,9 @@ button {
 
 button:hover {
     background-color: rgba(163, 26, 53, 0.523);
+}
+
+.a-password {
+    color: rgb(224, 10, 10);
+    font-weight: bold;
 }
