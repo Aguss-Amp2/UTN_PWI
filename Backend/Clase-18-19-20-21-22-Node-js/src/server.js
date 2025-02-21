@@ -3,6 +3,7 @@ import express from 'express'
 import authRoute from "./routes/authRoute.js"
 import mongoose from "./config/mongoDB.config.js"
 import cors from 'cors'
+import { authMiddleware } from "./middlewares/authMiddleware.js"
 
 const app = express()
 
@@ -20,7 +21,12 @@ app.use(cors(
 app.use(express.json())
 
 app.use('/api/auth', authRoute)
-
+app.get('/api/test/comprar', authMiddleware, (req, res) => {
+    console.log(req.user)
+    res.json({
+        message:'Producto Comprado'
+    })
+})
 
 app.listen (ENVIROMENT.PORT, () => {
     console.log(`El servidor se esta ejecutando en el el Puerto http://localhost:${ENVIROMENT.PORT}`)

@@ -4,6 +4,8 @@ import { ServerError } from "../utils/error.utils.js"
 import bcrypt, { hash } from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { sendMail } from "../utils/mailer.utils.js"
+import User from "../models/user.model.js"
+import userRepository from "../repository/user.repository.js"
 
 const registerUsers = async(req, res) => {
     try{
@@ -124,6 +126,7 @@ export const loginController = async (req, res) => {
             ENVIROMENT.SECRET_KEY_JWT,
             {expiresIn: '2h'}
         )
+
         return res.json({
             ok: true,
             status: 200,
@@ -155,7 +158,7 @@ export const loginController = async (req, res) => {
 export const resetPasswordController = async(req ,res) => {
     try{
         const {email} = req.body
-        const user_found = await UserRepository.findUserByEmail(email)
+        const user_found = await userRepository.findUserByEmail(email)
         if(!user_found){
             throw new ServerError('User Not Found', 404)
         }
@@ -193,6 +196,39 @@ export const resetPasswordController = async(req ,res) => {
             message: 'User No Password',
             status: 404,
             ok: false
+        })
+    }
+}
+
+export const rewritePasswordController = async(req ,res) => {
+    try {
+        const { password, reset_token } = req.body
+        const { _id } = jwt.verify(reset_token, ENVIROMENT.SECRET_KEY_JWT)
+
+        // Hashear la pwd
+        const newHashedPassword = await bcrypt.hash(password, 10)
+        await UserRepository.changeUserPassword(_id, newHashedPassword)
+        
+        return res.json({
+            ok: true,
+            message: 'Password changed succesfully',
+            status: 200
+        })
+
+
+    } catch (err) {
+        console.log(err);
+        if (err.status) {
+            return res.send({
+                ok: false,
+                status: err.status,
+                message: err.message
+            })
+        }
+        return res.send({
+            message: "Internal server error",
+            status: 500,
+            ok: true
         })
     }
 }

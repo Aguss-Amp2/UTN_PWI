@@ -1,10 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { useForm } from "../hooks/useForm.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
 import './global.css'
+import { Link } from "react-router-dom"
+import { AuthContext } from "../Context/AuthContext.jsx"
 
 const LoginScreen = () => {
+  const {login} = useContext(AuthContext)
   const initialFormState = {
     email: '',
     password: ''
@@ -15,6 +18,8 @@ const LoginScreen = () => {
   const handleSumbitForm = async(body) =>{
     body.preventDefault()
     await postRequest(formState)
+    console.log(responseApiState)
+    login(responseApiState.data.data.authorization_token)
   }
 
   return (
@@ -36,7 +41,7 @@ const LoginScreen = () => {
             ? <span>Cargando</span>
             : <button type="submit">Iniciar Sesion</button>
           }
-          <a className="a-password" href="http://localhost:5173/reset-password">Olvide mi Contraseña</a>
+          <Link className="a-password" to="http://localhost:5173/reset-password">Olvide mi Contraseña</Link>
         </form>
       </div>
     </div>

@@ -29,12 +29,13 @@ const ResetPassword = () => {
                         responseApiState.error && <span style={{color: 'red'}}>{responseApiState.error}</span>
                     }
                     {
-                        responseApiState.loading
-                        ? <span>Cargando</span>
-                        : <button type='sumbit'>Enviar</button>
-                    }
-                    {
-                        responseApiState.data && <span>Ya se le mando el link a su Mail</span>
+                        responseApiState.loading ? (
+                            <span>Cargando</span>
+                        ) : responseApiState.data ? (
+                            <span>Ya se le mando el link a su Mail</span>
+                        ) : (
+                            <button type='submit'>Enviar</button>
+                        )
                     }
                 </form>
             </div>
