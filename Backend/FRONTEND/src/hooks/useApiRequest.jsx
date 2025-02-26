@@ -8,12 +8,15 @@ export const useApiRequest = (url) => {
         error: null,
         data: null
     }
+
     
     const [responseApiState, setResponseApiState] = useState(initialResponseApiState)
     
     const postRequest = async (body) => {
         try{
-            setResponseApiState({...initialResponseApiState, loading: true})
+            setResponseApiState((prevState) => {
+                return {...prevState, loading: true}
+            })
             //Enviar formulario (osea el estado) del backend
             //Consulta HTTP
             //Fetch nos permite hacer consiltas HTTP
@@ -32,7 +35,6 @@ export const useApiRequest = (url) => {
             )
 
             const data = await response.json()
-            console.log(data)
     
             if(data.ok){
                 setResponseApiState((prevState) =>{
@@ -61,7 +63,7 @@ export const useApiRequest = (url) => {
     const putRequest = async (body) => {
         try{
             setResponseApiState({...initialResponseApiState, loading: true})
-            
+                
             const response = await fetch(
                 url,
                 {

@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { useForm } from "../hooks/useForm.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
@@ -15,11 +15,28 @@ const LoginScreen = () => {
 
   const {formState, handleChangeInput} = useForm(initialFormState)
   const {responseApiState, postRequest} = useApiRequest(ENVIROMENT.URL_API + '/api/auth/login')
-  const handleSumbitForm = async(body) =>{
-    body.preventDefault()
-    await postRequest(formState)
+
+  useEffect(
+    () => {
+      if(responseApiState.data){
+        console.log('Estado de Respuesta de la Api', responseApiState)
+        login(responseApiState.data.data.authorization_token)
+      }
+    },
+    //Cada ves q cambio mi estado de respuesta ejecutare el efecto
+    [responseApiState]
+  )
+
+  const handleSumbitForm = async (event) => {
+    event.preventDefault()
+    await postRequest(formState) // Espera la respuesta
     console.log(responseApiState)
-    login(responseApiState.data.data.authorization_token)
+     // Verifica qué datos estás recibiendo
+    if (responseApiState.data.data.authorization_token) {
+      login(responseApiState.data.data.authorization_token)// Solo intenta loguear si los datos existen
+    } else {
+      console.error("No se recibió un token de autorización.")
+    }
   }
 
   return (

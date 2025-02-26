@@ -20,7 +20,7 @@ const AuthContextProvider = ({children}) =>{
     }
 
     const login = (authorization_token) => {
-        sessionStorage.setItem('authorization_token')
+        sessionStorage.setItem('authorization_token', authorization_token)
         setIsAutheticatedState(true)
     }
 

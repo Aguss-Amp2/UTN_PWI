@@ -1,4 +1,4 @@
-import User, { USER_PROPS } from "../models/user.model.js"
+import User, { USER_PROPS } from "../models/User.model.js"
 import { ServerError } from "../utils/error.utils.js"
 
 

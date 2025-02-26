@@ -14,12 +14,17 @@ export const authMiddleware = (request, response, next) => {
         if(!authorization_token){
             throw new ServerError('No se Proporciono el Token de Autorizacion', 401)
         }
+        try{
+            const user_info = jwt.verify(authorization_token, ENVIROMENT.SECRET_KEY_JWT)
+            //Clave para despues llamarlo en otra funcion y ver la informacion
+            console.log('user_info', user_info)
+            request.user = user_info
+            next()
+        }
+        catch(error){
+            throw new ServerError('',404)
+        }
 
-        const user_info = jwt.verify(authorization_token, ENVIROMENT.SECRET_KEY_JWT)
-        //Clave para despues llamarlo en otra funcion y ver la informacion
-        console.log('user_info', user_info)
-        request.user = user_info
-        next()
 
     }
     catch(error){

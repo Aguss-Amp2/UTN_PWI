@@ -4,7 +4,7 @@ import { ServerError } from "../utils/error.utils.js"
 import bcrypt, { hash } from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { sendMail } from "../utils/mailer.utils.js"
-import User from "../models/user.model.js"
+import User from "../models/User.model.js"
 import userRepository from "../repository/user.repository.js"
 
 const registerUsers = async(req, res) => {
