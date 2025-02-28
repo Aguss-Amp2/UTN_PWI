@@ -5,6 +5,7 @@ import mongoose from "./config/mongoDB.config.js"
 import cors from 'cors'
 import { authMiddleware } from "./middlewares/authMiddleware.js"
 import workspace_router from "./routes/workspace.router.js"
+import channelRouter from "./routes/channel.route.js"
 
 const app = express()
 
@@ -22,8 +23,8 @@ app.use(cors(
 app.use(express.json())
 
 app.use('/api/auth', authRoute)
-
 app.use('/api/workspaces', workspace_router)
+app.use('/api/channels', channelRouter)
 
 app.get('/api/test/comprar', authMiddleware, (req, res) => {
     console.log(req.user)

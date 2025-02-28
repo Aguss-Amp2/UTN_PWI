@@ -19,7 +19,6 @@ const LoginScreen = () => {
   useEffect(
     () => {
       if(responseApiState.data){
-        console.log('Estado de Respuesta de la Api', responseApiState)
         login(responseApiState.data.data.authorization_token)
       }
     },
@@ -30,7 +29,6 @@ const LoginScreen = () => {
   const handleSumbitForm = async (event) => {
     event.preventDefault()
     await postRequest(formState) // Espera la respuesta
-    console.log(responseApiState)
      // Verifica qué datos estás recibiendo
     if (responseApiState.data.data.authorization_token) {
       login(responseApiState.data.data.authorization_token)// Solo intenta loguear si los datos existen
