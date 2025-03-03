@@ -8,7 +8,7 @@ export const createChannelController = async(req, res) => {
         //Workspaces al que quiero añadir este channel
         const { workspace_id } = req.params
         //id del usuario que quiere crear el canal
-        const user_id = req.user?.id
+        const user_id = req.user.id
         console.log(user_id)
         const new_channel = await channelRepository.createChannel({name, user_id, workspace_id})
 
@@ -42,14 +42,13 @@ export const createChannelController = async(req, res) => {
     }
 }
 
-export const sendMessageToChannelController = async(res, req) =>{
+export const sendMessageToChannelController = async(req, res) =>{
     try{
         const {channel_id} = req.params
         const user_id = req.user.id
         const {content} = req.body
 
-        const new_message = messageRepository.create({sender_id: user_id, channel_id, content})
-
+        const new_message = await messageRepository.create({sender_id: user_id, channel_id, content})
         res.json({
             ok: true,
             status: 201,
@@ -78,3 +77,37 @@ export const sendMessageToChannelController = async(res, req) =>{
         })
     }
 }
+
+export const getMessagesListFromChannelController = async (req, res) =>{
+    try{
+        const user_id = req.user.id
+        const {channel_id} = req.params
+        const messages = await messageRepository.findMessagesFromChannel({channel_id, user_id})
+        res.json({
+            ok: true,
+            message: 'Messages found',
+            status: 200,
+            data: {
+                messages
+            }
+        })
+
+    }
+    catch(error){
+        console.log("error al obtener la lista de mensajes", error);
+
+        if (error.status) {
+            return res.status(400).send({
+                ok: false,
+                status: error.status,
+                message: error.message
+            });
+        }
+
+        res.status(500).send({
+            status: 500,
+            ok: false,
+            message: "internal server error"
+        });
+    }
+} 

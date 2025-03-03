@@ -1,19 +1,17 @@
 import Message from "../models/Message.model.js";
 import { ServerError } from "../utils/error.utils.js";
 import channelRepository from "./channel.repository.js";
-import workspaceRepository from "./workspace.repository.js";
 
 class MessageRepository {
     
     async create({sender_id, channel_id, content}){
-        const cahnnel_found = channelRepository.findChannelById(channel_id)
+        const channel_found = await channelRepository.findChannelById(channel_id)
 
-        if(!cahnnel_found){
+        if(!channel_found){
             throw new ServerError('Channel not found', 404)
         }
 
-        const workspace_found = await workspaceRepository.findWorkspaceById(cahnnel_found.workspace)
-        if(!workspace_found.members.includes(sender_id)){
+        if(!channel_found.workspace.members.includes(sender_id)){
             throw new ServerError('User is not member of this workspace', 403)
         }
 
@@ -24,6 +22,19 @@ class MessageRepository {
             content
         })
         return new_message
+    }
+
+    async findMessagesFromChannel ({channel_id, user_id}){
+        const channel_found = await channelRepository.findChannelById(channel_id)
+        
+        if(!channel_found){
+            throw new ServerError('Channel not found', 404)
+        }   
+        if(!channel_found.workspace.members.includes(user_id)){
+            throw new ServerError('User is not member of this workspace', 403)
+        }
+        const messages_list = await Message.find({channel: channel_id}).populate('sender', 'username email')
+        return messages_list
     }
 }
 
