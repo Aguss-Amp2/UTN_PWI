@@ -1,21 +1,11 @@
-import mongoose from "mongoose";
 import Channel from "../models/Channel.model.js"
 import { ServerError } from "../utils/error.utils.js"
 import workspaceRepository from "./workspace.repository.js"
 
 class ChannelRepository {
     async findChannelById (channel_id){
-        console.log('Buscando canal con ID:', channel_id)
-        if (!mongoose.Types.ObjectId.isValid(channel_id)) {
-            throw new ServerError('Invalid Channel ID format', 400);
-        }
-        const channel = await Channel.findById(channel_id).populate('workspace')
-        console.log('Canal despues del FindId:', channel)
-
-        if (!channel) {
-            throw new ServerError('Channel not found', 404);
-        }
-        return channel
+        //populate expande workspace y me trae el registro asociado como un subobjeto
+        return await Channel.findById(channel_id).populate('workspace')
     }
 
     async createChannel({name , workspace_id , user_id}){
