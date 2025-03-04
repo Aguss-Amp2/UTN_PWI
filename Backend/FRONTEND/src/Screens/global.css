@@ -134,3 +134,70 @@ button:hover {
 .btn-box button{
     margin-right: 20px;
 }
+
+/* Channel */
+
+.content-channel {
+    display: flex;
+    flex-direction: column; /* Alineamos los elementos en una columna */
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(83, 32, 90);
+    flex-wrap: wrap;
+}
+
+.content-channel .channel-aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 100vh;
+    border-right: 2px solid rgba(0, 0, 0, 0.26);
+    color: white; /* Color de texto dentro de la sección lateral */
+}
+
+.chat {
+    position: relative;
+    width: calc(100vw - 400px); /* Mantiene el mismo ancho que el chat */
+    height: 80vh; /* 80% de la altura de la pantalla */
+    border: 1px solid white;
+    background-color: #f0f0f0; /* Fondo para el chat */
+    padding: 20px;
+    overflow-y: auto; /* Añade barra de desplazamiento si es necesario */
+}
+
+.box-input-teclado {
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos a los extremos */
+    align-items: center;
+    width: calc(100vw - 400px); /* Asegura que tenga el mismo ancho que el chat */
+    height: 20vh; /* Altura ajustada para la barra de entrada */
+    padding: 10px;
+    background-color: #333; /* Fondo oscuro para contraste */
+    border-top: 2px solid #fff; /* Línea de separación */
+}
+
+.box-input-teclado input {
+    width: 80%; /* Ocupa la mayor parte del espacio */
+    height: 40px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+}
+
+.box-input-teclado button {
+    width: 15%; /* Botón pequeño para enviar */
+    height: 40px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.box-input-teclado button:hover {
+    background-color: #0056b3; /* Efecto hover en el botón */
+}
