@@ -5,6 +5,7 @@ import RegisterScreen from './Screens/RegisterScreen.jsx'
 import RewritePassword from './Screens/RewritePasswordScreen.jsx'
 import ResetPassword from './Screens/ResetPasswordScreen.jsx'
 import ProtectedRoute from './Components/ProtectedRoute.jsx'
+import WorkspaceScreen from './Screens/WorkspaceScreen.jsx'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/register' element={<RegisterScreen/>}/>
         <Route path='/login' element={<LoginScreen/>}/>
         <Route path='/' element={<LoginScreen/>}/>
+        <Route path='/workspaces' element={<WorkspaceScreen/>}/>
         <Route element={<ProtectedRoute/>}>
           <Route path='/reset-password' element={<ResetPassword/>}/>
           <Route path='/rewrite-password' element={<RewritePassword/>}/>

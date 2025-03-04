@@ -106,3 +106,31 @@ button:hover {
     color: rgb(224, 10, 10);
     font-weight: bold;
 }
+
+/* Workspaces */
+
+.box-workspaces {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 700px;
+    height: 600px;
+    margin-top: 60px;
+    padding: 40px;
+    gap: 20px;
+    background-color: rgba(247, 247, 247, 0.575);
+    border-radius: 20px;
+}
+
+.btn-box {
+    position: relative;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 300px;
+}
+
+.btn-box button{
+    margin-right: 20px;
+}

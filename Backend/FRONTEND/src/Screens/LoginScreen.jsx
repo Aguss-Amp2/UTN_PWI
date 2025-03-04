@@ -3,10 +3,12 @@ import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { useForm } from "../hooks/useForm.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
 import './global.css'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../Context/AuthContext.jsx"
 
 const LoginScreen = () => {
+  const navigate = useNavigate()
+
   const {login} = useContext(AuthContext)
   const initialFormState = {
     email: '',
@@ -20,10 +22,11 @@ const LoginScreen = () => {
     () => {
       if(responseApiState.data){
         login(responseApiState.data.data.authorization_token)
+        navigate('/workspaces')
       }
     },
     //Cada ves q cambio mi estado de respuesta ejecutare el efecto
-    [responseApiState]
+    [responseApiState, login, navigate]
   )
 
   const handleSumbitForm = async (event) => {
