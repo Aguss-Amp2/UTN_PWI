@@ -46,11 +46,11 @@ const LoginScreen = () => {
         <h1>Inicio de sesion</h1>
         <form onSubmit={handleSumbitForm} className="options">
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="label-login-email-password">Email :</label>
             <input type="email" id="email" name="email" placeholder="joedoe@gmail.com" value={formState.email} onChange={handleChangeInput}/>
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" className="label-login-email-password">Password :</label>
             <input type="text" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
           </div>
           {responseApiState.error && <span style={{color: 'red'}}>{responseApiState.error}</span>}

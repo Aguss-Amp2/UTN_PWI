@@ -26,7 +26,7 @@ const RegisterScreen = () => {
                 <h1>Registrate the App</h1>
                 <form onSubmit={handleSumbitForm} className="options">
                     <div>
-                        <label htmlFor="username">Username:</label>
+                        <label htmlFor="username" className="label-login-email-password">Username :</label>
                         <input 
                         placeholder="Joe Doe" 
                         type="text" 
@@ -37,7 +37,7 @@ const RegisterScreen = () => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email" className="label-login-email-password">Email :</label>
                         <input 
                         placeholder="JoeDoe@gmail.com" 
                         type="email" 
@@ -47,7 +47,7 @@ const RegisterScreen = () => {
                         onChange={handleChangeInput}/>
                     </div>
                     <div>
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password" className="label-login-email-password">Password :</label>
                         <input 
                         placeholder="Joe1234" 
                         type="text" 

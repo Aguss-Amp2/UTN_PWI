@@ -1,18 +1,22 @@
 import React from "react"
 import './global.css'
+import { useNavigate } from "react-router-dom"
 
 const WorkspaceScreen = () => {
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        navigate('/create-workspaces')
+    }
 
     return (
         <div className="father">
             <div className="box-workspaces">
-                <span>Holaa</span>
-                <span>Holaa</span>
-                <span>Holaa</span>
-                <span>Holaa</span>
+                <h1>Workspaces de : mail</h1>
+                <button>Worspaces</button>
+
                 <div className="btn-box">
-                    <button type="sumbit">Logaut</button>
-                    <button type="sumbit">Crete Workspaces</button>
+                    <button type="sumbit" onClick={handleClick}>Create Workspaces</button>
                 </div>
             </div>
         </div>

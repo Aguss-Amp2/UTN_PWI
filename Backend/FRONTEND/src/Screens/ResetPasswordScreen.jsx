@@ -22,7 +22,7 @@ const ResetPassword = () => {
                 <h1>Ingrese su Email</h1>
                 <form className="options" onSubmit={handleSumbitForm}>
                     <div>
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email" className="label-login-email-password">Email :</label>
                         <input type="email" id="email" name="email" value={formState.email} onChange={handleChangeInput}/>
                     </div>
                     {

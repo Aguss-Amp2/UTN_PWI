@@ -10,11 +10,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-image: url('https://st.depositphotos.com/1074550/1734/i/450/depositphotos_17341511-stock-photo-abstract-luminous-red-and-black.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: rgb(83, 32, 90);
 }
 
 a {
@@ -34,7 +30,7 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(146, 56, 56, 0.61);
+    background-color: rgba(49, 7, 68, 0.897);
     border-radius: 20px;
 }
 
@@ -74,7 +70,7 @@ input {
     text-align: center;
     width: 250px;
     height: 40px;
-    background-color: rgb(163, 26, 54);
+    background-color: rgba(113, 13, 160, 0.897);
     border-radius: 14px;
     border: none;
     outline: none;
@@ -86,29 +82,32 @@ input::placeholder {
     opacity: 1; 
 }
 
+.label-login-email-password {
+    margin-bottom: 10px;
+}
+
 button {
     margin-top: 30px;
     width: 120px;
     height: 40px;
     border: none;
     border-radius: 14px;
-    background-color: rgb(163, 26, 54);
+    background-color: rgba(113, 13, 160, 0.897);
     color: rgb(233, 230, 230);
     font-size: 14px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: rgba(163, 26, 53, 0.523);
+    background-color: rgba(113, 13, 160, 0.575);
 }
 
 .a-password {
+    padding-top: 20px;
     color: rgb(224, 10, 10);
-    font-weight: bold;
 }
 
 /* Workspaces */
-
 .box-workspaces {
     display: flex;
     justify-content: flex-start;
@@ -122,17 +121,18 @@ button:hover {
     gap: 20px;
     background-color: rgba(247, 247, 247, 0.575);
     border-radius: 20px;
+    position: relative; /* Establecemos la posición relativa para que los botones se ubiquen en relación con este contenedor */
 }
 
 .btn-box {
-    position: relative;
+    position: absolute; /* Fijamos los botones dentro del contenedor */
+    bottom: 20px; /* Los botones se colocan 20px desde el fondo del contenedor */
+    left: 50%; /* Centrado horizontal */
+    transform: translateX(-50%); /* Ajustamos el centrado */
+    display: flex;
     justify-content: center;
-    flex-direction: row;
-    margin-top: 300px;
-}
-
-.btn-box button{
-    margin-right: 20px;
+    gap: 20px; /* Espacio entre los botones */
+    width: 100%; /* Opcional: ocupa todo el ancho del contenedor */
 }
 
 /* Channel */
@@ -200,4 +200,20 @@ button:hover {
 
 .box-input-teclado button:hover {
     background-color: #0056b3; /* Efecto hover en el botón */
+}
+
+/* Create Workspaces */
+
+.label-workspaces {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: beige;
+    justify-content: flex-start;
+    text-shadow: 3px 2px 4px rgba(7, 6, 6, 0.945);
+    margin-top: 25px;
+}
+
+.create-h1 {
+    font-size: 38px;
+    margin-bottom: 40px;
 }

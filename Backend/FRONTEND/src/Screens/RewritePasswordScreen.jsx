@@ -62,7 +62,7 @@ const RewritePassword = () => {
                 <h1>Cambie su Contraseña</h1>
                 <form className="options" onSubmit={handleSubmitForm}>
                     <div>
-                        <label htmlFor="password">Nueva Contraseña</label>
+                        <label htmlFor="password" className="label-login-email-password">Nueva Contraseña: </label>
                         <input type="text" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
                     </div>
                     {
