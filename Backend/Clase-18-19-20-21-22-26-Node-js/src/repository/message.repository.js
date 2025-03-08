@@ -33,7 +33,7 @@ class MessageRepository {
         if(!channel_found.workspace.members.includes(user_id)){
             throw new ServerError('User is not member of this workspace', 403)
         }
-        const messages_list = await Message.find({channel: channel_id}).populate('sender', 'username email')
+        const messages_list = await Message.find({channel: channel_id}).populate('sender', 'username').populate('channel', 'name')
         return messages_list
     }
 }
