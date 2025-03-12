@@ -10,6 +10,6 @@ authRoute.get('/verify-email', verifyEmailController)
 authRoute.post('/login', loginController)
 authRoute.post('/reset-password', resetPasswordController)
 authRoute.put('/rewrite-password', rewritePasswordController)
-authRoute.post('/workspaces', createWorkspaceController, createChannelController)
+authRoute.post('/workspaces', createWorkspaceController)
 
 export default authRoute

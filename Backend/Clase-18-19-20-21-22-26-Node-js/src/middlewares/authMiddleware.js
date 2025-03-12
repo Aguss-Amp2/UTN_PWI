@@ -27,7 +27,7 @@ export const authMiddleware = (request, response, next) => {
             next()
         }
         catch(error){
-            throw new ServerError('',404)
+            throw new ServerError('Error al Verificar token',404)
         }
 
 

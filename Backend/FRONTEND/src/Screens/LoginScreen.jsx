@@ -22,6 +22,7 @@ const LoginScreen = () => {
     () => {
       if(responseApiState.data){
         login(responseApiState.data.data.authorization_token)
+        sessionStorage.setItem("email", formState.email)
         navigate('/workspaces')
       }
     },
@@ -31,13 +32,7 @@ const LoginScreen = () => {
 
   const handleSumbitForm = async (event) => {
     event.preventDefault()
-    await postRequest(formState) // Espera la respuesta
-     // Verifica qué datos estás recibiendo
-    if (responseApiState.data.data.authorization_token) {
-      login(responseApiState.data.data.authorization_token)// Solo intenta loguear si los datos existen
-    } else {
-      console.error("No se recibió un token de autorización.")
-    }
+    await postRequest(formState)
   }
 
   return (
@@ -51,7 +46,7 @@ const LoginScreen = () => {
           </div>
           <div>
             <label htmlFor="password" className="label-login-email-password">Password :</label>
-            <input type="text" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
+            <input type="password" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
           </div>
           {responseApiState.error && <span style={{color: 'red'}}>{responseApiState.error}</span>}
           {

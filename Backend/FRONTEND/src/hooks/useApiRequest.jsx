@@ -60,6 +60,49 @@ export const useApiRequest = (url) => {
         }
     }
 
+    const postJwtRequest = async (body, token) => {
+        try{
+            setResponseApiState((prevState) => {
+                return {...prevState, loading: true}
+            })
+            const response = await fetch(
+                url,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(body)
+                }
+            )
+
+            const data = await response.json()
+    
+            if(data.ok){
+                setResponseApiState((prevState) =>{
+                    return {...prevState, data: data}
+                })
+            }
+            else{
+                throw new ServerError(data.message, data.status)
+            }
+        }
+        catch(error){
+            setResponseApiState((prevState) => {
+                if(error.status){//Verificmos si es un error de servidor
+                    return {...prevState, error: error.message}
+                }
+                return {...prevState, error: 'No se pudo enviar la informacion al servidor'}
+            })
+        }
+        finally{
+            setResponseApiState((prevState) => {
+                return {...prevState, loading: false}
+            })
+        }
+    }
+
     const putRequest = async (body) => {
         try{
             setResponseApiState({...initialResponseApiState, loading: true})
@@ -102,5 +145,5 @@ export const useApiRequest = (url) => {
         }
     }
 
-    return {responseApiState, postRequest, putRequest}
+    return {responseApiState, postRequest, putRequest, postJwtRequest}
 }
