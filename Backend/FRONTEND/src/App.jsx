@@ -8,6 +8,7 @@ import ProtectedRoute from './Components/ProtectedRoute.jsx'
 import WorkspaceScreen from './Screens/WorkspaceScreen.jsx'
 import ChannelScreen from './Screens/ChannelScreen.jsx'
 import CreateWorkspaceScreen from './Screens/CreateWorkspaces.jsx'
+import ChannelSelectScreen from './Screens/ChannelSlectScreen.jsx'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/workspaces' element={<WorkspaceScreen/>}/>
           <Route path='/create-workspaces' element={<CreateWorkspaceScreen/>}/>
           <Route path='/:workspace_id' element={<ChannelScreen/>}/>
+          <Route path='/workspace/:workspace_id/channel/:channelId' element={<ChannelSelectScreen/>}/>
         </Route>
       </Routes>
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import "./global.css"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
@@ -6,10 +6,12 @@ import { AuthContext } from "../Context/AuthContext.jsx"
 import { useNavigate, useParams } from "react-router-dom"
 
 const ChannelScreen = () => {
+    const [channelName, setChannelName] = useState('')
     const { workspace_id } = useParams()
     const navigate = useNavigate()
-    const { isAuthenticatedState } = useContext(AuthContext)
-    const { responseApiState, getListChannel} = useApiRequest(`${ENVIROMENT.URL_API}/api/channels/${workspace_id}`)
+    const { isAuthenticatedState} = useContext(AuthContext)
+    const { responseApiState, getListChannel, postJwtRequest} = useApiRequest(`${ENVIROMENT.URL_API}/api/channels/${workspace_id}`)
+    const token = sessionStorage.getItem("authorization_token")
 
     useEffect(() => {
             if (isAuthenticatedState && workspace_id) {
@@ -20,6 +22,26 @@ const ChannelScreen = () => {
             }
     }, [isAuthenticatedState, workspace_id])
     
+    const handleAddChannel = async () => {
+        if (!channelName || !token) {
+            console.log('Por favor, ingresa un nombre de canal y asegúrate de que estás autenticado.');
+            return;
+        }
+
+        const body = { name: channelName }
+
+        try {
+            // Llamamos a postJwtRequest con el cuerpo de la solicitud y el token
+            await postJwtRequest(body, token);
+
+            // Si la respuesta es exitosa, actualizamos la lista de canales
+            getListChannel();
+            setChannelName(''); // Limpiar el input
+        } catch (error) {
+            console.error('Error al agregar el canal:', error);
+        }
+    }
+
     const handleClickWorkspace = (workspace_id, channelId) => {
         if (workspace_id && channelId) {
             navigate(`/workspace/${workspace_id}/channel/${channelId}`);
@@ -30,26 +52,22 @@ const ChannelScreen = () => {
     return (
         <div className="content-channel">
             <aside className="channel-aside">
-                <ul>
-                    {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
-                        responseApiState.data.map((channel, index) => (
-                            <button key={index} onClick={() => handleClickWorkspace(workspace_id, channel._id)}>{channel.name}</button> // Asumiendo que cada workspace tiene una propiedad 'name'
-                        ))
-                    ) : (
-                        <p>No tienes Channel disponibles.</p>
-                    )}
-                </ul>
+                <div>
+                    <ul>
+                        {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
+                            responseApiState.data.map((channel, index) => (
+                                <button key={index} onClick={() => handleClickWorkspace(workspace_id, channel._id)}>{channel.name}</button> // Asumiendo que cada workspace tiene una propiedad 'name'
+                            ))
+                        ) : (
+                            <p>No tienes Channel disponibles.</p>
+                        )}
+                    </ul>
+                    <div className="cont-input-channel-add">
+                        <input className="input-channel" type="text" id="name" placeholder="Name: The Channel" value={channelName} onChange={(e) => setChannelName(e.target.value)}/>
+                        <button type="sumbit" onClick={handleAddChannel}>Add Channel</button>
+                    </div>
+                </div>
             </aside>
-            <div className="chat">
-
-            </div>
-            <div className="box-input-teclado">
-                <input
-                    type="text"
-                    placeholder="Escribe un mensaje..."
-                />
-                <button>Enviar</button>
-            </div>
         </div>
     )
 }

@@ -229,6 +229,20 @@ button:hover {
     background-color: #0056b3; /* Efecto hover en el botón */
 }
 
+.input-channel{
+    margin-top: 30px;
+    width: 160px;
+}
+
+.cont-input-channel-add{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+}
+
 /* Create Workspaces */
 
 .label-workspaces {
