@@ -37,6 +37,29 @@ class WorkspaceRepository {
         await workspace_found.save()
         return workspace_found
     }
+
+     // Obtener los workspaces asociados a un usuario (como propietario o miembro)
+    async getWorkspacesByUserId(user_id) {
+        try {
+            // Buscar workspaces donde el usuario sea propietario o miembro
+            const workspaces = await Workspace.find({
+                $or: [
+                    { owner: user_id },        // Buscar por propietario
+                    { members: user_id }       // Buscar por miembros
+                ]
+            });
+
+            // Si no se encuentran workspaces, lanzar un error
+            if (!workspaces || workspaces.length === 0) {
+                throw new ServerError('No workspaces found for this user', 404);
+            }
+
+            return workspaces;
+        } catch (error) {
+            // Manejo de errores en caso de problemas con la consulta
+            throw new ServerError('Error retrieving workspaces', 500);
+        }
+    }
 }
 
 const workspaceRepository = new WorkspaceRepository()

@@ -111,3 +111,47 @@ export const getMessagesListFromChannelController = async (req, res) =>{
         });
     }
 } 
+
+export const getChannelController = async (req, res) => {
+    try {
+        // Obtener el id del usuario autenticado desde el middleware
+        const user_id = req.user.id
+        const workspace_id= req.params.workspace_id
+
+        // Verificar si se proporcionó un workspaceId
+        if (!workspace_id) {
+            return res.status(400).json({
+                ok: false,
+                message: 'Workspace ID is required',
+                data: []
+            });
+        }
+
+        // Obtener los workspaces asociados al usuario desde el repositorio
+        const channel = await channelRepository.getChannelsByWorkspaceId(workspace_id, user_id)
+
+        // Si no hay workspaces asociados
+        if (!channel || channel.length === 0) {
+            return res.status(404).json({
+                ok: false,
+                message: "No workspaces found for this user",
+                data: []
+            });
+        }
+
+        // Si hay workspaces, devolverlos
+        return res.status(200).json({
+            ok: true,
+            message: "Workspaces retrieved successfully",
+            data: channel
+        });
+    } catch (error) {
+        console.log('Error fetching workspaces:', error);
+
+        return res.status(500).json({
+            ok: false,
+            message: 'Server internal error',
+            status: 500
+        })
+    }
+}

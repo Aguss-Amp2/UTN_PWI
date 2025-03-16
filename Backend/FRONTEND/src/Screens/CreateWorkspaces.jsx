@@ -8,22 +8,21 @@ import { ENVIROMENT } from "../config/enviroment"
 const CreateWorkspaceScreen = () => {
     const navigate = useNavigate()
     const initialFormState = {
-        name: '',
-        email: ''
+        name: ''
     }
     
     const {formState, handleChangeInput} = useForm(initialFormState)
-    const {responseApiState, postJwtRequest} = useApiRequest(ENVIROMENT.URL_API + '/api/workspaces', ENVIROMENT.URL_API + '/api/workspaces/:workspace_id/invite/:invited_id')
+    const {responseApiState, postJwtRequest} = useApiRequest(ENVIROMENT.URL_API + '/api/workspaces')
     
     const token = sessionStorage.getItem('authorization_token')
 
     const handleClick = () => {
-        navigate('/channel')
+        navigate('/workspaces')
     }
     const handleSumbitForm = async (event) => {
         event.preventDefault()
         
-        if (formState.name && formState.email) {
+        if (formState.name) {
             await postJwtRequest(formState, token)
         }
         else {
@@ -40,16 +39,12 @@ const CreateWorkspaceScreen = () => {
                         <label htmlFor="workspaces" className="label-workspaces">Name Workspaces : </label>
                         <input type="text" id="name" name="name" placeholder="UTN-TN-MAR-JUEV" value={formState.name} onChange={handleChangeInput}/>
                 </div>
-                <div>
-                        <label htmlFor="email" className="label-workspaces">Email User : </label>
-                        <input type="email" id="email" name="email" placeholder="jose123@gmail.com" value={formState.email} onChange={handleChangeInput}/>
-                </div>
                 {responseApiState.error && <span style={{color: 'red'}}>{responseApiState.error}</span>}
                 {
                     responseApiState.loading
                         ? <span>Cargando...</span>
                         : <div className="btn-box">
-                            <button type="sumbit">Create Workspaces</button>
+                            <button type="sumbit" onClick={handleClick}>Create Workspaces</button>
                         </div>
                 }
             </form>

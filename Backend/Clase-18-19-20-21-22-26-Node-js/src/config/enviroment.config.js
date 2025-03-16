@@ -10,7 +10,13 @@ const ENVIROMENT = {
     GMAIL_USERNAME: process.env.GMAIL_USERNAME,
     GMAIL_PASSWORD: process.env.GMAIL_PASSWORD,
     URL_BACKEND: process.env.URL_BACKEND,
-    URL_FRONTEND: process.env.URL_FRONTEND
+    URL_FRONTEND: process.env.URL_FRONTEND,
+    MYSQL: {
+        DB_NAME: process.env.MY_SQL_DATABASE,
+        USERNAME: process.env.MY_SQL_USER,
+        HOST: process.env.MY_SQL_HOST,
+        PASSWORD: process.env.MY_SQL_PASSWORD
+    }
 }
 
 for(let key in ENVIROMENT){

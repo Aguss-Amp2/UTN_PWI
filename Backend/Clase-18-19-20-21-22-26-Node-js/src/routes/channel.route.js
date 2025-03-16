@@ -1,14 +1,10 @@
 import { Router } from "express"
 import { authMiddleware } from "../middlewares/authMiddleware.js"
-import { createChannelController, getMessagesListFromChannelController, sendMessageToChannelController } from "../controllers/channel.controller.js"
+import { createChannelController, getChannelController, getMessagesListFromChannelController, sendMessageToChannelController } from "../controllers/channel.controller.js"
 
 const channelRouter = Router()
-
-//Crear canal
-// Body{name: 'general'}
-//Headers: Authorization: Bearer token
-//Checkear que el usuario que quiera agregar un canal que este incluido como miembro en el Workspace
 channelRouter.post('/:workspace_id', authMiddleware, createChannelController)
+channelRouter.get('/:workspace_id', authMiddleware, getChannelController)
 
 //Enviar mensajes
 channelRouter.post('/:channel_id/messages', authMiddleware, sendMessageToChannelController)

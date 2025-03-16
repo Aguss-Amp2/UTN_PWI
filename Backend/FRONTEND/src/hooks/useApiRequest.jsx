@@ -145,5 +145,100 @@ export const useApiRequest = (url) => {
         }
     }
 
-    return {responseApiState, postRequest, putRequest, postJwtRequest}
+    const getListWorkspaces = async () => {
+        try{
+            setResponseApiState({...initialResponseApiState, loading: true})
+            const token = sessionStorage.getItem('authorization_token');  // o usa localStorage dependiendo de donde lo guardes
+
+            // Verificar si el token está presente
+            if (!token) {
+                throw new Error('Token no encontrado, por favor inicie sesión nuevamente.');
+            }
+            const response = await fetch(
+                url,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                }
+            )
+
+            const data = await response.json()
+    
+            if (data.ok && Array.isArray(data.data)) {
+                setResponseApiState((prevState) => {
+                    return { ...prevState, data: data.data } // Solo asignamos 'data.data'
+                });
+            } else {
+                setResponseApiState((prevState) => {
+                    return { ...prevState, data: [] } // Si no hay workspaces, asignamos un array vacío
+                });
+            }
+        }
+        catch(error){
+            setResponseApiState((prevState) => {
+                if(error.status){//Verificmos si es un error de servidor
+                    return {...prevState, error: error.message}
+                }
+                return {...prevState, error: 'No se pudo enviar la informacion al servidor'}
+            })
+        }
+        finally{
+            setResponseApiState((prevState) => {
+                return {...prevState, loading: false}
+            })
+        }
+    }
+
+
+    const getListChannel = async () => {
+        try{
+            setResponseApiState({...initialResponseApiState, loading: true})
+            const token = sessionStorage.getItem('authorization_token');  // o usa localStorage dependiendo de donde lo guardes
+
+            // Verificar si el token está presente
+            if (!token) {
+                throw new Error('Token no encontrado, por favor inicie sesión nuevamente.');
+            }
+            const response = await fetch(
+                url,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                }
+            )
+
+            const data = await response.json()
+    
+            if (data.ok && Array.isArray(data.data)) {
+                setResponseApiState((prevState) => {
+                    return { ...prevState, data: data.data } // Solo asignamos 'data.data'
+                });
+            } else {
+                setResponseApiState((prevState) => {
+                    return { ...prevState, data: [] } // Si no hay workspaces, asignamos un array vacío
+                });
+            }
+        }
+        catch(error){
+            setResponseApiState((prevState) => {
+                if(error.status){//Verificmos si es un error de servidor
+                    return {...prevState, error: error.message}
+                }
+                return {...prevState, error: 'No se pudo enviar la informacion al servidor'}
+            })
+        }
+        finally{
+            setResponseApiState((prevState) => {
+                return {...prevState, loading: false}
+            })
+        }
+    }
+
+    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel}
 }

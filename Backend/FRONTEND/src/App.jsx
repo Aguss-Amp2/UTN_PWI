@@ -22,7 +22,7 @@ function App() {
         </Route>
         <Route path='/workspaces' element={<WorkspaceScreen/>}/>
         <Route path='/create-workspaces' element={<CreateWorkspaceScreen/>}/>
-        <Route path='/channel' element={<ChannelScreen/>}/>
+        <Route path='/:workspace_id' element={<ChannelScreen/>}/>
       </Routes>
     </div>
   )
