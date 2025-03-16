@@ -19,10 +19,10 @@ function App() {
         <Route element={<ProtectedRoute/>}>
           <Route path='/reset-password' element={<ResetPassword/>}/>
           <Route path='/rewrite-password' element={<RewritePassword/>}/>
+          <Route path='/workspaces' element={<WorkspaceScreen/>}/>
+          <Route path='/create-workspaces' element={<CreateWorkspaceScreen/>}/>
+          <Route path='/:workspace_id' element={<ChannelScreen/>}/>
         </Route>
-        <Route path='/workspaces' element={<WorkspaceScreen/>}/>
-        <Route path='/create-workspaces' element={<CreateWorkspaceScreen/>}/>
-        <Route path='/:workspace_id' element={<ChannelScreen/>}/>
       </Routes>
     </div>
   )

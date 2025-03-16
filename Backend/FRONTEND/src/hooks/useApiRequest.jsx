@@ -239,6 +239,54 @@ export const useApiRequest = (url) => {
             })
         }
     }
+    const getUserIdByEmail = async (invitedEmail, token) => {
+        try {
+            const response = await fetch(`${url}/api/workspaces/${invitedEmail}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
 
-    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel}
+            if (response.ok) {
+                const data = await response.json();
+                return data.id; // Retorna el ID del usuario
+            } else {
+                console.error('No se pudo obtener el ID del usuario');
+                return null;
+            }
+        } catch (error) {
+            console.error('Hubo un problema al obtener el ID del usuario:', error);
+            return null;
+        }
+    }
+
+    const postInvitedRequest = async (workspace_id, invitedUserId, token) => {
+        try {
+            const response = await fetch(`${url}/api/workspaces/${workspace_id}/invite/${invitedUserId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({ invited_id: invitedUserId, workspace_id }),
+            });
+
+            if (response.ok) {
+                console.log('Miembro invitado correctamente');
+                return true;
+            } else {
+                const errorData = await response.json();
+                console.error('Error al invitar al miembro:', errorData);
+                return false;
+            }
+        } catch (error) {
+            console.error('Hubo un problema al enviar la invitación:', error);
+            return false;
+        }
+    }
+
+    
+    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel, postInvitedRequest, getUserIdByEmail}
 }

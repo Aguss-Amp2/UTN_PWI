@@ -135,6 +135,33 @@ button:hover {
     width: 100%; /* Opcional: ocupa todo el ancho del contenedor */
 }
 
+.div-button-workspaces {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cont-buttons{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.input-workspaces{
+    margin-top: 30px;
+}
+
+.button-add{
+    margin-top: 30px;
+    width: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(113, 13, 160, 0.897);
+    color: rgb(233, 230, 230);
+    font-size: 14px;
+    cursor: pointer;
+}
 /* Channel */
 
 .content-channel {

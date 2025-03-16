@@ -1,3 +1,4 @@
+import User from "../models/User.model.js"
 import workspaceRepository from "../repository/workspace.repository.js"
 
 export const createWorkspaceController = async(req, res) => {
@@ -103,5 +104,26 @@ export const getWorkspacesController = async (req, res) => {
             message: 'Server internal error',
             status: 500
         })
+    }
+}
+
+export const getUserIdByEmail = async (req, res) => {
+    const { email } = req.params; // Recibimos el email como un parámetro en la URL
+
+    try {
+        // Buscamos al usuario en la base de datos por su correo electrónico
+        const user = await User.findOne({ email });
+
+        // Si no se encuentra al usuario, respondemos con un error
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        // Respondemos con el id del usuario
+        return res.status(200).json({ id: user._id });
+    } catch (error) {
+        // En caso de error, respondemos con un error
+        console.error(error);
+        return res.status(500).json({ message: 'Error al obtener el id del usuario' });
     }
 }
