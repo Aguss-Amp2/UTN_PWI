@@ -9,7 +9,6 @@ export const createChannelController = async(req, res) => {
         const { workspace_id } = req.params
         //id del usuario que quiere crear el canal
         const user_id = req.user.id
-        console.log(user_id)
         const new_channel = await channelRepository.createChannel({name, user_id, workspace_id})
 
         console.log(name)

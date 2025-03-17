@@ -6,7 +6,6 @@ export const createWorkspaceController = async(req, res) => {
         const {name} = req.body
         const owner_id = req.user.id
         const new_workspace = await workspaceRepository.createWorkspace({name, owner_id})
-        console.log(name)
         res.json({
             ok: true,
             data: 201,

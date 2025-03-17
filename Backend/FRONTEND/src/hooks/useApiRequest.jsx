@@ -80,9 +80,11 @@ export const useApiRequest = (url) => {
             const data = await response.json()
     
             if(data.ok){
-                setResponseApiState((prevState) =>{
-                    return {...prevState, data: data}
-                })
+                setResponseApiState((prevState) => ({
+                    ...prevState,
+                    data: data,
+                }));
+                return data
             }
             else{
                 throw new ServerError(data.message, data.status)
@@ -239,6 +241,43 @@ export const useApiRequest = (url) => {
             })
         }
     }
+
+    const getListMessages = async () => {
+        try {
+            const token = sessionStorage.getItem('authorization_token');
+    
+            if (!token) {
+                throw new Error('Token no encontrado');
+            }
+    
+            // Hacer la solicitud a la API
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            console.log('Estado de la respuesta:', response.status);  // Verificar el estado de la respuesta
+    
+            if (!response.ok) {
+                throw new Error('Error al obtener los mensajes');
+            }
+    
+            const data = await response.json();
+    
+            console.log('Datos obtenidos de la API:', data);  // Verificar qué datos obtenemos
+    
+            return data;  // Asegúrate de retornar los datos de la API correctamente
+    
+        } catch (error) {
+            console.error('Error al hacer la solicitud:', error);
+            throw error; // Propaga el error para que sea capturado en el `catch` del `useEffect`
+        }
+    };
+    
+
     const getUserIdByEmail = async (invitedEmail, token) => {
         try {
             const response = await fetch(`${url}/api/workspaces/${invitedEmail}`, {
@@ -288,5 +327,5 @@ export const useApiRequest = (url) => {
     }
 
     
-    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel, postInvitedRequest, getUserIdByEmail}
+    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel, postInvitedRequest, getUserIdByEmail, getListMessages}
 }
