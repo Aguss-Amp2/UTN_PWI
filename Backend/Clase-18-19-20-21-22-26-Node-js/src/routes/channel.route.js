@@ -8,6 +8,5 @@ channelRouter.get('/:workspace_id', authMiddleware, getChannelController)
 
 //Enviar mensajes
 channelRouter.post('/:channel_id/messages', authMiddleware, sendMessageToChannelController)
-
 channelRouter.get('/:channel_id/messages', authMiddleware, getMessagesListFromChannelController)
 export default channelRouter

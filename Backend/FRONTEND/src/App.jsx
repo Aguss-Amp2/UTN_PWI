@@ -23,7 +23,7 @@ function App() {
           <Route path='/workspaces' element={<WorkspaceScreen/>}/>
           <Route path='/create-workspaces' element={<CreateWorkspaceScreen/>}/>
           <Route path='/:workspace_id' element={<ChannelScreen/>}/>
-          <Route path='/workspace/:workspace_id/channel/:channelId' element={<ChannelSelectScreen/>}/>
+          <Route path='/workspace/:workspace_id/channel/:channel_id' element={<ChannelSelectScreen/>}/>
         </Route>
       </Routes>
     </div>

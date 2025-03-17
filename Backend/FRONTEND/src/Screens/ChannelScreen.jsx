@@ -5,6 +5,7 @@ import { ENVIROMENT } from "../config/enviroment.js"
 import { AuthContext } from "../Context/AuthContext.jsx"
 import { useNavigate, useParams } from "react-router-dom"
 
+
 const ChannelScreen = () => {
     const [channelName, setChannelName] = useState('')
     const { workspace_id } = useParams()
