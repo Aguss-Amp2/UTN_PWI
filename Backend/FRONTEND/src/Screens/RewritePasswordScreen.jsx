@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import './global.css'
+import "./css/global.css"
+import "./css/style.css"
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
 import { useApiRequest } from '../hooks/useApiRequest'
@@ -19,20 +20,6 @@ const RewritePassword = () => {
         },
         []
     )
-
-    
-    /* 
-	Forma nativa
-    useEffect(
-        ()=>{
-            const searchParams = new URLSearchParams(window.location.search)
-            const reset_token = searchParams.get('reset_token')
-            if(!reset_token) {
-                navigate('/login')
-                }
-                },
-                []
-                ) */
 
     const initialFormState = {
         password: '',
@@ -59,8 +46,8 @@ const RewritePassword = () => {
     return (
         <div className="father">
             <div className="content">
-                <h1>Cambie su Contraseña</h1>
-                <form className="options" onSubmit={handleSubmitForm}>
+                <h1>Cambiar Contraseña</h1>
+                <form className="options form" onSubmit={handleSubmitForm}>
                     <div>
                         <label htmlFor="password" className="label-login-email-password">Nueva Contraseña: </label>
                         <input type="text" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
@@ -70,7 +57,7 @@ const RewritePassword = () => {
                         ? <span>Cargando</span>
                         :( responseApiState.data
                             ? <span>Enviado</span>
-                            : <button type='submit'>Establecer Nueva Contraseña</button>
+                            : <button type='submit'>Listo</button>
                         )
                     }
                 </form>

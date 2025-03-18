@@ -1,5 +1,6 @@
 import React from 'react'
-import './global.css'
+import "./css/global.css"
+import "./css/style.css"
 import { useForm } from '../hooks/useForm.jsx'
 import { useApiRequest } from '../hooks/useApiRequest.jsx'
 import { ENVIROMENT } from '../config/enviroment.js'
@@ -20,7 +21,7 @@ const ResetPassword = () => {
         <div className="father">
             <div className="content">
                 <h1>Ingrese su Email</h1>
-                <form className="options" onSubmit={handleSumbitForm}>
+                <form className="options form" onSubmit={handleSumbitForm}>
                     <div>
                         <label htmlFor="email" className="label-login-email-password">Email :</label>
                         <input type="email" id="email" name="email" value={formState.email} onChange={handleChangeInput}/>

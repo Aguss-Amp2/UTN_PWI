@@ -7,7 +7,6 @@ import ResetPassword from './Screens/ResetPasswordScreen.jsx'
 import ProtectedRoute from './Components/ProtectedRoute.jsx'
 import WorkspaceScreen from './Screens/WorkspaceScreen.jsx'
 import ChannelScreen from './Screens/ChannelScreen.jsx'
-import CreateWorkspaceScreen from './Screens/CreateWorkspaces.jsx'
 import ChannelSelectScreen from './Screens/ChannelSlectScreen.jsx'
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
           <Route path='/reset-password' element={<ResetPassword/>}/>
           <Route path='/rewrite-password' element={<RewritePassword/>}/>
           <Route path='/workspaces' element={<WorkspaceScreen/>}/>
-          <Route path='/create-workspaces' element={<CreateWorkspaceScreen/>}/>
           <Route path='/:workspace_id' element={<ChannelScreen/>}/>
           <Route path='/workspace/:workspace_id/channel/:channel_id' element={<ChannelSelectScreen/>}/>
         </Route>

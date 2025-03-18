@@ -1,5 +1,6 @@
 import React from "react"
-import './global.css'
+import "./css/global.css"
+import "./css/style.css"
 import { ENVIROMENT } from "../config/enviroment.js"
 import { useForm } from "../hooks/useForm.jsx"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
@@ -23,10 +24,10 @@ const RegisterScreen = () => {
     return (
         <div className="father">
             <div className="content">
-                <h1>Registrate the App</h1>
-                <form onSubmit={handleSumbitForm} className="options">
+                <h1>Registrate</h1>
+                <form onSubmit={handleSumbitForm} className="options form">
                     <div>
-                        <label htmlFor="username" className="label-login-email-password">Username :</label>
+                        <label htmlFor="username" className="label-login-email-password">Usuario :</label>
                         <input 
                         placeholder="Joe Doe" 
                         type="text" 
@@ -47,7 +48,7 @@ const RegisterScreen = () => {
                         onChange={handleChangeInput}/>
                     </div>
                     <div>
-                        <label htmlFor="password" className="label-login-email-password">Password :</label>
+                        <label htmlFor="password" className="label-login-email-password">Contraseña :</label>
                         <input 
                         placeholder="Joe1234" 
                         type="text" 
@@ -63,7 +64,7 @@ const RegisterScreen = () => {
                     {
                         responseApiState.loading
                         ? <span>Cargando</span>
-                        : <button type="submit">Register</button>
+                        : <button type="submit">Registrar</button>
                     }
                 </form>
             </div>

@@ -1,0 +1,390 @@
+@import url(./global.css);
+
+:root{
+    --primary-color: #81638b;
+    --secod-primary-color: rgba(49, 7, 68, 0.897);
+    --three-primary-color: rgba(113, 13, 160, 0.897);
+    --four-primary-color: rgba(113, 13, 160, 0.575);
+    --color-content: rgb(60, 18, 80);
+    --five-primary-color: #050505;
+}
+/* LoginScreen */
+.father {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.content {
+    display: flex;
+    width: 400px;
+    height: 500px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-content);
+    border-radius: 20px;
+    box-shadow: 0 0 15px 5px var(--color-content);
+}
+
+.options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    gap: 14px;
+}
+
+input {
+    text-align: center;
+    width: 250px;
+    height: 40px;
+    background-color: var(--three-primary-color);
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    color: rgb(233, 230, 230);
+}
+
+input::placeholder {
+    color: rgb(201, 201, 201); 
+    opacity: 1; 
+}
+
+.label-login-email-password {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 30px;
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 14px;
+    background-color: var(--three-primary-color);
+    color: rgb(233, 230, 230);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--four-primary-color);
+}
+
+.cont-regis-login{
+    display: flex;
+    gap: 20px;
+}
+
+.a-password {
+    margin-top: 30px;
+    color: rgba(238, 227, 227, 0.897);
+    font-weight: bold;
+}
+
+.a-password:hover {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+/* Workspaces */
+.box-workspaces {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 700px;
+    height: 600px;
+    margin-top: 60px;
+    padding: 40px;
+    gap: 20px;
+    background-color: rgba(223, 223, 223, 0.575);
+    box-shadow: 0 0 15px 5px var(--four-primary-color);
+    border-radius: 20px;
+    position: relative;
+}
+
+.btn-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.div-button-workspaces {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cont-buttons{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.input-workspaces{
+    margin-top: 30px;
+}
+
+.button-add{
+    margin-top: 30px;
+    width: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(113, 13, 160, 0.897);
+    color: rgb(233, 230, 230);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cont-create-workspace{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+/* Channel */
+
+.content-channel {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(83, 32, 90);
+    flex-wrap: wrap;
+}
+
+.content-channel .channel-aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 100vh;
+    border-right: 2px solid rgba(0, 0, 0, 0.26);
+    color: white;
+}
+
+.chat {
+    position: relative;
+    width: calc(100vw - 400px);
+    height: 80vh;
+    border: 1px solid white;
+    background-color: #f0f0f0;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.box-input-teclado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100vw - 400px);
+    height: 20vh;
+    padding: 10px;
+    background-color: #333;
+    border-top: 2px solid #fff;
+}
+
+.cont-teclado-env{
+    display: flex;
+    justify-content: space-between;
+    width: calc(100vw - 400px);
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+}
+
+.btn-env-chat{
+    margin-top: 0px;
+}
+
+.input-channel{
+    margin-top: 30px;
+    width: 160px;
+}
+
+.cont-input-channel-add{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+}
+
+/* Create Workspaces */
+
+.label-workspaces {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: beige;
+    justify-content: flex-start;
+    text-shadow: 3px 2px 4px rgba(7, 6, 6, 0.945);
+    margin-top: 25px;
+}
+
+.create-h1 {
+    font-size: 38px;
+    margin-bottom: 40px;
+}
+
+
+/* Media Query */
+
+@media (max-width: 440px) {
+    /* Login/Register/rewrite/reset */
+    .content {
+        width: 90%;
+        max-width: 320px;
+        height: auto;
+        padding: 15px;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1 {
+        display: flex;
+        font-size: 26px;
+        text-align: center;
+        padding: 20px;
+        color: beige;
+        justify-content: flex-start;
+        text-shadow: 3px 2px 4px rgba(7, 6, 6, 0.6);
+        margin-top: 25px;
+    }
+
+    input {
+        width: 200px;
+        height: 35px;
+        padding: 0 8px;
+    }
+
+    .label-login-email-password {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 80px;
+        height: 35px;
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    button:hover {
+        background-color: var(--four-primary-color);
+    }
+    
+
+    .a-password {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+    .a-password:hover {
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+    }
+
+    /* Workspace */
+    .box-workspaces {
+        width: 300px;
+        padding: 15px;
+    }
+
+    .h1-work {
+        font-size: 20px; /* Ajuste del tamaño de la fuente */
+        margin-bottom: 20px;
+    }
+
+    .label-workspaces {
+        font-size: 16px; /* Tamaño más pequeño */
+        color: beige;
+        text-shadow: 2px 2px 4px rgba(7, 6, 6, 0.945);
+    }
+
+    .cont-create-workspace {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+        margin-top: 10px;
+    }
+
+    .cont-buttons{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: row;
+    }
+
+    .input-workspaces {
+        width: 100%; /* La entrada ocupa el 100% del ancho */
+        padding: 8px;
+        font-size: 14px; /* Ajuste de tamaño */
+        margin-top: 5px; /* Separación entre el input y el botón */
+    }
+
+    .button-add {
+        width: 35px;
+        height: 35px;
+        font-size: 18px; /* Ajuste en el tamaño del ícono */
+        margin-top: 10px;
+        padding: 5px;
+    }
+
+    .workspace-button {
+        width: 100%; /* Hacemos que el botón ocupe el 100% */
+        padding: 10px;
+        font-size: 14px; /* Reducción de tamaño de fuente */
+        margin-bottom: 10px; /* Separación entre botones */
+    }
+
+    .btn-box {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Menos espacio entre botones */
+        width: 100%;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .form-work {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-work{
+        width: 100px;
+    }
+
+    .cont-create-workspace input {
+        width: 100%; /* Aseguramos que el input tenga el 100% de ancho */
+        padding: 10px;
+        font-size: 14px; /* Ajuste de tamaño de texto */
+    }
+
+}

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
-import "./global.css"
+import "./css/global.css"
+import "./css/style.css"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
 import { useParams } from "react-router-dom"
@@ -87,7 +88,7 @@ const ChannelSelectScreen = () => {
             </aside>
             <div className="chat">
                 {isLoading ? (
-                    <div>Loading...</div> // Indicador de carga mientras se obtienen los mensajes
+                    <div>Cargando...</div> // Indicador de carga mientras se obtienen los mensajes
                 ) : messages.length > 0 ? (
                     messages.map((message, index) => (
                         <div key={index} className="message">
@@ -99,7 +100,7 @@ const ChannelSelectScreen = () => {
                 )}
             </div>
             <div className="box-input-teclado">
-                <form onSubmit={handleSubmitForm}>
+                <form className="cont-teclado-env" onSubmit={handleSubmitForm}>
                     <input
                         type="text"
                         name="content"
@@ -107,7 +108,7 @@ const ChannelSelectScreen = () => {
                         value={formState.content}
                         onChange={handleChangeInput}
                     />
-                    <button type="submit">Enviar</button> {/* El formulario ya maneja el submit */}
+                    <button type="submit" className="btn-env-chat">Enviar</button>
                 </form>
             </div>
         </div>
