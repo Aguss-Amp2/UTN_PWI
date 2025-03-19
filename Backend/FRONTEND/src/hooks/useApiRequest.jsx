@@ -259,21 +259,17 @@ export const useApiRequest = (url) => {
                 }
             });
     
-            console.log('Estado de la respuesta:', response.status);  // Verificar el estado de la respuesta
-    
             if (!response.ok) {
                 throw new Error('Error al obtener los mensajes');
             }
     
             const data = await response.json();
     
-            console.log('Datos obtenidos de la API:', data);  // Verificar qué datos obtenemos
-    
-            return data;  // Asegúrate de retornar los datos de la API correctamente
+            return data;
     
         } catch (error) {
             console.error('Error al hacer la solicitud:', error);
-            throw error; // Propaga el error para que sea capturado en el `catch` del `useEffect`
+            throw error;
         }
     };
     

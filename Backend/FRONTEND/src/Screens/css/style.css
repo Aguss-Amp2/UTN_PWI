@@ -167,59 +167,121 @@ button:hover {
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(83, 32, 90);
+    background-color: #201124;
     flex-wrap: wrap;
+}
+
+.aside-princ{
+    display: flex;
+    width: 70px;
+    height: 100vh;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #2b092f;
 }
 
 .content-channel .channel-aside {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 400px;
     height: 100vh;
-    border-right: 2px solid rgba(0, 0, 0, 0.26);
-    color: white;
+}
+
+.canales-mostrar{
+    display: flex;
+    width: auto;
+    justify-content: center;
+    margin: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    background-color: #201124;
+}
+
+.btn-mas {
+    width: 40px;
+    background-color: rgb(83, 32, 90);
 }
 
 .chat {
     position: relative;
-    width: calc(100vw - 400px);
+    width: calc(100vw - 470px);
     height: 80vh;
-    border: 1px solid white;
-    background-color: #f0f0f0;
+    border: 1px solid #1a1d21;
+    background-color: #1a1d21;
     padding: 20px;
     overflow-y: auto;
+}
+
+.chat::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chat::-webkit-scrollbar-track {
+    background-color: #1a1d21;
+    border-radius: 10px;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background-color: #393d42;
+    border-radius: 10px;
+}
+
+.chat::-webkit-scrollbar-thumb:hover {
+    background-color: #313438;
+}
+
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100%;
+    padding: 20px;
+    border: 1px solid #565856;
 }
 
 .box-input-teclado {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100vw - 400px);
+    width: calc(100vw - 470px);
     height: 20vh;
     padding: 10px;
-    background-color: #333;
-    border-top: 2px solid #fff;
+    background-color: #1a1d21;
+    margin-top: auto;
+    border-left: 1px solid #565856;;
 }
 
-.cont-teclado-env{
+.cont-teclado-env {
     display: flex;
-    justify-content: space-between;
-    width: calc(100vw - 400px);
-    flex-direction: row;
     align-items: center;
-    align-content: center;
-    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.cont-teclado-env input {
+    width: 100%;
+    height: 80px;
+    background-color: #222529;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    text-align:start;
+    border: 1px solid #565856;
 }
 
 .btn-env-chat{
     margin-top: 0px;
+    margin-left: 10px;
+    background-color: #222529;
+}
+.btn-env-chat:hover {
+    background-color: #007a5a;
 }
 
-.input-channel{
-    margin-top: 30px;
-    width: 160px;
-}
 
 .cont-input-channel-add{
     display: flex;
@@ -228,6 +290,37 @@ button:hover {
     align-items: center;
     align-content: center;
     gap: 20px;
+}
+
+.input-channel{
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 120px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1d21;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    max-width: 75%;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.5;
+    display: inline-block;
+}
+
+.message:hover{
+    background-color: #222529;
+}
+
+.message p{
+    color: #d1d2b2;
+}
+
+.message .span-messages-name{
+    color: #fffffc;
 }
 
 /* Create Workspaces */
@@ -248,6 +341,27 @@ button:hover {
 
 
 /* Media Query */
+
+@media (max-width: 800px) {
+    .content-channel .channel-aside {
+        width: 300px;
+    }
+
+    .box-input-teclado {
+        width: calc(100vw - 370px);
+    }
+    .chat {
+        width: calc(100vw - 370px);
+    }
+
+    .canales-mostrar{
+        margin: 10px;
+    }
+
+    .input-channel{
+        margin-left: 10px;
+    }
+}
 
 @media (max-width: 440px) {
     /* Login/Register/rewrite/reset */
@@ -315,12 +429,12 @@ button:hover {
     }
 
     .h1-work {
-        font-size: 20px; /* Ajuste del tamaño de la fuente */
+        font-size: 20px;
         margin-bottom: 20px;
     }
 
     .label-workspaces {
-        font-size: 16px; /* Tamaño más pequeño */
+        font-size: 16px;
         color: beige;
         text-shadow: 2px 2px 4px rgba(7, 6, 6, 0.945);
     }
@@ -340,31 +454,31 @@ button:hover {
     }
 
     .input-workspaces {
-        width: 100%; /* La entrada ocupa el 100% del ancho */
+        width: 100%;
         padding: 8px;
-        font-size: 14px; /* Ajuste de tamaño */
-        margin-top: 5px; /* Separación entre el input y el botón */
+        font-size: 14px;
+        margin-top: 5px;
     }
 
     .button-add {
         width: 35px;
         height: 35px;
-        font-size: 18px; /* Ajuste en el tamaño del ícono */
+        font-size: 18px;
         margin-top: 10px;
         padding: 5px;
     }
 
     .workspace-button {
-        width: 100%; /* Hacemos que el botón ocupe el 100% */
+        width: 100%; 
         padding: 10px;
-        font-size: 14px; /* Reducción de tamaño de fuente */
-        margin-bottom: 10px; /* Separación entre botones */
+        font-size: 14px;
+        margin-bottom: 10px;
     }
 
     .btn-box {
         display: flex;
         flex-direction: column;
-        gap: 10px; /* Menos espacio entre botones */
+        gap: 10px;
         width: 100%;
         align-items: center;
         margin-top: 20px;
@@ -382,9 +496,109 @@ button:hover {
     }
 
     .cont-create-workspace input {
-        width: 100%; /* Aseguramos que el input tenga el 100% de ancho */
+        width: 100%;
         padding: 10px;
-        font-size: 14px; /* Ajuste de tamaño de texto */
+        font-size: 14px;
     }
 
+    /* Channel */
+    .content-channel {
+        display: flex;
+        flex-direction: column; /* Coloca los elementos en columna */
+        height: 100vh; /* Ocupa toda la altura de la pantalla */
+    }
+
+    /* El aside ocupa una pequeña parte del ancho, pero toda la altura */
+    .aside-princ {
+        width: 60px; /* Reduce el ancho */
+        height: 100%; /* Ocupa toda la altura de la pantalla */
+        background-color: #2b092f;
+    }
+
+    /* El área del chat ocupa el espacio restante después del aside */
+    .chat {
+        flex-grow: 1; /* Hace que el chat ocupe el espacio restante */
+        width: calc(100% - 60px); /* Resta el ancho del aside */
+        height: auto; /* El alto se ajusta automáticamente */
+        padding: 10px;
+        overflow-y: auto; /* Permite desplazamiento si el contenido es más grande */
+        background-color: #1a1d21;
+    }
+
+    /* El teclado ocupa un 15% de la altura de la pantalla */
+    .box-input-teclado {
+        width: 100%; /* Ocupa todo el ancho */
+        height: 15vh; /* 15% de la altura de la pantalla */
+        background-color: #1a1d21;
+        border-left: 1px solid #565856;
+        padding: 10px;
+        position: relative; /* Asegura que esté en la parte inferior */
+        box-sizing: border-box;
+    }
+
+    /* El contenedor de los mensajes ocupa todo el ancho disponible dentro del chat */
+    .messages-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #565856;
+        overflow-y: auto; /* Habilita desplazamiento si los mensajes exceden el tamaño */
+    }
+
+    /* Ajustes a los mensajes */
+    .message {
+        display: flex;
+        flex-direction: column;
+        background-color: #1a1d21;
+        padding: 8px 12px;
+        margin-bottom: 10px;
+        max-width: 100%;
+        word-wrap: break-word;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .message:hover {
+        background-color: #222529;
+    }
+
+    .message p {
+        margin: 0;
+        color: #d1d2b2;
+    }
+
+    /* Ajustes de tamaño en el campo de texto */
+    .cont-teclado-env input {
+        width: 100%; /* Ocupa todo el ancho */
+        height: 40px; /* Ajustamos la altura del campo */
+        font-size: 12px;
+        background-color: #222529;
+        padding: 8px;
+        border-radius: 12px;
+        text-align: start;
+        border: 1px solid #565856;
+    }
+
+    .btn-env-chat {
+        margin-top: 0px;
+        margin-left: 10px;
+        background-color: #222529;
+    }
+
+    .btn-env-chat:hover {
+        background-color: #007a5a;
+    }
+
+    /* Botón de "más" ajustado */
+    .btn-mas {
+        width: 30px; /* Reducimos el tamaño del botón */
+    }
+
+    /* Ajustes en el input de canal */
+    .input-channel {
+        margin-left: 5px; /* Reducimos el margen */
+        width: 100%; /* Ocupa todo el ancho disponible */
+    }
 }

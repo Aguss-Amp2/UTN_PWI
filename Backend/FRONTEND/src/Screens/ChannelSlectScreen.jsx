@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import "./css/global.css"
 import "./css/style.css"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
@@ -20,13 +20,25 @@ const ChannelSelectScreen = () => {
 
     const [messages, setMessages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isAsideVisible, setIsAsideVisible] = useState(false);
 
-    // Función para obtener los mensajes
+    const messagesEndRef = useRef(null);
+
+    // Función para mostrar el último mensaje
+    const scrollToBottom = () => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const toggleAsideVisibility = () => {
+        setIsAsideVisible(!isAsideVisible);
+    }
+
     const fetchMessages = async () => {
         try {
             setIsLoading(true);
             const response = await getListMessages();
-            console.log('Mensaje recibido de la API:', response);  // Log de la respuesta de la API
             if (response && response.ok && response.data) {
                 setMessages(response.data.messages);
             } else {
@@ -41,7 +53,6 @@ const ChannelSelectScreen = () => {
         }
     };
 
-    // Manejo del envío de un mensaje
     const handleSubmitForm = async (event) => {
         event.preventDefault();
 
@@ -49,19 +60,14 @@ const ChannelSelectScreen = () => {
             try {
                 const response = await postJwtRequest({ content: formState.content }, token);
 
-                console.log('Respuesta al enviar mensaje:', response);  // Log de la respuesta
-
                 if (response && response.ok && response.data) {
-                    const newMessage = response.data.new_message;  // Accediendo a `new_message`
+                    const newMessage = response.data.new_message;
                     console.log('Nuevo mensaje recibido:', newMessage);
 
-                    // Actualizar la lista de mensajes
                     setMessages((prevMessages) => [newMessage, ...prevMessages]);
 
-                    // Limpiar el formulario
                     handleChangeInput({ target: { name: 'content', value: '' } });
 
-                    // Hacer un nuevo fetch de mensajes después de enviar
                     fetchMessages();
                 } else {
                     console.error('Respuesta incorrecta o indefinida:', response);
@@ -74,30 +80,43 @@ const ChannelSelectScreen = () => {
         }
     };
 
-    // Fetch de mensajes al montar el componente
     useEffect(() => {
         if (isAuthenticatedState && channel_id) {
             fetchMessages();
         }
     }, [isAuthenticatedState, channel_id]);
 
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
     return (
         <div className="content-channel">
-            <aside className="channel-aside">
-                <ChannelScreen />
+            <aside className="aside-princ">
+                <span>s</span>
             </aside>
-            <div className="chat">
+            <div className="channel-aside">
+            <button className="canales-mostrar" onClick={toggleAsideVisibility}>
+                {isAsideVisible ? 'Canales' : 'Canales'}
+            </button>
+
+            {isAsideVisible && (
+                <ChannelScreen />
+            )}
+            </div>
+            <div className="chat messages-container">
                 {isLoading ? (
-                    <div>Cargando...</div> // Indicador de carga mientras se obtienen los mensajes
+                    <div>Cargando...</div>
                 ) : messages.length > 0 ? (
                     messages.map((message, index) => (
                         <div key={index} className="message">
-                            <p>{message.content}</p>
+                            <p> <span className="span-messages-name">{message.sender.username || 'Usuario Desconocido'} : <br></br></span>{message.content}</p>
                         </div>
                     ))
                 ) : (
                     <span>Chat Vacío</span>
                 )}
+                <div ref={messagesEndRef} />
             </div>
             <div className="box-input-teclado">
                 <form className="cont-teclado-env" onSubmit={handleSubmitForm}>
