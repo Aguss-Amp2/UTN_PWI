@@ -10,7 +10,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-color: rgb(173, 72, 219);
+    background-color: #201124;
 }
 
 a {
@@ -24,7 +24,6 @@ h1 {
     color: beige;
     justify-content: flex-start;
     text-shadow: 3px 2px 4px rgba(7, 6, 6, 0.6);
-    margin-top: 25px;
 }
 
 label {

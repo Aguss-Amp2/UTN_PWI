@@ -17,8 +17,7 @@ const ChannelScreen = () => {
 
     useEffect(() => {
             if (isAuthenticatedState && workspace_id) {
-                console.log('Workspace ID:', workspace_id)
-                getListChannel() // Llamar la función para obtener los Channels
+                getListChannel()
             }else {
                 console.log('Workspace ID is undefined');
             }
@@ -52,24 +51,26 @@ const ChannelScreen = () => {
         }
     }
     return (
-        <div className="content-channel">
-            <aside className="channel-aside">
-                <div>
-                    <ul>
+        <div className="father">
+            <div className="box-workspaces">
+                <h1 className="h2-channel h1">Bienvenido Elija un Canal</h1>
+                <h2 className="h2-channel">Sino tiene Cree Uno</h2>
+                <div className="cont-workspaces">
+                    <ul className="box-channels">
                         {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
                             responseApiState.data.map((channel, index) => (
-                                <button key={index} className="canales-mostrar" onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
+                                <button key={index} className="canales-mostrar-2" onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
                             ))
                         ) : (
                             ""
                         )}
                     </ul>
-                    <div className="cont-input-channel-add">
-                        <input className="input-channel" type="text" id="name" placeholder="Ej: Consultas" value={channelName} onChange={(e) => setChannelName(e.target.value)}/>
-                        <button type="submit" className="btn-mas" onClick={handleAddChannel}>+</button>
-                    </div>
                 </div>
-            </aside>
+                <div className="cont-input-channel-add">
+                    <input className="input-channel" type="text" id="name" placeholder="Ej: Consultas" value={channelName} onChange={(e) => setChannelName(e.target.value)} />
+                    <button type="submit" className="btn-mas" onClick={handleAddChannel}>+</button>
+                </div>
+            </div>
         </div>
     )
 }

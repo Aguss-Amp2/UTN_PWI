@@ -3,8 +3,7 @@ import "./css/global.css"
 import "./css/style.css"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
-import { useParams } from "react-router-dom"
-import ChannelScreen from "./ChannelScreen.jsx"
+import { useNavigate, useParams } from "react-router-dom"
 import { useForm } from "../hooks/useForm.jsx"
 import { AuthContext } from "../Context/AuthContext.jsx"
 
@@ -17,6 +16,9 @@ const ChannelSelectScreen = () => {
     const {formState, handleChangeInput} = useForm(initialFormState)
     const { postJwtRequest, getListMessages} = useApiRequest(ENVIROMENT.URL_API + `/api/channels/${channel_id}/messages`)
     const token = sessionStorage.getItem('authorization_token')
+    const { workspace_id } = useParams()
+    const navigate = useNavigate()
+    const { responseApiState, getListChannel} = useApiRequest(`${ENVIROMENT.URL_API}/api/channels/${workspace_id}`)
 
     const [messages, setMessages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -90,6 +92,22 @@ const ChannelSelectScreen = () => {
         scrollToBottom();
     }, [messages]);
 
+    useEffect(() => {
+        if (isAuthenticatedState && workspace_id) {
+            getListChannel()
+        } else {
+            console.log('Workspace ID is undefined');
+        }
+    }, [isAuthenticatedState, workspace_id])
+
+    const handleClickWorkspace = (workspace_id, channelId) => {
+        if (workspace_id && channelId) {
+            navigate(`/workspace/${workspace_id}/channel/${channelId}`);
+        } else {
+            console.log('Workspace or Channel ID is undefined');
+        }
+    }
+
     return (
         <div className="content-channel">
             <aside className="aside-princ">
@@ -101,7 +119,17 @@ const ChannelSelectScreen = () => {
             </button>
 
             {isAsideVisible && (
-                <ChannelScreen />
+                            <div>
+                                <ul>
+                                    {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
+                                        responseApiState.data.map((channel, index) => (
+                                            <button key={index} className="canales-mostrar" onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
+                                        ))
+                                    ) : (
+                                        ""
+                                    )}
+                                </ul>
+                            </div>
             )}
             </div>
             <div className="chat messages-container">

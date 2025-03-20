@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import "./css/global.css"
 import "./css/style.css"
 import { useNavigate } from "react-router-dom"
@@ -16,14 +16,13 @@ const WorkspaceScreen = () => {
     const {postInvitedRequest} = useApiRequest(ENVIROMENT.URL_API)
     const { getUserIdByEmail } = useApiRequest(ENVIROMENT.URL_API)
 
-        const initialFormState = {
-            name: ''
-        }
-        
-        const {formState, handleChangeInput} = useForm(initialFormState)
-        
-        const token = sessionStorage.getItem('authorization_token')
-    
+    const initialFormState = {
+        name: ''
+    }
+
+    const { formState, handleChangeInput } = useForm(initialFormState)
+    const token = sessionStorage.getItem('authorization_token')
+
     const handleClick = async () => {
         try {
             // Creamos un nuevo workspace
@@ -110,29 +109,30 @@ const WorkspaceScreen = () => {
             console.error('Error al invitar al miembro');
         }
     }
-    
 
     
     return (
         <div className="father">
             <div className="box-workspaces">
                 <h1 className="h1-work">Workspaces de : {email}</h1>
-                <ul>
-                    {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
-                        responseApiState.data.map((workspace) => (
-                            <div key={workspace._id} className="div-button-workspaces">
-                                <div className="cont-buttons">
-                                    <button onClick={() => handleClickWorkspace(workspace._id)}>{workspace.name}</button>
-                                    <input className="input-workspaces input-work" type="email"  id={`email-${workspace._id}`}   name="email" placeholder="joedoe@gmail.com"  value={emailInputs[workspace._id] || ""} 
-                                            onChange={(e) => handleEmailChange(workspace._id, e)}/>
-                                    <button type="sumbit" className="button-add" onClick={() => handleInviteMember(workspace._id)}>+</button>
+                <div className="cont-workspaces">
+                    <ul>
+                        {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
+                            responseApiState.data.map((workspace) => (
+                                <div key={workspace._id} className="div-button-workspaces">
+                                    <div className="cont-buttons">
+                                        <button onClick={() => handleClickWorkspace(workspace._id)}>{workspace.name}</button>
+                                        <input className="input-workspaces input-work" type="email"  id={`email-${workspace._id}`}   name="email" placeholder="joedoe@gmail.com"  value={emailInputs[workspace._id] || ""} 
+                                                onChange={(e) => handleEmailChange(workspace._id, e)}/>
+                                        <button type="sumbit" className="button-add" onClick={() => handleInviteMember(workspace._id)}>+</button>
+                                    </div>
                                 </div>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No tienes workspaces disponibles.</p>
-                    )}
-                </ul>
+                            ))
+                        ) : (
+                            <p>No tienes workspaces disponibles.</p>
+                        )}
+                    </ul>
+                </div>
 
                 <form onSubmit={handleSumbitForm} className="form-work">
                     <div className="cont-create-workspace btn-box">
@@ -144,7 +144,7 @@ const WorkspaceScreen = () => {
                         {
                             responseApiState.loading
                                 ?""
-                                :<button type="sumbit"  onClick={handleClick}>Crear Workspaces</button>
+                                :<button type="sumbit" className="btn-crear"  onClick={handleClick}>Crear Workspaces</button>
                         }
                     </div>
                 </form>
