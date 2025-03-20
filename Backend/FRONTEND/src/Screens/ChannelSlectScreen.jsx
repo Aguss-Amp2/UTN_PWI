@@ -119,17 +119,17 @@ const ChannelSelectScreen = () => {
             </button>
 
             {isAsideVisible && (
-                            <div>
-                                <ul>
-                                    {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
-                                        responseApiState.data.map((channel, index) => (
-                                            <button key={index} className="canales-mostrar" onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
-                                        ))
-                                    ) : (
-                                        ""
-                                    )}
-                                </ul>
-                            </div>
+                <div>
+                    <ul>
+                        {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
+                            responseApiState.data.map((channel, index) => (
+                                <button key={index} className="canales-mostrar" onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
+                            ))
+                        ) : (
+                            ""
+                        )}
+                    </ul>
+                </div>
             )}
             </div>
             <div className="chat messages-container">

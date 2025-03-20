@@ -53,8 +53,8 @@ const ChannelScreen = () => {
     return (
         <div className="father">
             <div className="box-workspaces">
-                <h1 className="h2-channel h1">Bienvenido Elija un Canal</h1>
-                <h2 className="h2-channel">Sino tiene Cree Uno</h2>
+                <h1 className="h1-channel">Bienvenido !!!</h1>
+                <h2 className="h2-channel">Elige un Canal</h2>
                 <div className="cont-workspaces">
                     <ul className="box-channels">
                         {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
@@ -68,7 +68,7 @@ const ChannelScreen = () => {
                 </div>
                 <div className="cont-input-channel-add">
                     <input className="input-channel" type="text" id="name" placeholder="Ej: Consultas" value={channelName} onChange={(e) => setChannelName(e.target.value)} />
-                    <button type="submit" className="btn-mas" onClick={handleAddChannel}>+</button>
+                    <button type="submit" className="btn-mas" onClick={handleAddChannel}>Crear Canal</button>
                 </div>
             </div>
         </div>

@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--color-content);
-    box-shadow: 0 0 15px 5px var(--color-content);
+    box-shadow: 0 0 15px 5px var(--primary-color);
 }
 
 .options{
@@ -109,7 +109,7 @@ button:hover {
     padding: 40px;
     gap: 20px;
     background-color: var(--color-content);
-    box-shadow: 0 0 15px 5px var(--four-primary-color);
+    box-shadow: 0 0 15px 5px var(--primary-color);
     border-radius: 8px;
     position: relative;
 }
@@ -179,12 +179,17 @@ button:hover {
 }
 
 /* Channel */
-.h2-channel{
+.h1-channel{
     display: flex;
-    font-size: 30px;
     color: beige;
     justify-content: flex-start;
-    text-shadow: 3px 2px 4px beige;
+    font-size: 35px;
+}
+.h2-channel{
+    display: flex;
+    font-size: 20px;
+    color: beige;
+    justify-content: flex-start;
 }
 
 .box-channels{
@@ -234,10 +239,20 @@ button:hover {
     background-color: #201124;
 }
 
+.canales-mostrar-2{
+    border-radius: 20px;
+    border-bottom-left-radius: 0px;
+}
+
 .btn-mas {
-    width: 40px;
+    width: auto;
     border-radius: 12px;
-    background-color: rgb(83, 32, 90);
+    padding: 4px;
+    background-color: rgb(161, 49, 196);
+}
+
+.input-channel{
+    background-color: rgb(161, 49, 196);
 }
 
 .chat {
@@ -276,6 +291,7 @@ button:hover {
     max-width: 100%;
     padding: 20px;
     border: 1px solid #565856;
+    border-top: none;
 }
 
 .box-input-teclado {
@@ -461,8 +477,9 @@ button:hover {
 
     /* Workspace */
     .box-workspaces {
-        width: 280px;
+        width: 290px;
         height: 90%;
+        padding: 20px;
     }
 
     .h1-work {
@@ -541,17 +558,21 @@ button:hover {
     }
 
     /* Channel */
-    .h1{
-        margin: 0;
+    .h1-channel{
+        margin-top: -20px;
     }
     .h2-channel {
-        margin-top: -25px;
+        margin-top: -20px;
         font-size: 14px;
     }
 
+    .canales-mostrar-2{
+        width: 90px;
+    }
+
     .box-channels{
-        flex-direction: column;
-        width: 200px;
+        flex-direction: row;
+        width: 220px;
     }
 
     .cont-input-channel-add .btn-mas{
@@ -560,6 +581,9 @@ button:hover {
     }
 
     /* Channel-Chat */
+    .aside-princ{
+        width: 80px;
+    }
     .channel-aside {
         display: none; /* 🔹 Oculta el contenedor de canales */
     }
@@ -594,7 +618,6 @@ button:hover {
     }
 
     .box-input-teclado button{
-        margin-left: 4px;
-        width: 14%;
+        width: 60px;
     }
 }
