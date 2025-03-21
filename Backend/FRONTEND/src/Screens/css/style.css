@@ -1,4 +1,5 @@
 @import url(./global.css);
+@import url(./icons.css);
 
 :root{
     --primary-color: #81638b;
@@ -220,9 +221,10 @@ button:hover {
     background-color: #2b092f;
 }
 
-.content-channel .channel-aside {
+.channel-aside {
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
     align-items: flex-start;
     width: 400px;
     height: 100vh;
@@ -232,11 +234,19 @@ button:hover {
     display: flex;
     width: auto;
     justify-content: center;
+    align-items: center;
     margin: 20px;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
     padding: 8px;
     background-color: #201124;
+}
+
+.mostrar-hover{
+    background-color: #523057;
+}
+
+.canales-mostrar:hover{
+    background-color: #523057;
 }
 
 .canales-mostrar-2{
@@ -292,6 +302,7 @@ button:hover {
     padding: 20px;
     border: 1px solid #565856;
     border-top: none;
+    border-right: none;
 }
 
 .box-input-teclado {
@@ -315,7 +326,7 @@ button:hover {
 
 .cont-teclado-env input {
     width: 100%;
-    height: 80px;
+    height: 100px;
     background-color: #222529;
     padding: 8px;
     font-size: 16px;
@@ -326,11 +337,20 @@ button:hover {
 }
 
 .btn-env-chat{
-    margin-top: 0px;
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    right: 20px;
+    margin-top: 50px;
     margin-left: 10px;
+    font-size: 20px;
     background-color: #222529;
+    border: 1px solid #565856;
+    border-radius: 10px;
 }
+
 .btn-env-chat:hover {
+    border-color: #007a5a;
     background-color: #007a5a;
 }
 
@@ -569,7 +589,7 @@ button:hover {
     .canales-mostrar-2{
         width: 90px;
     }
-
+    
     .box-channels{
         flex-direction: row;
         width: 220px;
@@ -581,11 +601,12 @@ button:hover {
     }
 
     /* Channel-Chat */
-    .aside-princ{
-        width: 80px;
-    }
     .channel-aside {
-        display: none; /* 🔹 Oculta el contenedor de canales */
+        display: none;
+    }
+
+    .aside-princ{
+        width: 60px;
     }
 
     .content-channel {
@@ -599,25 +620,36 @@ button:hover {
 
     .messages-container {
         flex-grow: 1;
-        width: 100%;
+        width: calc(100vw - 60px);
         overflow-y: auto;
-        padding: 10px;
+        padding: 1px;
     }
 
     .box-input-teclado {
-        width: 100%;
+        width: calc(100vw - 60px);
         bottom: 0;
         left: 0;
         padding: 5px;
         height: 50px;
     }
 
+    .message{
+        max-width: 100%;
+    }
+
+    .message p{
+        width: 200px;
+    }
+
     .box-input-teclado input{
-        width: 60%;
+        width: 80%;
         height: 90%;
     }
 
-    .box-input-teclado button{
-        width: 60px;
+    .btn-env-chat{
+        position: absolute;
+        margin-top: 4px;
+        margin-right: -14px;
+        width: 40px;
     }
 }

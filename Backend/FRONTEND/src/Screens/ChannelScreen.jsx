@@ -53,7 +53,7 @@ const ChannelScreen = () => {
     return (
         <div className="father">
             <div className="box-workspaces">
-                <h1 className="h1-channel">Bienvenido !!!</h1>
+                <h1 className="h1-channel">Bienvenido</h1>
                 <h2 className="h2-channel">Elige un Canal</h2>
                 <div className="cont-workspaces">
                     <ul className="box-channels">
