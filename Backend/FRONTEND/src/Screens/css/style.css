@@ -226,7 +226,7 @@ button:hover {
     justify-content: flex-start;
     flex-direction: column;
     align-items: flex-start;
-    width: 400px;
+    width: 300px;
     height: 100vh;
 }
 
@@ -239,6 +239,22 @@ button:hover {
     flex-direction: row;
     padding: 8px;
     background-color: #201124;
+}
+
+.users-members{
+    display: flex;
+    text-align: start;
+    align-items: flex-start;
+    flex-direction: row;
+    margin-top: 10px;
+    color: rgb(233, 230, 230);
+}
+
+.chat-vacio{
+    position: relative;
+    margin-left: 350px;
+    font-size: 20px;
+    color: beige;
 }
 
 .mostrar-hover{
@@ -267,7 +283,7 @@ button:hover {
 
 .chat {
     position: relative;
-    width: calc(100vw - 470px);
+    width: calc(100vw - 370px);
     height: 80vh;
     border: 1px solid #1a1d21;
     background-color: #1a1d21;
@@ -309,7 +325,7 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100vw - 470px);
+    width: calc(100vw - 370px);
     height: 20vh;
     padding: 10px;
     background-color: #1a1d21;
@@ -329,8 +345,7 @@ button:hover {
     height: 100px;
     background-color: #222529;
     padding: 8px;
-    font-size: 16px;
-    border-radius: 12px;
+    border-radius: 10px;
     font-size: 14px;
     text-align:start;
     border: 1px solid #565856;
@@ -346,7 +361,7 @@ button:hover {
     font-size: 20px;
     background-color: #222529;
     border: 1px solid #565856;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .btn-env-chat:hover {
@@ -417,18 +432,26 @@ button:hover {
 
 @media (max-width: 800px) {
     .content-channel .channel-aside {
-        width: 300px;
+        width: 200px;
     }
 
     .box-input-teclado {
-        width: calc(100vw - 370px);
+        width: calc(100vw - 270px);
     }
     .chat {
-        width: calc(100vw - 370px);
+        width: calc(100vw - 270px);
+    }
+
+    .chat-vacio{
+        margin-left: 90px;
     }
 
     .canales-mostrar{
         margin: 10px;
+    }
+
+    .h1-work-channel{
+        font-size: 22px;
     }
 
     .input-channel{
@@ -623,6 +646,11 @@ button:hover {
         width: calc(100vw - 60px);
         overflow-y: auto;
         padding: 1px;
+    }
+
+    .chat-vacio{
+        margin-top: 20px;
+        margin-left: 60px;
     }
 
     .box-input-teclado {

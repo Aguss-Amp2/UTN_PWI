@@ -1,3 +1,4 @@
+import Workspace from "../models/Workspace.model.js"
 import channelRepository from "../repository/channel.repository.js"
 import messageRepository from "../repository/message.repository.js"
 
@@ -10,8 +11,6 @@ export const createChannelController = async(req, res) => {
         //id del usuario que quiere crear el canal
         const user_id = req.user.id
         const new_channel = await channelRepository.createChannel({name, user_id, workspace_id})
-
-        console.log(name)
         res.json({
             ok: true,
             status: 201,

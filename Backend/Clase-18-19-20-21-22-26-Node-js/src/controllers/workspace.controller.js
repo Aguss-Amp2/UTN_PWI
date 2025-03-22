@@ -1,4 +1,6 @@
+import mongoose from "mongoose"
 import User from "../models/User.model.js"
+import Workspace from "../models/Workspace.model.js"
 import workspaceRepository from "../repository/workspace.repository.js"
 
 export const createWorkspaceController = async(req, res) => {
@@ -38,7 +40,6 @@ export const createWorkspaceController = async(req, res) => {
 export const inviteUserWorkspaceController = async(req, res) => {
     try{
         const user_id = req.user.id
-        console.log(req.user.id)
         const {invited_id, workspace_id} = req.params
 
         const workspace_found = await workspaceRepository.addNewMember({owner_id: user_id, invited_id, workspace_id})
@@ -69,6 +70,22 @@ export const inviteUserWorkspaceController = async(req, res) => {
             status: 500,
             ok: false
         })
+    }
+}
+
+export const getWorkspaceName = async (req, res) => {
+    try {
+        const { workspace_id } = req.params; // Obtener workspace_id desde la URL
+        const workspace = await Workspace.findById(workspace_id); // Buscar el workspace en la DB
+
+        if (!workspace) {
+            return res.status(404).json({ message: 'Workspace no encontrado' });
+        }
+
+        return res.status(200).json({ name: workspace.name }); // Enviar el nombre del workspace
+    } catch (error) {
+        console.error("Error al obtener el nombre del workspace:", error);
+        return res.status(500).json({ error: "Error interno del servidor" });
     }
 }
 
@@ -124,5 +141,34 @@ export const getUserIdByEmail = async (req, res) => {
         // En caso de error, respondemos con un error
         console.error(error);
         return res.status(500).json({ message: 'Error al obtener el id del usuario' });
+    }
+}
+
+export const getWorkspaceMembers = async (req, res) => {
+    const { workspace_id } = req.params;
+
+    // Verificar si el workspace_id es un ObjectId válido
+    if (!mongoose.Types.ObjectId.isValid(workspace_id)) {
+        return res.status(400).json({ message: 'ID de workspace no válido' });
+    }
+
+    try {
+        // Buscar el workspace en la base de datos
+        const workspace = await Workspace.findById(workspace_id).populate('members');
+
+        if (!workspace) {
+            return res.status(404).json({ message: 'Workspace no encontrado' });
+        }
+
+        // Si el workspace existe, devolver los miembros
+        const members = workspace.members;
+
+        res.status(200).json({
+            success: true,
+            members
+        });
+    } catch (error) {
+        console.error('Error al obtener los miembros del workspace:', error);
+        res.status(500).json({ message: 'Error interno del servidor' });
     }
 }

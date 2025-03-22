@@ -16,14 +16,19 @@ const ChannelSelectScreen = () => {
     const {formState, handleChangeInput} = useForm(initialFormState)
     const { postJwtRequest, getListMessages} = useApiRequest(ENVIROMENT.URL_API + `/api/channels/${channel_id}/messages`)
     const { responseApiState, getListChannel} = useApiRequest(`${ENVIROMENT.URL_API}/api/channels/${workspace_id}`)
+    const {fetchWorkspaceName } = useApiRequest(ENVIROMENT.URL_API + `/api/workspaces/${workspace_id}/channel`)
+
     const token = sessionStorage.getItem('authorization_token')
     const navigate = useNavigate()
 
     const [messages, setMessages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isAsideVisible, setIsAsideVisible] = useState(true);
+    const [isAsideVisible2, setIsAsideVisible2] = useState(true);
     const messagesEndRef = useRef(null);
     const [selectedChannel, setSelectedChannel] = useState(channel_id)
+    const [workspaceName, setWorkspaceName] = useState("")
+    const [workspaceMembers, setChannelMembers] = useState([]);  // Nueva variable de estado para los miembros
 
     // Función para mostrar el último mensaje
     const scrollToBottom = () => {
@@ -34,6 +39,10 @@ const ChannelSelectScreen = () => {
 
     const toggleAsideVisibility = () => {
         setIsAsideVisible(!isAsideVisible);
+    }
+
+    const toggleAsideVisibility2 = () => {
+        setIsAsideVisible2(!isAsideVisible2);
     }
 
     const fetchMessages = async () => {
@@ -51,6 +60,24 @@ const ChannelSelectScreen = () => {
             alert(`Error al obtener los mensajes: ${error.message}`);
         } finally {
             setIsLoading(false);
+        }
+    };
+
+    const fetchChannelMembers = async () => {
+        try {
+            const response = await fetch(`${ENVIROMENT.URL_API}/api/workspaces/${workspace_id}/members`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            if (data && data.members) {
+                setChannelMembers(data.members);  // Guarda los miembros en el estado
+            } else {
+                console.error('No se pudieron obtener los miembros del canal');
+            }
+        } catch (error) {
+            console.error('Error al obtener los miembros:', error);
         }
     };
 
@@ -82,17 +109,30 @@ const ChannelSelectScreen = () => {
     };
 
     useEffect(() => {
-        if (isAuthenticatedState && channel_id) {
+        if (isAuthenticatedState && channel_id && workspace_id) {
             fetchMessages();
+            fetchChannelMembers();
         }
-    }, [isAuthenticatedState, channel_id]);
+    }, [isAuthenticatedState, channel_id, workspace_id]);
 
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
 
-    const handleInicio = () => {
+    const handleWorks = () => {
         navigate('/workspaces')
+    }
+
+    const handleLogin = () => {
+        navigate('/')
+    }
+
+    const handleCanales = (workspace_id) => {
+        if (workspace_id) {
+            navigate(`/${workspace_id}`);
+        } else {
+            console.log("workspace_id es undefined");
+        }
     }
 
     useEffect(() => {
@@ -112,22 +152,34 @@ const ChannelSelectScreen = () => {
         }
     }
 
+    useEffect(() => {
+        if (workspace_id) {
+            fetchWorkspaceName().then((name) => {
+                if (name) {
+                    setWorkspaceName(name);
+                } else {
+                    console.error("No se pudo obtener el nombre del workspace");
+                }
+            });
+        }
+    }, [workspace_id])
+
     return (
         <div className="content-channel">
             <aside className="aside-princ">
                 <div className="icons-div">
                     <div className="icons-top">
                         <div className="icon-text">
-                            <button className="btn-inicio bi" onClick={handleInicio}><i className="bi-house"></i></button>
+                            <button className="btn-inicio bi" onClick={handleWorks}><i className="bi-house"></i></button>
+                            <span>Works</span>
+                        </div>
+                        <div className="icon-text">
+                            <button className="btn-inicio bi" onClick={() => handleCanales(workspace_id)}><i className="bi-chat"></i></button>
+                            <span>Canales</span>
+                        </div>
+                        <div className="icon-text">
+                            <button className="btn-inicio bi" onClick={handleLogin}><i className="bi-door-open"></i></button>
                             <span>Inicio</span>
-                        </div>
-                        <div className="icon-text">
-                            <i className="bi bi-chat"></i>
-                            <span>Mensaje</span>
-                        </div>
-                        <div className="icon-text">
-                            <i className="bi bi-bell-fill"></i>
-                            <span>Actividad</span>
                         </div>
                         <div className="icon-text">
                             <i className="bi bi-three-dots"></i>
@@ -141,23 +193,43 @@ const ChannelSelectScreen = () => {
                 </div>
             </aside>
             <div className="channel-aside">
-            <button className="canales-mostrar" onClick={toggleAsideVisibility}>
-                Canales <i className={`${isAsideVisible ? "bi-arrow-up" : "bi-arrow-down"}`}></i>
-            </button>
+                <h1 className="h1-work-channel">Workspaces: {workspaceName}</h1>
+                <button className="canales-mostrar" onClick={toggleAsideVisibility}>
+                    Canales <i className={`${isAsideVisible ? "bi-arrow-up" : "bi-arrow-down"}`}></i>
+                </button>
 
-            {isAsideVisible && (
-                <div>
-                    <ul>
-                        {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
-                            responseApiState.data.map((channel, index) => (
-                                <button key={index} className={`canales-mostrar ${selectedChannel === channel._id ? 'mostrar-hover' : ''}`} onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
-                            ))
+                {isAsideVisible && (
+                    <div>
+                        <ul>
+                            {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
+                                responseApiState.data.map((channel, index) => (
+                                    <button key={index} className={`canales-mostrar ${selectedChannel === channel._id ? 'mostrar-hover' : ''}`} onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
+                                ))
+                            ) : (
+                                ""
+                            )}
+                        </ul>
+                    </div>
+                )}
+
+                <button className="canales-mostrar" onClick={toggleAsideVisibility2}>
+                    Usuarios <i className={`${isAsideVisible2 ? "bi-arrow-up" : "bi-arrow-down"}`}></i>
+                </button>
+                {isAsideVisible2 && (
+                    <div>
+                        {workspaceMembers.length > 0 ? (
+                            <ul>
+                                {workspaceMembers.map((member, index) => (
+                                    <li key={index} className="users-members">
+                                        <i class="bi-person-fill"></i>{member.username}
+                                    </li>
+                                ))}
+                            </ul>
                         ) : (
-                            ""
+                            <p>No hay usuarios en este canal.</p>
                         )}
-                    </ul>
-                </div>
-            )}
+                    </div>
+                )}
             </div>
             <div className="chat messages-container">
                 {isLoading ? (
@@ -169,7 +241,7 @@ const ChannelSelectScreen = () => {
                         </div>
                     ))
                 ) : (
-                    <span>Chat Vacío</span>
+                    <span className="chat-vacio">Inicia la Conversacion...</span>
                 )}
                 <div ref={messagesEndRef} />
             </div>

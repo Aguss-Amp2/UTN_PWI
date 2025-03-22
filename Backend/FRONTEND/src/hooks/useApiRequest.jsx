@@ -194,6 +194,32 @@ export const useApiRequest = (url) => {
         }
     }
 
+    const fetchWorkspaceName = async () => {
+        try {
+            const token = sessionStorage.getItem('authorization_token')
+            const response = await fetch(
+                url, 
+                {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: No se pudo obtener el workspace`);
+            }
+
+            const data = await response.json()
+            return data.name
+        } catch (error) {
+            console.error("Error al obtener el workspace:", error);
+            return null
+        }
+    };
+
 
     const getListChannel = async () => {
         try{
@@ -323,5 +349,5 @@ export const useApiRequest = (url) => {
     }
 
     
-    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel, postInvitedRequest, getUserIdByEmail, getListMessages}
+    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel, postInvitedRequest, getUserIdByEmail, getListMessages, fetchWorkspaceName}
 }

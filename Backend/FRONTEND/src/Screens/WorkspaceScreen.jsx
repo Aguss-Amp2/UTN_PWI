@@ -38,16 +38,16 @@ const WorkspaceScreen = () => {
         }
     }
 
-        const handleSumbitForm = async (event) => {
-            event.preventDefault()
-            
-            if (formState.name) {
-                await postJwtRequest(formState, token)
-            }
-            else {
-                console.log('Error ingrese los dos campos')
-            }
+    const handleSumbitForm = async (event) => {
+        event.preventDefault()
+
+        if (formState.name) {
+            await postJwtRequest(formState, token)
         }
+        else {
+            console.log('Error ingrese los dos campos')
+        }
+    }
 
     useEffect(() => {
         if (isAuthenticatedState) {

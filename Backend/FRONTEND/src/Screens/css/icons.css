@@ -42,10 +42,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .icon-text span{
     color: beige;
     font-size: 12px;
     margin-bottom: 10px;
+}
+
+.bi-person-fill {
+    font-size: 14px;
+    padding-left: 28px;
+    padding-right: 8px;
+}
+
+.bi-person-circle{
+    width: 50px;
+    height: 50px;
+    
 }
