@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
-import "./css/global.css"
-import "./css/style.css"
+import './css/mediaScrenn.css'
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../Context/AuthContext.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
@@ -121,10 +120,10 @@ const WorkspaceScreen = () => {
                             responseApiState.data.map((workspace) => (
                                 <div key={workspace._id} className="div-button-workspaces">
                                     <div className="cont-buttons">
-                                        <button onClick={() => handleClickWorkspace(workspace._id)}>{workspace.name}</button>
+                                        <button className="button-work" onClick={() => handleClickWorkspace(workspace._id)}>{workspace.name}</button>
                                         <input className="input-workspaces input-work" type="email"  id={`email-${workspace._id}`}   name="email" placeholder="joedoe@gmail.com"  value={emailInputs[workspace._id] || ""} 
                                                 onChange={(e) => handleEmailChange(workspace._id, e)}/>
-                                        <button type="sumbit" className="button-add" onClick={() => handleInviteMember(workspace._id)}>+</button>
+                                        <button type="sumbit" className="button-add" onClick={() => handleInviteMember(workspace._id)}><i class="bi-plus-lg"></i></button>
                                     </div>
                                 </div>
                             ))

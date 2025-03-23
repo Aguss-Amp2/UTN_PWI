@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import "./css/global.css"
-import "./css/style.css"
+import './css/mediaScrenn.css'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
 import { useApiRequest } from '../hooks/useApiRequest'
@@ -50,7 +49,7 @@ const RewritePassword = () => {
                 <form className="options form" onSubmit={handleSubmitForm}>
                     <div>
                         <label htmlFor="password" className="label-login-email-password">Nueva Contraseña: </label>
-                        <input type="text" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
+                        <input className="screnns" type="text" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
                     </div>
                     {
                         responseApiState.loading 

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
-import "./css/global.css"
-import "./css/style.css"
+import './css/mediaScrenn.css'
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
 import { useNavigate, useParams } from "react-router-dom"
@@ -186,7 +185,7 @@ const ChannelSelectScreen = () => {
                             <span>Mas</span>
                         </div>
                     </div>
-                    <div className="icon-text">
+                    <div className="icon-text icon-text-2">
                         <i className="bi bi-person-circle"></i>
                         <span>Perfil</span>
                     </div>
@@ -200,7 +199,7 @@ const ChannelSelectScreen = () => {
 
                 {isAsideVisible && (
                     <div>
-                        <ul>
+                        <ul className="channels-ul">
                             {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
                                 responseApiState.data.map((channel, index) => (
                                     <button key={index} className={`canales-mostrar ${selectedChannel === channel._id ? 'mostrar-hover' : ''}`} onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
@@ -218,7 +217,7 @@ const ChannelSelectScreen = () => {
                 {isAsideVisible2 && (
                     <div>
                         {workspaceMembers.length > 0 ? (
-                            <ul>
+                            <ul className="channels-members">
                                 {workspaceMembers.map((member, index) => (
                                     <li key={index} className="users-members">
                                         <i class="bi-person-fill"></i>{member.username}
@@ -226,14 +225,14 @@ const ChannelSelectScreen = () => {
                                 ))}
                             </ul>
                         ) : (
-                            <p>No hay usuarios en este canal.</p>
+                            ""
                         )}
                     </div>
                 )}
             </div>
             <div className="chat messages-container">
                 {isLoading ? (
-                    <div>Cargando...</div>
+                    ""
                 ) : messages.length > 0 ? (
                     messages.map((message, index) => (
                         <div key={index} className="message">
@@ -246,7 +245,7 @@ const ChannelSelectScreen = () => {
                 <div ref={messagesEndRef} />
             </div>
             <div className="box-input-teclado">
-                <form className="cont-teclado-env" onSubmit={handleSubmitForm}>
+                <form className="cont-teclado-env box" onSubmit={handleSubmitForm}>
                     <input
                         type="text"
                         name="content"

@@ -2,8 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { useForm } from "../hooks/useForm.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
-import "./css/global.css"
-import "./css/style.css"
+import './css/mediaScrenn.css'
 import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../Context/AuthContext.jsx"
 
@@ -47,11 +46,11 @@ const LoginScreen = () => {
         <form onSubmit={handleSumbitForm} className="options form">
           <div>
             <label htmlFor="email" className="label-login-email-password">Email :</label>
-            <input type="email" id="email" name="email" placeholder="joedoe@gmail.com" value={formState.email} onChange={handleChangeInput}/>
+            <input className="screnns" type="email" id="email" name="email" placeholder="joedoe@gmail.com" value={formState.email} onChange={handleChangeInput}/>
           </div>
           <div>
             <label htmlFor="password" className="label-login-email-password">Contraseña :</label>
-            <input type="password" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
+            <input className="screnns" type="password" id="password" name="password" value={formState.password} onChange={handleChangeInput}/>
           </div>
           {responseApiState.error && <span style={{color: 'red'}}>{responseApiState.error}</span>}
           <div className="cont-regis-login">

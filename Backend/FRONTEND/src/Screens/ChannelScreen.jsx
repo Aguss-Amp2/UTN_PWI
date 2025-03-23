@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import "./css/global.css"
-import "./css/style.css"
+import './css/mediaScrenn.css'
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
 import { ENVIROMENT } from "../config/enviroment.js"
 import { AuthContext } from "../Context/AuthContext.jsx"
@@ -67,7 +66,7 @@ const ChannelScreen = () => {
                     </ul>
                 </div>
                 <div className="cont-input-channel-add">
-                    <input className="input-channel" type="text" id="name" placeholder="Ej: Consultas" value={channelName} onChange={(e) => setChannelName(e.target.value)} />
+                    <input className="input-channel input-channel-2" type="text" id="name" placeholder="Ej: Consultas" value={channelName} onChange={(e) => setChannelName(e.target.value)} />
                     <button type="submit" className="btn-mas" onClick={handleAddChannel}>Crear Canal</button>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 import React from "react"
-import "./css/global.css"
-import "./css/style.css"
+import './css/mediaScrenn.css'
 import { ENVIROMENT } from "../config/enviroment.js"
 import { useForm } from "../hooks/useForm.jsx"
 import { useApiRequest } from "../hooks/useApiRequest.jsx"
@@ -28,7 +27,8 @@ const RegisterScreen = () => {
                 <form onSubmit={handleSumbitForm} className="options form">
                     <div>
                         <label htmlFor="username" className="label-login-email-password">Usuario :</label>
-                        <input 
+                        <input
+                        className="screnns" 
                         placeholder="Joe Doe" 
                         type="text" 
                         id="username" 
@@ -39,7 +39,8 @@ const RegisterScreen = () => {
                     </div>
                     <div>
                         <label htmlFor="email" className="label-login-email-password">Email :</label>
-                        <input 
+                        <input
+                        className="screnns" 
                         placeholder="JoeDoe@gmail.com" 
                         type="email" 
                         id="email" 
@@ -49,7 +50,8 @@ const RegisterScreen = () => {
                     </div>
                     <div>
                         <label htmlFor="password" className="label-login-email-password">Contraseña :</label>
-                        <input 
+                        <input
+                        className="screnns"
                         placeholder="Joe1234" 
                         type="text" 
                         id="password" 

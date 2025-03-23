@@ -1,0 +1,533 @@
+@import url(./global.css);
+@import url(./icons.css);
+@import url(./style.css);
+
+
+/* Media Query */
+
+@media (min-width: 1600px) {
+    /* Ajustes generales */
+    .content {
+        width: 40%;
+        height: 70%;
+    }
+
+    .options {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    h1 {
+        font-size: 70px;
+        margin-bottom: 70px;
+    }
+
+    label {
+        font-size: 30px;
+    }
+
+    input {
+        width: 380px;
+        height: 80px;
+        font-size: 24px;
+    }
+
+    input::placeholder {
+        font-size: 30px;
+    }
+
+    .screnns input {
+        width: 600px;
+        font-size: 30px;
+        height: 65px;
+        font-size: 18px;
+    }
+
+    button {
+        width: 180px;
+        height: 80px;
+        font-size: 28px;
+    }
+
+    .a-password{
+        font-size: 30px;
+    }
+
+    /* Workspaces */
+    .box-workspaces {
+        width: 1000px;
+        height: 60%;
+        padding: 40px;
+    }
+
+    .h1-work {
+        font-size: 42px;
+    }
+
+    
+    .cont-workspaces{
+        height: 600px;
+    }
+    
+    .cont-create-workspace {
+        flex-direction: row;
+        gap: 40px;
+        align-items: center;
+    }
+    
+    .cont-buttons{
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        gap: 80px;
+        width: 900px;
+    }
+    
+    .button-work{
+        width: 28%;
+        height: 70px;
+    }
+
+    .label-workspaces {
+        font-size: 22px;
+    }
+    
+    .input-work {
+        width: 340px;
+        height: 70px;
+        margin-right: 40px;
+    }
+
+    .label-workspaces{
+        font-size: 30px;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .input-workspaces {
+        height: 70px;
+        padding: 12px;
+        font-size: 22px;
+    }
+
+
+    .button-add {
+        width: 70px;
+        height: 70px;
+        justify-content: center;
+        align-items: center;
+        font-size: 34px;
+        padding: 8px;
+    }
+
+    .workspace-button {
+        width: 100%;
+        padding: 15px; /* Antes 10px */
+        font-size: 18px; /* Antes 14px */
+        margin-bottom: 15px; /* Antes 10px */
+    }
+
+    .btn-box {
+        display: flex;
+        height: 200px;
+        justify-content: center;
+        flex-direction: row;
+        gap: 15px;
+        align-items: flex-end;
+    }
+
+    /* Channel */
+    .h1-channel{
+        font-size: 70px;
+        margin-bottom: 0;
+    }
+
+    .h2-channel{
+        font-size: 44px;
+    }
+
+    .box-channels{
+        width: 100%;
+    }
+
+    .canales-mostrar-2{
+        width: auto;
+        padding: 10px;
+        margin-right: 20px;
+    }
+
+    .cont-input-channel-add {
+        width: 100%;
+    }
+
+    .input-channel{
+        width: 280px;
+    }
+
+    /* Chat */
+    .channel-aside{
+        width: 500px;
+    }
+
+    .aside-princ{
+        width: 120px;
+    }
+
+    .box-input-teclado{
+        width: calc(100% - 620px);
+    }
+
+    .messages-container p{
+        font-size: 24px;
+    }
+
+    .chat{
+        width: calc(100% - 620px);
+    }
+
+    .h1-work-channel{
+        font-size: 40px;
+    }
+
+    .canales-mostrar{
+        font-size: 30px;
+        height: 70px;
+    }
+
+    li{
+        font-size: 26px;
+    }
+
+    li .bi-person-fill{
+        font-size: 26px;
+    }
+
+    .icon-text{
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .icon-text-2{
+        margin-bottom: 0px;
+    }
+
+    .bi{
+        width: 60px;
+        height: 60px;
+        font-size: 50px;
+    }
+
+    .icon-text span{
+        font-size: 20px;
+    }
+
+    .bi-person-circle{
+        width: 76px;
+        height: 76px;
+        font-size: 60px;
+    }
+
+    .box input{
+        height: 140px;
+        font-size: 26px;
+    }
+
+    .box-input-teclado input{
+        margin: 10px;
+        height: 220px;
+    }
+
+    .btn-env-chat{
+        width: 120px;
+        height: 60px;
+        margin-top: 130px;
+        right: 34px;
+        font-size: 40px;
+    }
+
+    .chat-vacio{
+        font-size: 70px;
+    }
+
+    .channels-ul{
+        height: 640px;
+        overflow-y: auto;
+    }
+    
+    .channels-members{
+        height: 320px;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .content-channel .channel-aside {
+        width: 200px;
+    }
+
+    .box-input-teclado {
+        width: calc(100vw - 270px);
+    }
+    .chat {
+        width: calc(100vw - 270px);
+    }
+
+    .chat-vacio{
+        margin-left: 90px;
+    }
+
+    .canales-mostrar{
+        margin: 10px;
+    }
+
+    .h1-work-channel{
+        font-size: 22px;
+    }
+
+    .input-channel{
+        margin-left: 10px;
+    }
+
+    li{
+        font-size: 14px;
+    }
+
+    li .bi-person-fill{
+        font-size: 14px;
+    }
+
+    .bi{
+        width: 34px;
+        height: 34px;
+        font-size: 24px;
+    }
+
+    .bi-person-circle{
+        width: 50px;
+        height: 50px;
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 440px) {
+    /* Login/Register/rewrite/reset */
+    .content {
+        width: 90%;
+        max-width: 320px;
+        height: auto;
+        padding: 15px;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1 {
+        display: flex;
+        font-size: 26px;
+        text-align: center;
+        padding: 20px;
+        color: beige;
+        justify-content: flex-start;
+        text-shadow: 3px 2px 4px rgba(7, 6, 6, 0.6);
+        margin-top: 25px;
+    }
+
+    input {
+        width: 200px;
+        height: 35px;
+        padding: 0 8px;
+    }
+
+    .label-login-email-password {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 80px;
+        height: 35px;
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    button:hover {
+        background-color: var(--four-primary-color);
+    }
+    
+
+    .a-password {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+    .a-password:hover {
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+    }
+
+    /* Workspace */
+    .box-workspaces {
+        width: 290px;
+        height: 90%;
+        padding: 20px;
+    }
+
+    .h1-work {
+        font-size: 20px;
+    }
+
+    .label-workspaces {
+        font-size: 16px;
+        color: beige;
+        text-shadow: 2px 2px 4px rgba(7, 6, 6, 0.945);
+    }
+
+    .cont-create-workspace {
+        flex-direction: column;
+    }
+
+    .cont-buttons{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: row;
+    }
+
+    .input-workspaces {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .button-add {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        margin-top: 10px;
+        padding: 5px;
+    }
+
+    .workspace-button {
+        width: 100%; 
+        padding: 10px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .btn-box {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 100px;
+        align-items: center;
+    }
+
+    .form-work {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .input-work{
+        width: 100px;
+    }
+
+    .cont-create-workspace input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .cont-create-workspace label {
+        display: none;
+    }
+
+    .cont-create-workspace .btn-crear{
+        margin-top: 0;
+        padding: 4px;
+    }
+
+    /* Channel */
+    .h1-channel{
+        margin-top: -20px;
+    }
+    .h2-channel {
+        margin-top: -20px;
+        font-size: 14px;
+    }
+
+    .canales-mostrar-2{
+        width: 90px;
+    }
+    
+    .box-channels{
+        flex-direction: row;
+        width: 220px;
+    }
+
+    .cont-input-channel-add .btn-mas{
+        margin-top: 30px;
+        width: 50px;
+    }
+
+    /* Channel-Chat */
+    .channel-aside {
+        display: none;
+    }
+
+    .aside-princ{
+        width: 60px;
+    }
+
+    .content-channel {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .messages-container {
+        flex-grow: 1;
+        width: calc(100vw - 60px);
+        overflow-y: auto;
+        padding: 1px;
+    }
+
+    .chat-vacio{
+        margin-top: 20px;
+        margin-left: 60px;
+    }
+
+    .box-input-teclado {
+        width: calc(100vw - 60px);
+        bottom: 0;
+        left: 0;
+        padding: 5px;
+        height: 50px;
+    }
+
+    .message{
+        max-width: 100%;
+    }
+
+    .message p{
+        width: 200px;
+    }
+
+    .box-input-teclado input{
+        width: 80%;
+        height: 90%;
+    }
+
+    .btn-env-chat{
+        position: absolute;
+        margin-top: 4px;
+        margin-right: -14px;
+        width: 40px;
+    }
+}
