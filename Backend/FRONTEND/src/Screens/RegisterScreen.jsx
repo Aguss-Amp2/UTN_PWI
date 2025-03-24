@@ -12,12 +12,30 @@ const RegisterScreen = () => {
     }
 
     const {formState, handleChangeInput} = useForm(formInitialState)
-
     const {responseApiState, postRequest} = useApiRequest(ENVIROMENT.URL_API + '/api/auth/register')
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [showSpinner, setShowSpinner] = useState(false);
+
+    useEffect(() => {
+        if (isLoading) {
+            setShowSpinner(true);
+            // Después de 2 segundos, ocultamos el spinner
+            const timer = setTimeout(() => {
+                setShowSpinner(false);
+            }, 2000);
+
+            return () => clearTimeout(timer); // Limpiar el timer si el componente se desmonta o se vuelve a ejecutar
+        }
+    }, [isLoading])
 
     const handleSumbitForm = async (event) => {
         event.preventDefault()
+        setIsLoading(true)
+
+        await new Promise(resolve => setTimeout(resolve, 2000));
         await postRequest(formState)
+        setIsLoading(false)
     }
 
     return (
@@ -64,8 +82,10 @@ const RegisterScreen = () => {
                         && <span style={{color: 'red'}}>{responseApiState.error}</span>
                     }
                     {
-                        responseApiState.loading
-                        ? <span>Cargando</span>
+                        responseApiState.loading || isLoading
+                        ?   <div className="spinner" role="status" aria-label="Cargando" aria-live="polite">
+                                <span className="visually-hidden"></span>
+                            </div>
                         : <button type="submit">Registrar</button>
                     }
                 </form>

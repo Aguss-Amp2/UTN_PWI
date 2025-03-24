@@ -187,7 +187,7 @@ const ChannelSelectScreen = () => {
                         </div>
                     </div>
                     <div className="icon-text icon-text-2">
-                        <i className="bi bi-person-circle"></i>
+                        <button className="btn-perfil bi"><i className="bi-person-circle"></i></button>
                         <span>Perfil</span>
                     </div>
                 </div>
@@ -221,7 +221,7 @@ const ChannelSelectScreen = () => {
                             <ul className="channels-members">
                                 {workspaceMembers.map((member, index) => (
                                     <li key={index} className="users-members">
-                                        <i class="bi-person-fill"></i>{member.username}
+                                        <i className="bi-person-fill"></i>{member.username}
                                     </li>
                                 ))}
                             </ul>
@@ -252,7 +252,7 @@ const ChannelSelectScreen = () => {
                             <i className="bi-alphabet icon-tec"></i>
                             <i className="bi-code-slash icon-tec"></i>
                             <i className="bi-text-paragraph icon-tec"></i>
-                            <i class="bi-dash-lg line"></i>
+                            <i className="bi-dash-lg line"></i>
                             <i className="bi-copy icon-tec"></i>
                             <i className="bi-list-check icon-tec"></i>
                             <i className="bi-list-ol icon-tec"></i>

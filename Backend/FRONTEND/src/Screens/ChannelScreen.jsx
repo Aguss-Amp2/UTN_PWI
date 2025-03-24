@@ -14,6 +14,20 @@ const ChannelScreen = () => {
     const { responseApiState, getListChannel, postJwtRequest} = useApiRequest(`${ENVIROMENT.URL_API}/api/channels/${workspace_id}`)
     const token = sessionStorage.getItem("authorization_token")
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [showSpinner, setShowSpinner] = useState(false);
+
+    useEffect(() => {
+        if (isLoading) {
+            setShowSpinner(true)
+            const timer = setTimeout(() => {
+                setShowSpinner(false)
+            }, 2000)
+
+            return () => clearTimeout(timer)
+        }
+    }, [isLoading])
+
     useEffect(() => {
             if (isAuthenticatedState && workspace_id) {
                 getListChannel()
@@ -30,16 +44,20 @@ const ChannelScreen = () => {
 
         const body = { name: channelName }
 
+        setIsLoading(true)
+
+        await new Promise(resolve => setTimeout(resolve, 2000))
+
         try {
-            // Llamamos a postJwtRequest con el cuerpo de la solicitud y el token
             await postJwtRequest(body, token);
 
-            // Si la respuesta es exitosa, actualizamos la lista de canales
-            getListChannel();
-            setChannelName(''); // Limpiar el input
+            getListChannel()
+            setChannelName('')
         } catch (error) {
             console.error('Error al agregar el canal:', error);
         }
+
+        setIsLoading(false)
     }
 
     const handleClickWorkspace = (workspace_id, channelId) => {
@@ -56,12 +74,14 @@ const ChannelScreen = () => {
                 <h2 className="h2-channel">Elige un Canal</h2>
                 <div className="cont-workspaces">
                     <ul className="box-channels">
-                        {responseApiState && responseApiState.data && responseApiState.data.length > 0 ? (
+                        {responseApiState && responseApiState.data && responseApiState.data.length > 0 || isLoading ? (
                             responseApiState.data.map((channel, index) => (
                                 <button key={index} className="canales-mostrar-2" onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
                             ))
                         ) : (
-                            ""
+                            <div className="spinner" role="status" aria-label="Cargando" aria-live="polite">
+                                <span className="visually-hidden"></span>
+                            </div>
                         )}
                     </ul>
                 </div>
