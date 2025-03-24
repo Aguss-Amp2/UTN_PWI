@@ -17,6 +17,12 @@ a {
     text-decoration: none;
 }
 
+textarea{
+    text-decoration: none;
+    outline: none;
+    resize: none;
+}
+
 h1 {
     display: flex;
     font-size: 26px;

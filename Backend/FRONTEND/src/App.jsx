@@ -16,12 +16,13 @@ function App() {
         <Route path='/register' element={<RegisterScreen/>}/>
         <Route path='/login' element={<LoginScreen/>}/>
         <Route path='/' element={<LoginScreen/>}/>
-        
-        <Route path='/reset-password' element={<ResetPassword />} />
-        <Route path='/rewrite-password' element={<RewritePassword />} />
-        <Route path='/workspaces' element={<WorkspaceScreen />} />
-        <Route path='/:workspace_id' element={<ChannelScreen />} />
-        <Route path='/workspace/:workspace_id/channel/:channel_id' element={<ChannelSelectScreen />} />
+        <Route element={<ProtectedRoute/>}>
+          <Route path='/reset-password' element={<ResetPassword />} />
+          <Route path='/rewrite-password' element={<RewritePassword />} />
+          <Route path='/workspaces' element={<WorkspaceScreen />} />
+          <Route path='/:workspace_id' element={<ChannelScreen />} />
+          <Route path='/workspace/:workspace_id/channel/:channel_id' element={<ChannelSelectScreen />} />
+        </Route>
 
       </Routes>
     </div>

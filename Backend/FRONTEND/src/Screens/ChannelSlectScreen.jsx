@@ -29,6 +29,7 @@ const ChannelSelectScreen = () => {
     const [workspaceName, setWorkspaceName] = useState("")
     const [workspaceMembers, setChannelMembers] = useState([]);  // Nueva variable de estado para los miembros
 
+    
     // Función para mostrar el último mensaje
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
@@ -246,14 +247,28 @@ const ChannelSelectScreen = () => {
             </div>
             <div className="box-input-teclado">
                 <form className="cont-teclado-env box" onSubmit={handleSubmitForm}>
-                    <input
-                        type="text"
-                        name="content"
-                        placeholder="Escribe un mensaje..."
-                        value={formState.content}
-                        onChange={handleChangeInput}
-                    />
-                    <button type="submit" className="btn-env-chat"><i className="bi-caret-right-fill"></i></button>
+                    <div className="cont-icons-teclado">
+                        <div>
+                            <i className="bi-alphabet icon-tec"></i>
+                            <i className="bi-code-slash icon-tec"></i>
+                            <i className="bi-text-paragraph icon-tec"></i>
+                            <i class="bi-dash-lg line"></i>
+                            <i className="bi-copy icon-tec"></i>
+                            <i className="bi-list-check icon-tec"></i>
+                            <i className="bi-list-ol icon-tec"></i>
+                        </div>
+                    </div>
+                    <div className="text-btn">
+                        <textarea
+                        className="textarea"
+                            type="text"
+                            name="content"
+                            placeholder="Escribe un mensaje..."
+                            value={formState.content}
+                            onChange={handleChangeInput}
+                        ></textarea>
+                        <button type="submit" className="btn-env-chat"><i className="bi-caret-right-fill"></i></button>
+                    </div>
                 </form>
             </div>
         </div>

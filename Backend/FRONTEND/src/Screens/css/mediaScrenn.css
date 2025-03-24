@@ -232,16 +232,11 @@
         font-size: 26px;
     }
 
-    .box-input-teclado input{
-        margin: 10px;
-        height: 220px;
-    }
-
     .btn-env-chat{
         width: 120px;
         height: 60px;
-        margin-top: 130px;
-        right: 34px;
+        margin-top: 30px;
+        right: 30px;
         font-size: 40px;
     }
 
@@ -250,13 +245,40 @@
     }
 
     .channels-ul{
-        height: 640px;
+        height: 540px;
         overflow-y: auto;
     }
     
     .channels-members{
-        height: 320px;
+        height: 220px;
         overflow-y: auto;
+    }
+
+    .cont-teclado-env{
+        padding-top: 50px;
+        min-height: 200px;
+    }
+
+    .textarea {
+        width: 86%;
+        height: 100px;
+        margin-top: -30px;
+        font-size: 22px;
+    }
+
+    .icon-tec{
+        margin-left: 4px;
+        padding: 4px;
+        font-size: 36px;
+    }
+    
+    .line{
+        font-size: 38px;
+        margin-left: 4px;
+    }
+
+    .text-btn{
+        padding-left: 10px;
     }
 }
 
@@ -306,6 +328,13 @@
         width: 50px;
         height: 50px;
         font-size: 34px;
+    }
+
+    .textarea {
+        width: 86%;
+        height: 40px;
+        margin-top: -40px;
+        font-size: 12px;
     }
 }
 
@@ -508,7 +537,7 @@
         bottom: 0;
         left: 0;
         padding: 5px;
-        height: 50px;
+        height: 90px;
     }
 
     .message{
@@ -519,15 +548,41 @@
         width: 200px;
     }
 
-    .box-input-teclado input{
+    .cont-teclado-env{
+        padding-top: 20px;
+        height: 95%;
+    }
+    
+    .text-btn{
+        padding-left: 10px;
+    }
+
+    .textarea {
         width: 80%;
-        height: 90%;
+        height: 40px;
+        margin-top: -20px;
+        font-size: 12px;
     }
 
     .btn-env-chat{
         position: absolute;
-        margin-top: 4px;
-        margin-right: -14px;
+        margin-top: -4px;
+        margin-right: -8px;
         width: 40px;
+    }
+
+    .cont-icons-teclado{
+        top: -20px;
+    }
+
+    .icon-tec{
+        margin-left: 4px;
+        padding: 4px;
+        font-size: 14px;
+    }
+    
+    .line{
+        font-size: 18px;
+        margin-left: 4px;
     }
 }
