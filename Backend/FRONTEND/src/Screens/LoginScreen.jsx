@@ -17,8 +17,8 @@ const LoginScreen = () => {
 
   const {formState, handleChangeInput} = useForm(initialFormState)
   const {responseApiState, postRequest} = useApiRequest(ENVIROMENT.URL_API + '/api/auth/login')
-  const [isLoading, setIsLoading] = useState(false);
-  const [showSpinner, setShowSpinner] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
+  const [showSpinner, setShowSpinner] = useState(false)
 
   useEffect(() => {
     if (isLoading) {

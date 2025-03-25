@@ -17,12 +17,6 @@ export const useApiRequest = (url) => {
             setResponseApiState((prevState) => {
                 return {...prevState, loading: true}
             })
-            //Enviar formulario (osea el estado) del backend
-            //Consulta HTTP
-            //Fetch nos permite hacer consiltas HTTP
-            //Recibe la URL a consultar y un objeto de configuracion
-            //URL: STRING
-            //Objeto: objetc {method, header, body(solo si la consulta no es GET)}
             const response = await fetch(
                 url,
                 {
@@ -47,7 +41,7 @@ export const useApiRequest = (url) => {
         }
         catch(error){
             setResponseApiState((prevState) => {
-                if(error.status){//Verificmos si es un error de servidor
+                if(error.status){
                     return {...prevState, error: error.message}
                 }
                 return {...prevState, error: 'No se pudo enviar la informacion al servidor'}
@@ -92,7 +86,7 @@ export const useApiRequest = (url) => {
         }
         catch(error){
             setResponseApiState((prevState) => {
-                if(error.status){//Verificmos si es un error de servidor
+                if(error.status){
                     return {...prevState, error: error.message}
                 }
                 return {...prevState, error: 'No se pudo enviar la informacion al servidor'}
@@ -150,11 +144,9 @@ export const useApiRequest = (url) => {
     const getListWorkspaces = async () => {
         try{
             setResponseApiState({...initialResponseApiState, loading: true})
-            const token = sessionStorage.getItem('authorization_token');  // o usa localStorage dependiendo de donde lo guardes
-
-            // Verificar si el token está presente
+            const token = sessionStorage.getItem('authorization_token')
             if (!token) {
-                throw new Error('Token no encontrado, por favor inicie sesión nuevamente.');
+                throw new Error('Token no encontrado, por favor inicie sesión nuevamente.')
             }
             const response = await fetch(
                 url,
@@ -205,30 +197,27 @@ export const useApiRequest = (url) => {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
-            });
+            })
 
 
             if (!response.ok) {
-                throw new Error(`Error ${response.status}: No se pudo obtener el workspace`);
+                throw new Error(`Error ${response.status}: No se pudo obtener el workspace`)
             }
 
             const data = await response.json()
             return data.name
         } catch (error) {
-            console.error("Error al obtener el workspace:", error);
+            console.error("Error al obtener el workspace:", error)
             return null
         }
-    };
-
+    }
 
     const getListChannel = async () => {
         try{
             setResponseApiState({...initialResponseApiState, loading: true})
-            const token = sessionStorage.getItem('authorization_token');  // o usa localStorage dependiendo de donde lo guardes
-
-            // Verificar si el token está presente
+            const token = sessionStorage.getItem('authorization_token')
             if (!token) {
-                throw new Error('Token no encontrado, por favor inicie sesión nuevamente.');
+                throw new Error('Token no encontrado, por favor inicie sesión nuevamente.')
             }
             const response = await fetch(
                 url,
@@ -245,17 +234,17 @@ export const useApiRequest = (url) => {
     
             if (data.ok && Array.isArray(data.data)) {
                 setResponseApiState((prevState) => {
-                    return { ...prevState, data: data.data } // Solo asignamos 'data.data'
-                });
+                    return { ...prevState, data: data.data }
+                })
             } else {
                 setResponseApiState((prevState) => {
-                    return { ...prevState, data: [] } // Si no hay workspaces, asignamos un array vacío
-                });
+                    return { ...prevState, data: [] }
+                })
             }
         }
         catch(error){
             setResponseApiState((prevState) => {
-                if(error.status){//Verificmos si es un error de servidor
+                if(error.status){
                     return {...prevState, error: error.message}
                 }
                 return {...prevState, error: 'No se pudo enviar la informacion al servidor'}
@@ -270,10 +259,10 @@ export const useApiRequest = (url) => {
 
     const getListMessages = async () => {
         try {
-            const token = sessionStorage.getItem('authorization_token');
+            const token = sessionStorage.getItem('authorization_token')
     
             if (!token) {
-                throw new Error('Token no encontrado');
+                throw new Error('Token no encontrado')
             }
     
             // Hacer la solicitud a la API
@@ -283,21 +272,21 @@ export const useApiRequest = (url) => {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 }
-            });
+            })
     
             if (!response.ok) {
-                throw new Error('Error al obtener los mensajes');
+                throw new Error('Error al obtener los mensajes')
             }
     
-            const data = await response.json();
+            const data = await response.json()
     
-            return data;
+            return data
     
         } catch (error) {
-            console.error('Error al hacer la solicitud:', error);
-            throw error;
+            console.error('Error al hacer la solicitud:', error)
+            throw error
         }
-    };
+    }
     
 
     const getUserIdByEmail = async (invitedEmail, token) => {
@@ -308,18 +297,18 @@ export const useApiRequest = (url) => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-            });
+            })
 
             if (response.ok) {
-                const data = await response.json();
-                return data.id; // Retorna el ID del usuario
+                const data = await response.json()
+                return data.id
             } else {
-                console.error('No se pudo obtener el ID del usuario');
-                return null;
+                console.error('No se pudo obtener el ID del usuario')
+                return null
             }
         } catch (error) {
-            console.error('Hubo un problema al obtener el ID del usuario:', error);
-            return null;
+            console.error('Hubo un problema al obtener el ID del usuario:', error)
+            return null
         }
     }
 
@@ -332,22 +321,53 @@ export const useApiRequest = (url) => {
                     'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify({ invited_id: invitedUserId, workspace_id }),
-            });
+            })
 
             if (response.ok) {
-                console.log('Miembro invitado correctamente');
-                return true;
+                console.log('Miembro invitado correctamente')
+                return true
             } else {
                 const errorData = await response.json();
-                console.error('Error al invitar al miembro:', errorData);
-                return false;
+                console.error('Error al invitar al miembro:', errorData)
+                return false
             }
         } catch (error) {
-            console.error('Hubo un problema al enviar la invitación:', error);
-            return false;
+            console.error('Hubo un problema al enviar la invitación:', error)
+            return false
         }
     }
 
+    const getRequest = async (token) => {
+        try {
+            const response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+            })
     
-    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel, postInvitedRequest, getUserIdByEmail, getListMessages, fetchWorkspaceName}
+            if (!response.ok) {
+                throw new Error(`Error en la solicitud: ${response.statusText}`)
+            }
+    
+            const data = await response.json()
+            setResponseApiState({
+                data: data,
+                loading: false,
+                error: null,
+            })
+            return data
+    
+        } catch (error) {
+            setResponseApiState({
+                data: null,
+                loading: false,
+                error: error.message || "Error al realizar la solicitud",
+            })
+            console.error('Error en la solicitud:', error)
+        }
+    }
+    
+    return {responseApiState, postRequest, putRequest, postJwtRequest, getListWorkspaces, getListChannel, postInvitedRequest, getUserIdByEmail, getListMessages, fetchWorkspaceName, getRequest}
 }

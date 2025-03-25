@@ -23,7 +23,6 @@ function App() {
           <Route path='/:workspace_id' element={<ChannelScreen />} />
           <Route path='/workspace/:workspace_id/channel/:channel_id' element={<ChannelSelectScreen />} />
         </Route>
-
       </Routes>
     </div>
   )

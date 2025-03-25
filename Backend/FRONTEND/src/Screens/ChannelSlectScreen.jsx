@@ -5,6 +5,7 @@ import { ENVIROMENT } from "../config/enviroment.js"
 import { useNavigate, useParams } from "react-router-dom"
 import { useForm } from "../hooks/useForm.jsx"
 import { AuthContext } from "../Context/AuthContext.jsx"
+import ProfileScreen from "./ProfileScreen.jsx"
 
 const ChannelSelectScreen = () => {
     const initialFormState = {
@@ -20,46 +21,44 @@ const ChannelSelectScreen = () => {
     const token = sessionStorage.getItem('authorization_token')
     const navigate = useNavigate()
 
-    const [messages, setMessages] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isAsideVisible, setIsAsideVisible] = useState(true);
-    const [isAsideVisible2, setIsAsideVisible2] = useState(true);
-    const messagesEndRef = useRef(null);
+    const [messages, setMessages] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [isAsideVisible, setIsAsideVisible] = useState(true)
+    const [isAsideVisible2, setIsAsideVisible2] = useState(true)
+    const messagesEndRef = useRef(null)
     const [selectedChannel, setSelectedChannel] = useState(channel_id)
     const [workspaceName, setWorkspaceName] = useState("")
-    const [workspaceMembers, setChannelMembers] = useState([]);  // Nueva variable de estado para los miembros
-
+    const [workspaceMembers, setChannelMembers] = useState([])
     
-    // Función para mostrar el último mensaje
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
-            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
         }
     };
 
     const toggleAsideVisibility = () => {
-        setIsAsideVisible(!isAsideVisible);
+        setIsAsideVisible(!isAsideVisible)
     }
 
     const toggleAsideVisibility2 = () => {
-        setIsAsideVisible2(!isAsideVisible2);
+        setIsAsideVisible2(!isAsideVisible2)
     }
 
     const fetchMessages = async () => {
         try {
             setIsLoading(true);
-            const response = await getListMessages();
+            const response = await getListMessages()
             if (response && response.ok && response.data) {
                 setMessages(response.data.messages);
             } else {
-                console.error('Error al obtener los mensajes:', response);
-                alert('No se pudieron obtener los mensajes');
+                console.error('Error al obtener los mensajes:', response)
+                alert('No se pudieron obtener los mensajes')
             }
         } catch (error) {
-            console.error('Error al obtener los mensajes:', error);
-            alert(`Error al obtener los mensajes: ${error.message}`);
+            console.error('Error al obtener los mensajes:', error)
+            alert(`Error al obtener los mensajes: ${error.message}`)
         } finally {
-            setIsLoading(false);
+            setIsLoading(false)
         }
     };
 
@@ -67,57 +66,56 @@ const ChannelSelectScreen = () => {
         try {
             const response = await fetch(`${ENVIROMENT.URL_API}/api/workspaces/${workspace_id}/members`, {
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    'Authorization': `Bearer ${token}`,
                 },
             });
-            const data = await response.json();
+            const data = await response.json()
             if (data && data.members) {
-                setChannelMembers(data.members);  // Guarda los miembros en el estado
+                setChannelMembers(data.members)
             } else {
-                console.error('No se pudieron obtener los miembros del canal');
+                console.error('No se pudieron obtener los miembros del canal')
             }
         } catch (error) {
-            console.error('Error al obtener los miembros:', error);
+            console.error('Error al obtener los miembros:', error)
         }
-    };
+    }
 
     const handleSubmitForm = async (event) => {
-        event.preventDefault();
+        event.preventDefault()
 
         if (formState.content.trim()) {
             try {
-                const response = await postJwtRequest({ content: formState.content }, token);
+                const response = await postJwtRequest({ content: formState.content }, token)
 
                 if (response && response.ok && response.data) {
-                    const newMessage = response.data.new_message;
-                    console.log('Nuevo mensaje recibido:', newMessage);
+                    const newMessage = response.data.new_message
 
-                    setMessages((prevMessages) => [newMessage, ...prevMessages]);
+                    setMessages((prevMessages) => [newMessage, ...prevMessages])
 
-                    handleChangeInput({ target: { name: 'content', value: '' } });
+                    handleChangeInput({ target: { name: 'content', value: '' } })
 
                     fetchMessages();
                 } else {
-                    console.error('Respuesta incorrecta o indefinida:', response);
+                    console.error('Respuesta incorrecta o indefinida:', response)
                 }
             } catch (error) {
-                console.error('Error al enviar el mensaje:', error);
+                console.error('Error al enviar el mensaje:', error)
             }
         } else {
-            console.log('El mensaje no puede estar vacío');
+            console.log('El mensaje no puede estar vacío')
         }
-    };
+    }
 
     useEffect(() => {
         if (isAuthenticatedState && channel_id && workspace_id) {
             fetchMessages();
             fetchChannelMembers();
         }
-    }, [isAuthenticatedState, channel_id, workspace_id]);
+    }, [isAuthenticatedState, channel_id, workspace_id])
 
     useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
+        scrollToBottom()
+    }, [messages])
 
     const handleWorks = () => {
         navigate('/workspaces')
@@ -127,11 +125,17 @@ const ChannelSelectScreen = () => {
         navigate('/')
     }
 
+    const [showProfile, setShowProfile] = useState(false)
+
+    const handleProfile = () => {
+        setShowProfile(prevState => !prevState)
+    }
+
     const handleCanales = (workspace_id) => {
         if (workspace_id) {
-            navigate(`/${workspace_id}`);
+            navigate(`/${workspace_id}`)
         } else {
-            console.log("workspace_id es undefined");
+            console.log("workspace_id es undefined")
         }
     }
 
@@ -139,16 +143,16 @@ const ChannelSelectScreen = () => {
         if (isAuthenticatedState && workspace_id) {
             getListChannel()
         } else {
-            console.log('Workspace ID is undefined');
+            console.log('Workspace ID is undefined')
         }
     }, [isAuthenticatedState, workspace_id])
 
     const handleClickWorkspace = (workspace_id, channelId) => {
         if (workspace_id && channelId) {
             setSelectedChannel(channelId)
-            navigate(`/workspace/${workspace_id}/channel/${channelId}`);
+            navigate(`/workspace/${workspace_id}/channel/${channelId}`)
         } else {
-            console.log('Workspace or Channel ID is undefined');
+            console.log('Workspace or Channel ID is undefined')
         }
     }
 
@@ -156,9 +160,9 @@ const ChannelSelectScreen = () => {
         if (workspace_id) {
             fetchWorkspaceName().then((name) => {
                 if (name) {
-                    setWorkspaceName(name);
+                    setWorkspaceName(name)
                 } else {
-                    console.error("No se pudo obtener el nombre del workspace");
+                    console.error("No se pudo obtener el nombre del workspace")
                 }
             });
         }
@@ -187,8 +191,9 @@ const ChannelSelectScreen = () => {
                         </div>
                     </div>
                     <div className="icon-text icon-text-2">
-                        <button className="btn-perfil bi"><i className="bi-person-circle"></i></button>
+                        <button className="btn-perfil bi" onClick={handleProfile}><i className="bi-person-circle"></i></button>
                         <span>Perfil</span>
+                        {showProfile && <ProfileScreen handleClose={() => setShowProfile(false)} />}
                     </div>
                 </div>
             </aside>
@@ -220,9 +225,9 @@ const ChannelSelectScreen = () => {
                         {workspaceMembers.length > 0 ? (
                             <ul className="channels-members">
                                 {workspaceMembers.map((member, index) => (
-                                    <li key={index} className="users-members">
+                                    <p key={index} className="users-members">
                                         <i className="bi-person-fill"></i>{member.username}
-                                    </li>
+                                    </p>
                                 ))}
                             </ul>
                         ) : (
@@ -272,7 +277,7 @@ const ChannelSelectScreen = () => {
                 </form>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default ChannelSelectScreen

@@ -2,6 +2,8 @@ import mongoose from "mongoose"
 import User from "../models/User.model.js"
 import Workspace from "../models/Workspace.model.js"
 import workspaceRepository from "../repository/workspace.repository.js"
+import { compare } from "bcrypt"
+import userRepository from "../repository/user.repository.js"
 
 export const createWorkspaceController = async(req, res) => {
     try{
@@ -170,5 +172,29 @@ export const getWorkspaceMembers = async (req, res) => {
     } catch (error) {
         console.error('Error al obtener los miembros del workspace:', error);
         res.status(500).json({ message: 'Error interno del servidor' });
+    }
+}
+
+export const getProfile = async (req, res) => {
+    const email = req.params.email; // Obtener el email desde la URL
+
+    console.log('Email from Params:', email); // Debug
+
+    try {
+        // Buscar al usuario en la base de datos usando el email
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            console.log('Usuario no encontrado en la base de datos');
+            return res.status(404).json({ message: 'Usuario no existe' });
+        }
+
+        return res.status(200).json({
+            email: user.email,
+            username: user.username,
+        });
+    } catch (error) {
+        console.error('Error al obtener el perfil:', error);
+        return res.status(500).json({ message: 'Error al obtener el perfil' });
     }
 }

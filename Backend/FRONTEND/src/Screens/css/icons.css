@@ -89,3 +89,56 @@
 .icon-tec:hover{
     background-color: gray;
 }
+
+.profile{
+    margin-left: 40px;
+    font-size: 240px;
+}
+
+.cont-x {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    bottom: 320px;
+    left: 310px;
+    border-radius: 4px;
+}
+
+.bi-x-lg{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 4px;
+    padding-top: 8px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cont-x:hover {
+    background-color: rgb(53, 50, 50);
+}
+
+.cont-disp{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.cont-disp .bi-circle-fill{
+    color: rgb(32, 204, 32);
+}
+
+.cont-email-profile-i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(53, 50, 50);
+    border-radius: 4px;
+    width: 60px;
+    height: 60px;
+}
+
+.email-profile{
+    font-size: 44px;
+}

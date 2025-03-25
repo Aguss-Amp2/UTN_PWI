@@ -14,8 +14,8 @@ const ChannelScreen = () => {
     const { responseApiState, getListChannel, postJwtRequest} = useApiRequest(`${ENVIROMENT.URL_API}/api/channels/${workspace_id}`)
     const token = sessionStorage.getItem("authorization_token")
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [showSpinner, setShowSpinner] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
+    const [showSpinner, setShowSpinner] = useState(false)
 
     useEffect(() => {
         if (isLoading) {
@@ -49,12 +49,12 @@ const ChannelScreen = () => {
         await new Promise(resolve => setTimeout(resolve, 2000))
 
         try {
-            await postJwtRequest(body, token);
+            await postJwtRequest(body, token)
 
             getListChannel()
             setChannelName('')
         } catch (error) {
-            console.error('Error al agregar el canal:', error);
+            console.error('Error al agregar el canal:', error)
         }
 
         setIsLoading(false)
@@ -62,9 +62,9 @@ const ChannelScreen = () => {
 
     const handleClickWorkspace = (workspace_id, channelId) => {
         if (workspace_id && channelId) {
-            navigate(`/workspace/${workspace_id}/channel/${channelId}`);
+            navigate(`/workspace/${workspace_id}/channel/${channelId}`)
         } else {
-            console.log('Workspace or Channel ID is undefined');
+            console.log('Workspace or Channel ID is undefined')
         }
     }
     return (
@@ -79,9 +79,7 @@ const ChannelScreen = () => {
                                 <button key={index} className="canales-mostrar-2" onClick={() => handleClickWorkspace(workspace_id, channel._id)}># {channel.name}</button>
                             ))
                         ) : (
-                            <div className="spinner" role="status" aria-label="Cargando" aria-live="polite">
-                                <span className="visually-hidden"></span>
-                            </div>
+                            ""
                         )}
                     </ul>
                 </div>

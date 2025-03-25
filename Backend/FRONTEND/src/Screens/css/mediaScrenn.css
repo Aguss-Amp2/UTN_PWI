@@ -9,7 +9,7 @@
     /* Ajustes generales */
     .content {
         width: 40%;
-        height: 86%;
+        height: 80%;
     }
 
     .options {
@@ -61,6 +61,7 @@
     }
 
     .h1-work {
+        margin-top: 40px;
         font-size: 42px;
     }
 
@@ -70,6 +71,7 @@
     }
     
     .cont-create-workspace {
+        margin-top: 60px;
         flex-direction: row;
         gap: 40px;
         align-items: center;
@@ -235,7 +237,7 @@
     .btn-env-chat{
         width: 120px;
         height: 60px;
-        margin-top: 30px;
+        margin-top: 60px;
         right: 30px;
         font-size: 40px;
     }
@@ -256,7 +258,7 @@
 
     .cont-teclado-env{
         padding-top: 50px;
-        min-height: 200px;
+        min-height: 240px;
     }
 
     .textarea {
@@ -289,6 +291,86 @@
     .bi-person-circle{
         font-size: 70px;
         margin-bottom: 4px;
+    }
+
+    .spinner{
+        width: 80px;
+        height: 80px;
+        margin: 20px;
+        border-top-color: var(--primary-color);
+    }
+
+    .users-members{
+        font-size: 32px;
+        margin-left: -14px;
+        padding-right: 14px;
+    }
+
+    .bi-person-fill{
+        font-size: 32px;
+    }
+
+    /* Profile */
+    
+    .profile-cont {
+        padding: 80px;
+        border-radius: 30px;
+        width: 800px;
+        height: 1100px;
+    }
+    
+    .username-profile{
+        margin-top: -80px;
+        margin-bottom: 40px;
+        font-size: 56px;
+    }
+    
+    .cont-email-profile{
+        margin-top: 40px;
+        gap: 20px;
+    }
+    
+    .cont-email-profile .span-profile{
+        margin-bottom: 30px;
+        font-size: 40px;
+    }
+
+    .cont-email-profile .span-mail{
+        font-size: 30px;
+    }
+
+    /* Profile icons */
+
+    .profile{
+        margin-left: 120px;
+        font-size: 400px;
+    }
+    
+    .cont-x {
+        width: 80px;
+        height: 80px;
+        bottom: 540px;
+        left: 620px;
+        border-radius: 20px;
+    }
+    
+    .bi-x-lg{
+        font-size: 60px;
+    }
+    
+    .cont-disp{
+        font-size: 30px;
+        gap: 30px;
+    }
+    
+    .cont-email-profile-i{
+        border-radius: 20px;
+        width: 120px;
+        height: 120px;
+    }
+    
+    .email-profile{
+        font-size: 90px;
     }
 }
 
@@ -343,6 +425,81 @@
         width: 86%;
         height: 40px;
         margin-top: -40px;
+        font-size: 12px;
+    }
+
+    .users-members{
+        font-size: 14px;
+        margin-left: -14px;
+        padding-right: 14px;
+    }
+
+    /* Profile */
+
+    .profile-cont {
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        height: 500px;
+    }
+
+    .username-profile {
+        margin-top: -60px;
+        margin-bottom: 40px;
+        font-size: 22px;
+    }
+
+    .cont-email-profile {
+        margin-top: 40px;
+        gap: 20px;
+    }
+
+    .cont-email-profile .span-profile {
+        margin-bottom: 20px;
+    }
+
+    /* Profile Icon */
+
+    .profile{
+        margin-left: 40px;
+        font-size: 180px;
+    }
+    
+    .cont-x {
+        width: 30px;
+        height: 30px;
+        bottom: 224px;
+        left: 238px;
+        border-radius: 4px;
+    }
+    
+    .bi-x-lg{
+        padding: 4px;
+        padding-top: 5px;
+        font-size: 20px;
+    }
+    
+    .cont-disp{
+        font-size: 16px;
+        gap: 10px;
+    }
+    
+    .cont-email-profile-i{
+        border-radius: 4px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .email-profile{
+        font-size: 28px;
+    }
+
+    .cont-email-text .span-profile{
+        margin-bottom: 12px;
+        font-size: 18px;
+    }
+
+    .cont-email-text .span-mail{
         font-size: 12px;
     }
 }
@@ -603,5 +760,72 @@
     .line{
         font-size: 18px;
         margin-left: 4px;
+    }
+
+    /* Profile */
+
+    .profile-cont {
+        padding: 20px;
+        border-radius: 10px;
+        width: 220px;
+        height: 400px;
+    }
+
+    .username-profile {
+        margin-top: -40px;
+        margin-bottom: 40px;
+        font-size: 16px;
+    }
+
+    .cont-email-profile {
+        margin-top: 40px;
+        gap: 20px;
+    }
+
+    .cont-email-profile .span-profile {
+        margin-bottom: 20px;
+    }
+
+    /* Profile Icon */
+
+    .profile{
+        margin-left: 30px;
+        font-size: 120px;
+    }
+    
+    .cont-x {
+        width: 30px;
+        height: 30px;
+        bottom: 158px;
+        left: 164px;
+        border-radius: 4px;
+    }
+    
+    .bi-x-lg{
+        padding: 4px;
+        padding-top: 5px;
+        font-size: 20px;
+    }
+    
+    .cont-disp{
+        font-size: 12px;
+        gap: 10px;
+    }
+
+    .cont-email-profile {
+        gap: 6px;
+    }
+    
+    .email-profile{
+        font-size: 28px;
+    }
+
+    .cont-email-text .span-profile{
+        margin-bottom: 22px;
+        font-size: 12px;
+    }
+
+    .cont-email-text .span-mail{
+        font-size: 10px;
     }
 }
